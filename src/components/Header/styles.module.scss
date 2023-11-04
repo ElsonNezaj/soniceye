@@ -1,0 +1,58 @@
+.headerContainer {
+  height: 100px;
+  display: flex;
+}
+
+.logoContainer {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-family: var(--main-font-family);
+  margin-left: 5%;
+  font-size: 32px;
+  color: gold;
+}
+
+.navigationContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.navigationText {
+  color: rgb(202, 202, 202);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.menuContainer {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.menuText {
+  color: rgb(202, 202, 202);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: white;
+  }
+}

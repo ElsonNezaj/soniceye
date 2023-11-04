@@ -17,7 +17,7 @@ export default function ModelView() {
     >
       <PresentationControls speed={1.5} polar={[-0.1, 4]}>
         <Stage environment={"city"}>
-          <Glasses scale={0.03} />
+          <Glasses scale={0.07} />
         </Stage>
       </PresentationControls>
     </Canvas>
