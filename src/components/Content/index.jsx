@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { Typography } from "antd";
+import ModelView from "../3dGlass";
 
 export default function Content() {
   return (
     <div className={styles.content}>
-      <Typography>CONTENT ROUTER</Typography>
+      <ModelView />
     </div>
   );
 }
