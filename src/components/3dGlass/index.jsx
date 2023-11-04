@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import styles from "./styles.module.scss";
 
 function Glasses(props) {
   const { scene } = useGLTF("/glasses.glb");
@@ -12,11 +13,11 @@ export default function ModelView() {
       dpr={[1, 2]}
       shadows
       camera={{ fov: 45 }}
-      style={{ position: "absolute", width: "40%", height: "90%" }}
+      className={styles.glasses}
     >
-      <PresentationControls speed={1.5} global zoom={0.1} polar={[-0.1, 4]}>
-        <Stage environment={"studio"}>
-          <Glasses scale={0.01} />
+      <PresentationControls speed={1.5} polar={[-0.1, 4]}>
+        <Stage environment={"city"}>
+          <Glasses scale={0.03} />
         </Stage>
       </PresentationControls>
     </Canvas>
