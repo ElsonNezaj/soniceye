@@ -41,7 +41,7 @@
   width: 25%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 30px;
 }
@@ -51,6 +51,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
+  margin-right: 5%;
 
   &:hover {
     color: white;
