@@ -25,7 +25,7 @@ function Glasses(props) {
 
   useEffect(() => {
     animate();
-  }, []);
+  }, [scene]);
   return <primitive object={scene} {...props} />;
 }
 
@@ -39,7 +39,7 @@ export default function ModelView() {
     >
       <PresentationControls speed={1.5} polar={[-0.1, 1]}>
         <Stage environment={"night"}>
-          <Glasses scale={0.045} />
+          <Glasses scale={0.04} />
         </Stage>
       </PresentationControls>
     </Canvas>
