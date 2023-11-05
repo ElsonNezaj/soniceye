@@ -9,6 +9,10 @@
   height: 100%;
   display: flex;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .logoText {
@@ -16,6 +20,8 @@
   margin-left: 5%;
   font-size: 32px;
   color: gold;
+  cursor: pointer;
+  word-break: keep-all;
 }
 
 .navigationContainer {

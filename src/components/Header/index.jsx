@@ -1,10 +1,13 @@
 import { Typography } from "antd";
 import styles from "./styles.module.scss";
+import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.logoContainer}>
-        <Typography className={styles.logoText}>SonicEye</Typography>
+        <Link to="/home">
+          <Typography className={styles.logoText}>SonicEye</Typography>
+        </Link>
       </div>
       <div className={styles.navigationContainer}>
         <Typography className={styles.navigationText}>About Us</Typography>
