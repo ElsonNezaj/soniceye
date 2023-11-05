@@ -1,6 +1,7 @@
 .headerContainer {
   height: 100px;
   display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.514);
 }
 
 .logoContainer {
@@ -30,10 +31,20 @@
   color: rgb(202, 202, 202);
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.2s;
+  padding: 0 10px;
+
+  background: linear-gradient(
+    to right,
+    rgb(202, 202, 202) 50%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
 
   &:hover {
-    color: white;
+    color: black;
+    background-position: left bottom;
   }
 }
 
@@ -50,10 +61,20 @@
   color: rgb(202, 202, 202);
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s;
   margin-right: 5%;
+  padding: 0px 10px;
+  vertical-align: middle;
+  background: linear-gradient(
+    to right,
+    rgb(202, 202, 202) 50%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
 
   &:hover {
-    color: white;
+    color: black;
+    background-position: left bottom;
   }
 }
