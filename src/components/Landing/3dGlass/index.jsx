@@ -5,28 +5,27 @@ import { useEffect, useState } from "react";
 import * as THREE from "three";
 
 function Glasses(props) {
-  // const { mouseEntered } = props;
-  // const camera = new THREE.PerspectiveCamera(
-  //   75,
-  //   window.innerWidth / window.innerHeight,
-  //   0.1,
-  //   1000
-  // );
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
   const { scene } = useGLTF("/glasses.glb");
 
-  // const renderer = new THREE.WebGLRenderer();
+  const renderer = new THREE.WebGLRenderer();
 
-  // const animate = () => {
-  //   requestAnimationFrame(animate);
-  //   if (scene) {
-  //     scene.rotation.y += 0.01;
-  //   }
-  //   renderer.render(scene, camera);
-  // };
+  const animate = () => {
+    requestAnimationFrame(animate);
+    if (scene) {
+      scene.rotation.y += 0.008;
+    }
+    renderer.render(scene, camera);
+  };
 
-  // useEffect(() => {
-  //   animate();
-  // }, [mouseEntered]);
+  useEffect(() => {
+    animate();
+  }, []);
   return <primitive object={scene} {...props} />;
 }
 
@@ -42,11 +41,9 @@ export default function ModelView() {
       onPointerLeave={() => hasMouseEntered(false)}
       className={styles.glasses}
     >
-      <PresentationControls speed={1.5} polar={[-0.1, 1]}>
-        <Stage environment={"city"}>
-          <Glasses scale={0.04} mouseEntered={mouseEntered} />
-        </Stage>
-      </PresentationControls>
+      <Stage environment={"city"}>
+        <Glasses scale={0.1} mouseEntered={mouseEntered} />
+      </Stage>
     </Canvas>
   );
 }
