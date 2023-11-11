@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import { useGLTF, Stage } from "@react-three/drei";
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as THREE from "three";
 
 function Glasses(props) {
@@ -18,31 +18,27 @@ function Glasses(props) {
   const animate = () => {
     requestAnimationFrame(animate);
     if (scene) {
-      scene.rotation.y += 0.008;
+      scene.rotation.y += 0.007;
     }
     renderer.render(scene, camera);
   };
 
   useEffect(() => {
     animate();
-  }, []);
+  });
   return <primitive object={scene} {...props} />;
 }
 
 export default function ModelView() {
-  const [mouseEntered, hasMouseEntered] = useState(false);
-
   return (
     <Canvas
       dpr={[1, 2]}
       shadows
       camera={{ fov: 45 }}
-      onPointerEnter={() => hasMouseEntered(true)}
-      onPointerLeave={() => hasMouseEntered(false)}
       className={styles.glasses}
     >
-      <Stage environment={"city"}>
-        <Glasses scale={0.1} mouseEntered={mouseEntered} />
+      <Stage environment="night">
+        <Glasses scale={0.5} />
       </Stage>
     </Canvas>
   );

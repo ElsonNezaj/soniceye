@@ -1,0 +1,46 @@
+.landingCarouselContainer {
+  height: 100%;
+  width: 100%;
+
+  & > div {
+    height: 100%;
+  }
+}
+
+.carousel {
+  height: 100% !important;
+
+  & > div {
+    height: 100%;
+
+    & > div {
+      height: 100%;
+
+      & > div > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.carouselItem {
+  width: 100%;
+  height: 70%;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemTitle {
+  font-size: 36px;
+  letter-spacing: 5px;
+  color: rgba(255, 217, 0, 0.588);
+}
+
+.itemContent {
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.745);
+  font-size: 18px;
+}

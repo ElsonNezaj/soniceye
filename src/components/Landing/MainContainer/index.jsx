@@ -1,6 +1,6 @@
-import { Typography } from "antd";
 import ModelView from "../3dGlass";
 import styles from "./styles.module.scss";
+import LandingCarousel from "../LandingCarousel";
 
 export default function Landing() {
   return (
@@ -9,8 +9,7 @@ export default function Landing() {
         <ModelView />
       </div>
       <div className={styles.landingInfo}>
-        <Typography className={styles.appTitle}>Your Sonic Eyes</Typography>
-        <div className={styles.featuresCarousel}></div>
+        <LandingCarousel />
       </div>
     </div>
   );
