@@ -16,7 +16,7 @@
 }
 
 .appLogo {
-  width: 60%;
+  width: 40%;
   @media (max-width: 800px) {
     width: 100%;
   }
@@ -41,18 +41,14 @@
   cursor: pointer;
   padding: 0 10px;
 
-  background: linear-gradient(
-    to right,
-    rgb(202, 202, 202) 50%,
-    transparent 50%
-  );
+  background: linear-gradient(to left, rgb(202, 202, 202) 50%, transparent 50%);
   background-size: 200% 100%;
-  background-position: right bottom;
+  background-position: left bottom;
   transition: all 0.5s ease-out;
 
   &:hover {
     color: black;
-    background-position: left bottom;
+    background-position: right bottom;
   }
 }
 
@@ -75,18 +71,14 @@
   margin-right: 5%;
   padding: 0px 10px;
   vertical-align: middle;
-  background: linear-gradient(
-    to right,
-    rgb(202, 202, 202) 50%,
-    transparent 50%
-  );
+  background: linear-gradient(to left, rgb(202, 202, 202) 50%, transparent 50%);
   background-size: 200% 100%;
-  background-position: right bottom;
+  background-position: left bottom;
   transition: all 0.5s ease-out;
 
   &:hover {
     color: black;
-    background-position: left bottom;
+    background-position: right bottom;
   }
 }
 
