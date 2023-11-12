@@ -12,12 +12,13 @@ export default function Header() {
     <div className={styles.headerContainer}>
       <div className={styles.logoContainer}>
         <Link to="/home">
-          {/* <Typography className={styles.logoText}>SonicEye</Typography> */}
           <img src={appLogo} alt="app logo" className={styles.appLogo} />
         </Link>
       </div>
       <div className={styles.navigationContainer}>
-        <Typography className={styles.navigationText}>About Us</Typography>
+        <Link to="/about" className={styles.link}>
+          <Typography className={styles.navigationText}>About Us</Typography>
+        </Link>
         <Typography className={styles.navigationText}>Contact</Typography>
       </div>
       <div className={styles.menuContainer}>
