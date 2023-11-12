@@ -31,6 +31,10 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 .navigationText {
@@ -61,6 +65,9 @@
   justify-content: flex-end;
   align-items: center;
   gap: 30px;
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 .menuText {
@@ -83,4 +90,37 @@
     color: black;
     background-position: left bottom;
   }
+}
+
+.mobileMenu {
+  display: none;
+  width: 75%;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2.5%;
+  @media (max-width: 800px) {
+    display: flex;
+  }
+}
+
+.menuButton {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: transparent;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  padding: 10px;
+
+  & > svg {
+    width: 120%;
+    height: 120%;
+  }
+}
+
+.drawer {
+  background-color: white !important;
+  border: solid 1px grey;
 }

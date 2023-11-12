@@ -10,6 +10,7 @@ export default function LandingCarousel() {
         autoplaySpeed={5000}
         easing="linear"
         effect="fade"
+        draggable
         dots={styles.dots}
         className={styles.carousel}
       >
