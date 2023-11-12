@@ -37,10 +37,20 @@
   font-size: 36px;
   letter-spacing: 5px;
   color: rgba(255, 217, 0, 0.588);
+
+  @media (max-width: 800px) {
+    font-size: 28px;
+    letter-spacing: 5px;
+  }
 }
 
 .itemContent {
   letter-spacing: 5px;
   color: rgba(255, 255, 255, 0.745);
   font-size: 18px;
+
+  @media (max-width: 800px) {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
 }

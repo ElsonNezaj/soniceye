@@ -38,7 +38,7 @@ export default function ModelView() {
       className={styles.glasses}
     >
       <Stage environment="night">
-        <Glasses scale={0.5} />
+        <Glasses scale={window.innerWidth > 500 ? 0.5 : 0.09} />
       </Stage>
     </Canvas>
   );

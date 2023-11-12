@@ -15,13 +15,11 @@
   }
 }
 
-.logoText {
-  font-family: var(--main-font-family);
-  margin-left: 10%;
-  font-size: 32px;
-  color: gold;
-  cursor: pointer;
-  word-break: keep-all;
+.appLogo {
+  width: 60%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
 
 .navigationContainer {
@@ -112,15 +110,46 @@
   border-radius: 100%;
   background-color: transparent;
   border: solid 2px rgba(255, 255, 255, 0.5);
-  padding: 10px;
+  padding: 12px;
 
   & > svg {
     width: 120%;
     height: 120%;
+  }
+
+  @media (max-width: 800px) {
+    width: 45px;
+    height: 45px;
   }
 }
 
 .drawer {
   background-color: white !important;
   border: solid 1px grey;
+
+  & > div {
+    & > div {
+      &:first-child {
+        height: 100px;
+        flex: none;
+      }
+    }
+  }
+}
+
+.drawerContentContainer {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  margin-top: 20%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.drawerContent {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  width: 90%;
+  border-bottom: solid 1px grey;
 }
