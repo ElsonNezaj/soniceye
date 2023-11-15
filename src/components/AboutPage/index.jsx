@@ -6,9 +6,37 @@ export default function AboutPage() {
   return (
     <div className={styles.aboutPageContainer}>
       <Typography className={styles.title}>ABOUT US</Typography>
-      <div className={styles.generalInfoContainer}></div>
-      <div className={styles.teamInfoContainer}></div>
-      <div className={styles.goalInfoContainer}></div>
+      <div className={styles.infoContainer}>
+        <div className={styles.generalInfoContainer}>
+          <Typography className={styles.subTitle}>
+            {" "}
+            What is SonicEye?
+          </Typography>
+          <Typography className={styles.subContent}>
+            SonicEye is a product designed to assist individuals with sight
+            impairment. With high-end sensors , comfortable design and slim
+            presentation , these glasses offer comfort and solution.
+          </Typography>
+        </div>
+        <div className={styles.teamInfoContainer}>
+          <Typography className={styles.subTitle}>Our Team</Typography>
+          <Typography className={styles.subContent}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+            consectetur eos dicta sunt libero, in odio quos molestias
+            perferendis ut ea quibusdam excepturi, dolore necessitatibus eum
+            ullam, laudantium dolorem quo.
+          </Typography>
+        </div>
+        <div className={styles.goalInfoContainer}>
+          <Typography className={styles.subTitle}>Our Goal</Typography>
+          <Typography className={styles.subContent}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+            consectetur eos dicta sunt libero, in odio quos molestias
+            perferendis ut ea quibusdam excepturi, dolore necessitatibus eum
+            ullam, laudantium dolorem quo.
+          </Typography>
+        </div>
+      </div>
     </div>
   );
 }
