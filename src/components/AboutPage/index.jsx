@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className={styles.aboutPageContainer}>
       <Typography className={styles.title}>ABOUT US</Typography>
       <div className={styles.infoContainer}>
-        <div className={styles.generalInfoContainer}>
+        <div className={styles.singleInfoContainer}>
           <Typography className={styles.subTitle}>
             {" "}
             What is SonicEye?
@@ -18,7 +18,7 @@ export default function AboutPage() {
             presentation , these glasses offer comfort and solution.
           </Typography>
         </div>
-        <div className={styles.teamInfoContainer}>
+        <div className={styles.singleInfoContainer}>
           <Typography className={styles.subTitle}>Our Team</Typography>
           <Typography className={styles.subContent}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
@@ -27,7 +27,7 @@ export default function AboutPage() {
             ullam, laudantium dolorem quo.
           </Typography>
         </div>
-        <div className={styles.goalInfoContainer}>
+        <div className={styles.singleInfoContainer}>
           <Typography className={styles.subTitle}>Our Goal</Typography>
           <Typography className={styles.subContent}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
