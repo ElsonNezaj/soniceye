@@ -4,6 +4,10 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
 }
 
 .title {
@@ -51,8 +55,12 @@
   color: rgba(255, 217, 0, 0.65);
   letter-spacing: 2px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     font-size: 28px;
+  }
+
+  @media (max-width: 900px) {
+    text-align: center;
   }
 }
 
@@ -60,7 +68,7 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 20px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     font-size: 18px;
   }
 }
