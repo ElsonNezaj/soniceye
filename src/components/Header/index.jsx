@@ -44,7 +44,9 @@ export default function Header() {
         <div className={styles.drawerContentContainer}>
           <Typography className={styles.drawerContent}>Products</Typography>
           <Typography className={styles.drawerContent}>Account</Typography>
-          <Typography className={styles.drawerContent}>About Us</Typography>
+          <Link to="/about">
+            <Typography className={styles.drawerContent}>About Us</Typography>
+          </Link>
           <Typography className={styles.drawerContent}>Contact</Typography>
         </div>
       </Drawer>
