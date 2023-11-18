@@ -1,0 +1,61 @@
+.productsContainer {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.productsFilterContainer {
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.filterMainLabel {
+  font-size: 36px;
+  font-family: var(--main-font-family);
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.685);
+  width: 25%;
+}
+
+.whiteLine {
+  width: 50%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.296);
+}
+
+.filterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+  gap: 20px;
+}
+
+.filterText {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.597);
+}
+
+.filterIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 27px;
+    height: 27px;
+
+    & path {
+      filter: brightness(1) invert(0.6);
+    }
+  }
+}
+
+.selectedView {
+  svg path {
+    filter: brightness(1) invert(1);
+  }
+}
