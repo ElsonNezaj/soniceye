@@ -15,15 +15,15 @@ export default function Header() {
           <img src={appLogo} alt="app logo" className={styles.appLogo} />
         </Link>
       </div>
-      <div className={styles.navigationContainer}>
-        <Link to="/about" className={styles.link}>
-          <Typography className={styles.navigationText}>About Us</Typography>
-        </Link>
-        <Typography className={styles.navigationText}>Contact</Typography>
-      </div>
       <div className={styles.menuContainer}>
-        <Typography className={styles.menuText}>Products</Typography>
-        <Typography className={styles.menuText}>Account</Typography>
+        <div className={styles.menuItems}>
+          <Typography className={styles.menuText}>Products</Typography>
+          <a href="/about" className={styles.menuText}>
+            About Us
+          </a>
+          <Typography className={styles.menuText}>Contact</Typography>
+          <Typography className={styles.menuText}>Account</Typography>
+        </div>
       </div>
 
       <div className={styles.mobileMenu}>
