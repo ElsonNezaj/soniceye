@@ -5,7 +5,11 @@ import RowProduct from "../RowProduct";
 
 export default function SingleProduct({ view }) {
   return (
-    <div className={styles.productContainer}>
+    <div
+      className={`${view === "row" && styles.productContainerRow} ${
+        view === "list" && styles.productContainerList
+      }`}
+    >
       {view === "list" ? <ListProduct /> : <RowProduct />}
     </div>
   );
