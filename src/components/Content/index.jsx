@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Landing from "../Landing/MainContainer";
 import AboutPage from "../AboutPage";
+import Products from "../Products";
 
 export default function Content() {
   return (
@@ -12,6 +13,7 @@ export default function Content() {
         <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Landing} />
         <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/products" component={Products} />
       </Switch>
     </div>
   );

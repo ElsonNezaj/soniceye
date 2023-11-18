@@ -17,7 +17,9 @@ export default function Header() {
       </div>
       <div className={styles.menuContainer}>
         <div className={styles.menuItems}>
-          <Typography className={styles.menuText}>Products</Typography>
+          <a href="/products" className={styles.menuText}>
+            Products
+          </a>
           <a href="/about" className={styles.menuText}>
             About Us
           </a>
@@ -42,7 +44,9 @@ export default function Header() {
         className={styles.drawer}
       >
         <div className={styles.drawerContentContainer}>
-          <Typography className={styles.drawerContent}>Products</Typography>
+          <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
+            <Typography className={styles.drawerContent}>Products</Typography>
+          </Link>
           <Typography className={styles.drawerContent}>Account</Typography>
           <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>About Us</Typography>
