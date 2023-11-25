@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { ReactComponent as List } from "../../../assets/images/filter/list.svg";
 import { ReactComponent as Row } from "../../../assets/images/filter/row.svg";
 import { Typography } from "antd";
+import { PRODUCTS } from "../../../assets/constants/constants";
 import SingleProduct from "../SingleProduct";
 
 export default function Products() {
@@ -35,8 +36,14 @@ export default function Products() {
           </div>
         </div>
       </div>
-      <div className={styles.productsList}>
-        <SingleProduct view={view} />
+      <div
+        className={`${styles.productsList} ${
+          view === "list" ? styles.columnDirection : styles.rowDirection
+        }`}
+      >
+        {PRODUCTS.map((product) => (
+          <SingleProduct product={product} view={view} />
+        ))}
       </div>
     </div>
   );

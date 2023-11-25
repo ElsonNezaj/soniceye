@@ -59,3 +59,16 @@
     filter: brightness(1) invert(1);
   }
 }
+
+.productsList {
+  display: flex;
+  gap: 10px;
+}
+
+.columnDirection {
+  flex-direction: column;
+}
+
+.rowDirection {
+  flex-direction: row;
+}

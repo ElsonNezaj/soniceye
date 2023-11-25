@@ -2,6 +2,14 @@
   display: flex;
   height: 100%;
   gap: 20px;
+  background-color: #333;
+  border: solid 1px rgba(255, 255, 255, 0.314);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #383838;
+  }
 }
 
 .modelContainer {
@@ -9,4 +17,115 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.productDescription {
+  width: 100%;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.productHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productName {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  font-family: var(--main-font-family);
+}
+
+.productPrice {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  font-family: var(--main-font-family);
+}
+
+.tagsContainer {
+  display: flex;
+  margin: 10px 0px;
+  gap: 20px;
+}
+
+.tagContainer {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.51);
+  border-radius: 2px;
+  transition: all 0.5s;
+
+  &:hover {
+    text-align: center;
+    padding: 5px 10px;
+    .tagLabel {
+      color: black;
+    }
+  }
+}
+
+.tagLabel {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+}
+
+.descriptionContainer {
+  margin-top: 20px;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+.footerContainer {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.previewButton {
+  background-color: rgba(255, 217, 0, 0.4);
+  border: none;
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(255, 217, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+.colorsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.colorsLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+.colors {
+  display: flex;
+  gap: 5px;
+}
+
+.color {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border: solid 2px rgba(169, 149, 33, 0.8);
+  opacity: 0.7;
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
 }
