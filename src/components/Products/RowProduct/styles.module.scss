@@ -1,0 +1,74 @@
+.rowProductContainer {
+  height: 100%;
+}
+
+.modelView {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 45%;
+}
+
+.productInfo {
+  padding: 5px;
+}
+
+.productName {
+  font-size: 24px;
+  color: white;
+  font-family: var(--main-font-family);
+}
+
+.tagsContainer {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.singleTag {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+.descriptionContainer {
+  margin-top: 10px;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.additionalInfo {
+  height: 55%;
+  margin: auto 0px;
+}
+
+.colorsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.singleColor {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+}
+
+.previewContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.previewButton {
+  background-color: rgba(255, 217, 0, 0.7);
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}

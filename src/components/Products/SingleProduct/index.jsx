@@ -11,7 +11,11 @@ export default function SingleProduct({ view, product }) {
       }`}
     >
       <>
-        {view === "list" ? <ListProduct product={product} /> : <RowProduct />}
+        {view === "list" ? (
+          <ListProduct product={product} />
+        ) : (
+          <RowProduct product={product} />
+        )}
       </>
     </div>
   );
