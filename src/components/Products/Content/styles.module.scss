@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  @media (max-width: 1400px) {
+    width: 90%;
+  }
 }
 
 .productsFilterContainer {
@@ -18,12 +22,23 @@
   letter-spacing: 5px;
   color: rgba(255, 255, 255, 0.685);
   width: 25%;
+
+  @media (max-width: 1400px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 1050px) {
+    width: 30%;
+  }
 }
 
 .whiteLine {
   width: 50%;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.296);
+  @media (max-width: 1050px) {
+    width: 40%;
+  }
 }
 
 .filterContainer {
@@ -33,6 +48,9 @@
   width: 25%;
   height: 100%;
   gap: 20px;
+  @media (max-width: 1050px) {
+    width: 30%;
+  }
 }
 
 .filterText {
