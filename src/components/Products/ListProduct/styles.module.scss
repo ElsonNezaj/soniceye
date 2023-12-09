@@ -18,18 +18,29 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 700px) {
+    width: 40%;
+  }
 }
 
 .productDescription {
   width: 100%;
   margin-right: 20px;
   margin-top: 10px;
+  @media (max-width: 700px) {
+    width: 60%;
+  }
 }
 
 .productHeader {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  height: 25%;
+  @media (max-width: 600px) {
+    height: 13%;
+  }
 }
 
 .productName {
@@ -46,8 +57,12 @@
 
 .tagsContainer {
   display: flex;
-  margin: 10px 0px;
   gap: 20px;
+  height: 25%;
+  align-items: center;
+  @media (max-width: 600px) {
+    gap: 5px;
+  }
 }
 
 .tagContainer {
@@ -68,23 +83,33 @@
 .tagLabel {
   color: rgba(0, 0, 0, 0.8);
   font-size: 12px;
+
+  @media (max-width: 700px) {
+    font-size: 10px;
+  }
 }
 
 .descriptionContainer {
-  margin-top: 20px;
+  height: 25%;
+  @media (max-width: 600px) {
+    height: 35%;
+  }
 }
 
 .description {
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
 }
 
 .footerContainer {
-  margin-top: 20px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 25%;
 }
 
 .previewButton {
@@ -100,6 +125,9 @@
     background-color: rgba(255, 217, 0, 0.5);
     color: rgba(255, 255, 255, 0.7) !important;
   }
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
 }
 
 .colorsContainer {
@@ -110,6 +138,13 @@
 .colorsLabel {
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .colors {
