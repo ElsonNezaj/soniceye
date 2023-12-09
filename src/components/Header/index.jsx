@@ -44,7 +44,7 @@ export default function Header() {
         className={styles.drawer}
       >
         <div className={styles.drawerContentContainer}>
-          <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
+          <Link to="/products" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>Products</Typography>
           </Link>
           <Typography className={styles.drawerContent}>Account</Typography>
