@@ -36,6 +36,10 @@
   padding: 2px;
   font-size: 11px;
   border-radius: 2px;
+
+  @media (max-width: 700px) {
+    font-size: 9px;
+  }
 }
 
 .descriptionContainer {
@@ -44,6 +48,9 @@
 
 .description {
   color: rgba(255, 255, 255, 0.8);
+  @media (max-width: 700px) {
+    font-size: 12px;
+  }
 }
 
 .colorsContainer {

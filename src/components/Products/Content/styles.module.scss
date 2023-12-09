@@ -8,12 +8,21 @@
   @media (max-width: 1400px) {
     width: 90%;
   }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }
 
 .productsFilterContainer {
   height: 20%;
   display: flex;
   align-items: center;
+  @media (max-width: 700px) {
+    justify-content: space-between;
+    height: 13%;
+    padding: 0px 10px;
+  }
 }
 
 .filterMainLabel {
@@ -30,6 +39,15 @@
   @media (max-width: 1050px) {
     width: 30%;
   }
+
+  @media (max-width: 800px) {
+    width: 35%;
+    font-size: 28px;
+  }
+
+  @media (max-width: 700px) {
+    width: auto;
+  }
 }
 
 .whiteLine {
@@ -38,6 +56,9 @@
   background-color: rgba(255, 255, 255, 0.296);
   @media (max-width: 1050px) {
     width: 40%;
+  }
+  @media (max-width: 700px) {
+    display: none;
   }
 }
 
@@ -51,11 +72,18 @@
   @media (max-width: 1050px) {
     width: 30%;
   }
+  @media (max-width: 700px) {
+    justify-content: flex-end;
+  }
 }
 
 .filterText {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.597);
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
 .filterIcon {
@@ -94,5 +122,6 @@
   }
   @media (max-width: 650px) {
     flex-wrap: wrap;
+    padding: 3px;
   }
 }
