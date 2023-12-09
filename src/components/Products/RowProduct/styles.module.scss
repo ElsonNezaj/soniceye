@@ -2,6 +2,11 @@
   height: 100%;
 }
 
+.mainInfo {
+  height: 100%;
+  transition: all 1s;
+}
+
 .modelView {
   background-color: rgba(255, 255, 255, 0.1);
   height: 45%;
@@ -10,6 +15,7 @@
 .productInfo {
   padding: 5px;
   transition: all 0.5s;
+  height: 40%;
 }
 
 .productName {
@@ -79,16 +85,17 @@
 }
 
 .hoverBox {
+  transition: all 1s;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  height: 66px;
   background-color: rgb(65, 65, 65);
   cursor: pointer;
+  height: 12%;
 }
 
 .hoverText {
   color: rgba(255, 255, 255, 0.4);
+  user-select: none;
 }

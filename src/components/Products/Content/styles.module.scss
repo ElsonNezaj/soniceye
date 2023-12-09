@@ -89,4 +89,10 @@
 
 .rowDirection {
   flex-direction: row;
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+  @media (max-width: 650px) {
+    flex-wrap: wrap;
+  }
 }
