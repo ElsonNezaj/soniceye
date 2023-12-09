@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { ReactComponent as List } from "../../../assets/images/filter/list.svg";
 import { ReactComponent as Row } from "../../../assets/images/filter/row.svg";
@@ -8,6 +8,14 @@ import SingleProduct from "../SingleProduct";
 
 export default function Products() {
   const [view, setView] = useState("row");
+  const windowWidth = window.innerWidth;
+
+  useEffect(() => {
+    if (windowWidth <= 500) {
+      setView("row");
+    }
+  }, [windowWidth]);
+
   return (
     <div className={styles.productsContainer}>
       <div className={styles.productsFilterContainer}>
