@@ -47,11 +47,15 @@ export default function Header() {
           <Link to="/products" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>Products</Typography>
           </Link>
-          <Typography className={styles.drawerContent}>Account</Typography>
+          <Typography className={styles.drawerContent}>
+            Account <span>(Not Working)</span>
+          </Typography>
           <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>About Us</Typography>
           </Link>
-          <Typography className={styles.drawerContent}>Contact</Typography>
+          <Typography className={styles.drawerContent}>
+            Contact <span>(Not Working)</span>
+          </Typography>
         </div>
       </Drawer>
     </div>
