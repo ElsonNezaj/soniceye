@@ -7,7 +7,7 @@ const initialState = {
 
 export const productsSlice = createSlice({
   initialState,
-  name: "productsSlice",
+  name: "products",
   reducers: {
     saveActiveRoute: (state, action) => {
       state.activeRoute = action.payload;

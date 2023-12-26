@@ -50,7 +50,7 @@ export default function Products() {
         }`}
       >
         {PRODUCTS.map((product) => (
-          <SingleProduct product={product} view={view} />
+          <SingleProduct key={product.name} product={product} view={view} />
         ))}
       </div>
     </div>
