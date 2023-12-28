@@ -6,10 +6,11 @@ import { useAppSelector } from "../../redux/hooks";
 import Landing from "../Landing/MainContainer";
 import AboutPage from "../AboutPage";
 import Products from "../Products/Content";
+import SingleProductRoute from "../Products/SingleProductRoute";
 
 export default function Content() {
   const activeProductRoute = useAppSelector(
-    (state) => state.products.activeProductRoute
+    (state) => state.products.activeRoute
   );
   const [route, setRoute] = useState(undefined);
 
@@ -27,7 +28,10 @@ export default function Content() {
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/products" component={Products} />
         {route && (
-          <Route path={`/products/${route}`} component={<>HELLO WORLD</>} />
+          <Route
+            path={`/products/${activeProductRoute}`}
+            component={SingleProductRoute}
+          />
         )}
       </Switch>
     </div>
