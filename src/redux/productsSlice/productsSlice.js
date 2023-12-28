@@ -15,8 +15,13 @@ export const productsSlice = createSlice({
     saveActionRouteData: (state, action) => {
       state.activeRouteData = action.payload;
     },
+    clearActiveRouteData: (state) => {
+      state.activeRouteData = {};
+      state.activeRoute = "";
+    },
   },
 });
 
-export const { saveActionRouteData, saveActiveRoute } = productsSlice.actions;
+export const { saveActionRouteData, saveActiveRoute, clearActiveRouteData } =
+  productsSlice.actions;
 export default productsSlice.reducer;
