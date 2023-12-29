@@ -59,6 +59,9 @@ export default function ListProduct({ product }) {
           <div className={styles.previewContainer}>
             <Button className={styles.previewButton}>3D Preview</Button>
           </div>
+          <div className={styles.addToCartContainer}>
+            <Button className={styles.previewButton}>Add To Cart</Button>
+          </div>
           <div className={styles.colorsContainer}>
             <Typography className={styles.colorsLabel}>
               Available Colors : &nbsp;
