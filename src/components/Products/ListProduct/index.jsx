@@ -5,10 +5,10 @@ import { Typography, Button } from "antd";
 import { Canvas } from "react-three-fiber";
 import { Stage, useGLTF } from "@react-three/drei";
 import { useAppDispatch } from "../../../redux/hooks";
-import {
-  saveActionRouteData,
-  saveActiveRoute,
-} from "../../../redux/productsSlice/productsSlice";
+// import {
+//   saveActionRouteData,
+//   saveActiveRoute,
+// } from "../../../redux/productsSlice/productsSlice";
 
 function Glasses(props) {
   const { scene } = useGLTF("/glasses.glb");
@@ -18,12 +18,12 @@ function Glasses(props) {
 
 export default function ListProduct({ product }) {
   const dispatch = useAppDispatch();
-  const handleClick = () => {
-    dispatch(saveActiveRoute(product.name));
-    dispatch(saveActionRouteData(product));
-  };
+  // const handleClick = () => {
+  //   dispatch(saveActiveRoute(product.name));
+  //   dispatch(saveActionRouteData(product));
+  // };
   return (
-    <div onClick={() => handleClick()} className={styles.listProductContainer}>
+    <div className={styles.listProductContainer}>
       <div className={styles.modelContainer}>
         {/* <Canvas
           dpr={[1, 2]}
