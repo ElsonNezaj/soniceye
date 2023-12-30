@@ -11,6 +11,10 @@
   flex-direction: column;
   align-items: center;
   width: 60%;
+
+  @media (max-width: 1250px) {
+    width: 50%;
+  }
 }
 
 .label {
@@ -23,6 +27,9 @@
   flex-direction: column;
   align-items: center;
   width: 20%;
+  @media (max-width: 1250px) {
+    width: 25%;
+  }
 
   .label {
     font-size: 14px;

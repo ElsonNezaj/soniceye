@@ -24,6 +24,15 @@ export default function Header() {
         <div className={styles.userContainer}>
           <UserNavigation />
         </div>
+
+        <div className={styles.mobileMenu}>
+          <Button
+            onClick={() => setIsDrawerOpen(true)}
+            className={styles.menuButton}
+          >
+            <Menu />
+          </Button>
+        </div>
       </div>
       <div className={styles.secondRow}>
         <div className={styles.menuContainer}>
@@ -37,15 +46,6 @@ export default function Header() {
             <Typography className={styles.menuText}>Contact</Typography>
           </div>
         </div>
-      </div>
-
-      <div className={styles.mobileMenu}>
-        <Button
-          onClick={() => setIsDrawerOpen(true)}
-          className={styles.menuButton}
-        >
-          <Menu />
-        </Button>
       </div>
 
       <Drawer

@@ -32,12 +32,22 @@
   width: 35%;
   display: flex;
   align-items: center;
+  @media (max-width: 1000px) {
+    width: 60%;
+  }
+
+  @media (max-width: 500px) {
+    width: 55%;
+  }
 }
 
 .userContainer {
   width: 40%;
   display: flex;
   justify-content: flex-end;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 }
 
 .appLogo {
@@ -93,12 +103,15 @@
 
 .mobileMenu {
   display: none;
-  width: 75%;
+  width: 10%;
   justify-content: flex-end;
   align-items: center;
   padding-right: 2.5%;
   @media (max-width: 980px) {
     display: flex;
+  }
+  @media (max-width: 500px) {
+    width: 15%;
   }
 }
 
