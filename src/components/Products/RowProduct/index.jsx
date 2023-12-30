@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { Typography, Button } from "antd";
 import { useAppDispatch } from "../../../redux/hooks";
-// import {
-//   saveActionRouteData,
-//   sa``veActiveRoute,
-// } from "../../../redux/productsSlice/productsSlice";
+import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 
 export default function RowProduct({ product }) {
   const dispatch = useAppDispatch();
   const [isAdditionalInfo, setIsAdditionalInfo] = useState(false);
-  // const handleClick = () => {
-  //   dispatch(saveActiveRoute(product.name));
-  //   dispatch(saveActionRouteData(product));
-  // };
+  const handleClick = () => {
+    dispatch(saveItemToCart(product));
+  };
   return (
-    <div className={styles.rowProductContainer}>
+    <div onClick={handleClick} className={styles.rowProductContainer}>
       <div className={styles.modelView}></div>
       <div className={styles.productInfo}>
         {!isAdditionalInfo ? (
