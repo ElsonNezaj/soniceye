@@ -7,6 +7,7 @@ import { useState } from "react";
 import appLogo from "../../assets/images/logo/soniceyeLogo.png";
 import ProductSearch from "./ProductSearch";
 import UserNavigation from "./UserNavigation";
+import { ShoppingCart } from "@mui/icons-material";
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -52,9 +53,20 @@ export default function Header() {
         open={isDrawerOpen}
         width={200}
         onClose={() => setIsDrawerOpen(false)}
+        bodyStyle={{ padding: "0px 10px 0px 10px" }}
         className={styles.drawer}
       >
         <div className={styles.drawerContentContainer}>
+          <div className={styles.cartContainer}>
+            <Typography className={styles.title}>
+              <ShoppingCart /> &nbsp; Your Cart
+            </Typography>
+            <div className={styles.itemsContainer}>
+              <Typography className={styles.label}>
+                Your cart is empty
+              </Typography>
+            </div>
+          </div>
           <Link to="/products" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>Products</Typography>
           </Link>
