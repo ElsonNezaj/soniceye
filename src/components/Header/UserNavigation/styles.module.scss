@@ -1,0 +1,38 @@
+.userNavigationContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.conectNumberContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+.label {
+  font-size: 14px;
+  color: white;
+}
+
+.navigationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+
+  .label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .iconContainer {
+    height: 100%;
+    svg {
+      font-size: 28px;
+      color: white;
+    }
+  }
+}
