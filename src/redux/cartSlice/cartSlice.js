@@ -23,8 +23,23 @@ export const cartSlice = createSlice({
         state.cartItems.push(newElement);
       }
     },
+    updateItemQuantity: (state, action) => {
+      const { name, manual } = action.payload;
+      const foundElement = state.cartItems.find(
+        (element) => element.item.name === name
+      );
+      if (manual === "increase") {
+        foundElement.quantity += 1;
+      } else {
+        if (foundElement.quantity === 0) {
+          return;
+        } else {
+          foundElement.quantity -= 1;
+        }
+      }
+    },
   },
 });
 
-export const { saveItemToCart } = cartSlice.actions;
+export const { saveItemToCart, updateItemQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

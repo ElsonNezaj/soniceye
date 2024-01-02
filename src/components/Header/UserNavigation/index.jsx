@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import styles from "./styles.module.scss";
 import { Typography } from "antd";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -7,6 +7,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
+import { updateItemQuantity } from "../../../redux/cartSlice/cartSlice";
 
 export default function UserNavigation() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -51,6 +52,7 @@ export default function UserNavigation() {
 }
 
 const CartDropDownMenu = (props, ref) => {
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   return (
     <ClickAwayListener
@@ -63,7 +65,10 @@ const CartDropDownMenu = (props, ref) => {
           </Typography>
         ) : (
           cartItems.map((element) => (
-            <div className={styles.singleElement}>
+            <div
+              key={element.item.productCode}
+              className={styles.singleElement}
+            >
               <div className={styles.productInfo}>
                 <Typography className={styles.itemLabel}>
                   {element.item.name}
@@ -77,10 +82,30 @@ const CartDropDownMenu = (props, ref) => {
                   {element.quantity}
                 </Typography>
                 <div className={styles.quantityControl}>
-                  <div className={styles.actionButton}>
+                  <div
+                    onClick={() => {
+                      dispatch(
+                        updateItemQuantity({
+                          name: element.item.name,
+                          manual: "decrease",
+                        })
+                      );
+                    }}
+                    className={styles.actionButton}
+                  >
                     <ChevronLeftIcon />
                   </div>
-                  <div className={styles.actionButton}>
+                  <div
+                    onClick={() => {
+                      dispatch(
+                        updateItemQuantity({
+                          name: element.item.name,
+                          manual: "increase",
+                        })
+                      );
+                    }}
+                    className={styles.actionButton}
+                  >
                     <ChevronRightIcon />
                   </div>
                 </div>
