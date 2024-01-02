@@ -84,9 +84,62 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   z-index: 1;
+  padding: 0px 10px;
 }
 
 .noItemLabel {
   color: white;
+}
+
+.singleElement {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0px 10px;
+  height: 75px;
+  align-items: center;
+  border-bottom: solid 1px whitesmoke;
+  &:last-child {
+    border: none;
+  }
+}
+
+.itemLabel {
+  color: white;
+  font-weight: bold;
+}
+.codeLabel {
+  font-size: 12px;
+  color: grey;
+}
+
+.productInfo {
+  width: 50%;
+}
+
+.quantityContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.quantityControl {
+  display: flex;
+  gap: 5px;
+}
+
+.actionButton {
+  height: 18px;
+  width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 100%;
+  svg {
+    width: 16px;
+    height: 100%;
+  }
 }

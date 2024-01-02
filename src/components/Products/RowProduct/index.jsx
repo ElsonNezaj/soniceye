@@ -11,7 +11,7 @@ export default function RowProduct({ product }) {
     dispatch(saveItemToCart(product));
   };
   return (
-    <div onClick={handleClick} className={styles.rowProductContainer}>
+    <div className={styles.rowProductContainer}>
       <div className={styles.modelView}></div>
       <div className={styles.productInfo}>
         {!isAdditionalInfo ? (
@@ -32,7 +32,9 @@ export default function RowProduct({ product }) {
               </Typography>
             </div>
             <div className={styles.addToCartContainer}>
-              <Button className={styles.addToCartButton}>Add To Cart</Button>
+              <Button onClick={handleClick} className={styles.addToCartButton}>
+                Add To Cart
+              </Button>
             </div>
           </div>
         ) : (

@@ -19,7 +19,7 @@ export default function ListProduct({ product }) {
     dispatch(saveItemToCart(product));
   };
   return (
-    <div onClick={handleClick} className={styles.listProductContainer}>
+    <div className={styles.listProductContainer}>
       <div className={styles.modelContainer}>
         {/* <Canvas
           dpr={[1, 2]}
@@ -56,7 +56,9 @@ export default function ListProduct({ product }) {
             <Button className={styles.previewButton}>3D Preview</Button>
           </div>
           <div className={styles.addToCartContainer}>
-            <Button className={styles.previewButton}>Add To Cart</Button>
+            <Button onClick={handleClick} className={styles.previewButton}>
+              Add To Cart
+            </Button>
           </div>
           <div className={styles.colorsContainer}>
             <Typography className={styles.colorsLabel}>

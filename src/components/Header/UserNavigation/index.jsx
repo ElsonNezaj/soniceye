@@ -4,6 +4,8 @@ import styles from "./styles.module.scss";
 import { Typography } from "antd";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 
 export default function UserNavigation() {
@@ -34,7 +36,9 @@ export default function UserNavigation() {
           </div>
           <Typography className={styles.label}>Your Cart</Typography>
         </div>
-        {menu && <CartDropDownMenu />}
+        {menu && (
+          <CartDropDownMenu handleCartClick={handleCartClick} name="soni" />
+        )}
       </div>
       <div className={styles.navigationContainer}>
         <div className={styles.iconContainer}>
@@ -46,12 +50,46 @@ export default function UserNavigation() {
   );
 }
 
-function CartDropDownMenu() {
+const CartDropDownMenu = (props, ref) => {
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
   return (
-    <div className={styles.menuContainer}>
-      <Typography className={styles.noItemLabel}>
-        You have no items in the cart
-      </Typography>
-    </div>
+    <ClickAwayListener
+      onClickAway={props.handleCartClick && props.handleCartClick}
+    >
+      <div className={styles.menuContainer}>
+        {cartItems.length <= 0 ? (
+          <Typography className={styles.noItemLabel}>
+            You have no items in the cart
+          </Typography>
+        ) : (
+          cartItems.map((element) => (
+            <div className={styles.singleElement}>
+              <div className={styles.productInfo}>
+                <Typography className={styles.itemLabel}>
+                  {element.item.name}
+                </Typography>
+                <Typography className={styles.codeLabel}>
+                  #{element.item.productCode}
+                </Typography>
+              </div>
+              <div className={styles.quantityContainer}>
+                <Typography className={styles.itemLabel}>
+                  {element.quantity}
+                </Typography>
+                <div className={styles.quantityControl}>
+                  <div className={styles.actionButton}>
+                    <ChevronLeftIcon />
+                  </div>
+                  <div className={styles.actionButton}>
+                    <ChevronRightIcon />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.removeItemContainer}></div>
+            </div>
+          ))
+        )}
+      </div>
+    </ClickAwayListener>
   );
-}
+};
