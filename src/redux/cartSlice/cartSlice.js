@@ -28,10 +28,16 @@ export const cartSlice = createSlice({
       const foundElement = state.cartItems.find(
         (element) => element.item.name === name
       );
+      const foundIndex = state.cartItems.find(
+        (element) => element.item.name === name
+      );
       if (manual === "increase") {
         foundElement.quantity += 1;
       } else {
-        if (foundElement.quantity === 0) {
+        if (foundElement.quantity < 2) {
+          const updatedItems = [...state.cartItems];
+          updatedItems.splice(foundIndex, 1);
+          state.cartItems = updatedItems;
           return;
         } else {
           foundElement.quantity -= 1;
