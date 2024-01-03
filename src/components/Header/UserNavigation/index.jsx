@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import styles from "./styles.module.scss";
 import { Typography } from "antd";
@@ -6,8 +6,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
-import { updateItemQuantity } from "../../../redux/cartSlice/cartSlice";
+import {
+  removeItemFromCart,
+  updateItemQuantity,
+} from "../../../redux/cartSlice/cartSlice";
 
 export default function UserNavigation() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -37,9 +41,7 @@ export default function UserNavigation() {
           </div>
           <Typography className={styles.label}>Your Cart</Typography>
         </div>
-        {menu && (
-          <CartDropDownMenu handleCartClick={handleCartClick} name="soni" />
-        )}
+        {menu && <CartDropDownMenu handleCartClick={handleCartClick} />}
       </div>
       <div className={styles.navigationContainer}>
         <div className={styles.iconContainer}>
@@ -54,6 +56,22 @@ export default function UserNavigation() {
 const CartDropDownMenu = (props, ref) => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const [total, setTotal] = useState(0);
+
+  const findTotal = () => {
+    let total = 0;
+    cartItems.forEach((element) => {
+      const elementTotal = element.item.price * element.quantity;
+      total = total + elementTotal;
+      return total;
+    });
+    return total;
+  };
+
+  useEffect(() => {
+    setTotal(findTotal());
+  }, [cartItems]);
+
   return (
     <ClickAwayListener
       onClickAway={props.handleCartClick && props.handleCartClick}
@@ -64,55 +82,72 @@ const CartDropDownMenu = (props, ref) => {
             You have no items in the cart
           </Typography>
         ) : (
-          cartItems.map((element) => (
-            <div
-              key={element.item.productCode}
-              className={styles.singleElement}
-            >
-              <div className={styles.productInfo}>
-                <Typography className={styles.itemLabel}>
-                  {element.item.name}
-                </Typography>
-                <Typography className={styles.codeLabel}>
-                  #{element.item.productCode}
-                </Typography>
-              </div>
-              <div className={styles.quantityContainer}>
-                <Typography className={styles.itemLabel}>
-                  {element.quantity}
-                </Typography>
-                <div className={styles.quantityControl}>
-                  <div
-                    onClick={() => {
-                      dispatch(
-                        updateItemQuantity({
-                          name: element.item.name,
-                          manual: "decrease",
-                        })
-                      );
-                    }}
-                    className={styles.actionButton}
-                  >
-                    <ChevronLeftIcon />
-                  </div>
-                  <div
-                    onClick={() => {
-                      dispatch(
-                        updateItemQuantity({
-                          name: element.item.name,
-                          manual: "increase",
-                        })
-                      );
-                    }}
-                    className={styles.actionButton}
-                  >
-                    <ChevronRightIcon />
+          <>
+            {cartItems.map((element) => (
+              <div
+                key={element.item.productCode}
+                className={styles.singleElement}
+              >
+                <div className={styles.productInfo}>
+                  <Typography className={styles.itemLabel}>
+                    {element.item.name}
+                  </Typography>
+                  <Typography className={styles.codeLabel}>
+                    #{element.item.productCode}
+                  </Typography>
+                </div>
+                <div className={styles.quantityContainer}>
+                  <Typography className={styles.itemLabel}>
+                    {element.quantity}
+                  </Typography>
+                  <div className={styles.quantityControl}>
+                    <div
+                      onClick={() => {
+                        dispatch(
+                          updateItemQuantity({
+                            name: element.item.name,
+                            manual: "decrease",
+                          })
+                        );
+                      }}
+                      className={styles.actionButton}
+                    >
+                      <ChevronLeftIcon />
+                    </div>
+                    <div
+                      onClick={() => {
+                        dispatch(
+                          updateItemQuantity({
+                            name: element.item.name,
+                            manual: "increase",
+                          })
+                        );
+                      }}
+                      className={styles.actionButton}
+                    >
+                      <ChevronRightIcon />
+                    </div>
                   </div>
                 </div>
+                <div
+                  onClick={() =>
+                    dispatch(removeItemFromCart(element.item.name))
+                  }
+                  className={styles.removeItemContainer}
+                >
+                  <DeleteIcon />
+                </div>
               </div>
-              <div className={styles.removeItemContainer}></div>
+            ))}
+            <div className={styles.totalContainer}>
+              <div className={styles.totalLabel}>
+                <Typography className={styles.totalLabel}>Total : </Typography>
+              </div>
+              <div className={styles.amountContainer}>
+                <Typography className={styles.amount}>{total} €</Typography>
+              </div>
             </div>
-          ))
+          </>
         )}
       </div>
     </ClickAwayListener>

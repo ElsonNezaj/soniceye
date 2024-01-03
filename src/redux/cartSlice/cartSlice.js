@@ -44,8 +44,17 @@ export const cartSlice = createSlice({
         }
       }
     },
+    removeItemFromCart: (state, action) => {
+      const foundElementIndex = state.cartItems.findIndex(
+        (element) => element.item.name === action.payload
+      );
+      const updatedItems = [...state.cartItems];
+      updatedItems.splice(foundElementIndex, 1);
+      state.cartItems = updatedItems;
+    },
   },
 });
 
-export const { saveItemToCart, updateItemQuantity } = cartSlice.actions;
+export const { saveItemToCart, updateItemQuantity, removeItemFromCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;
