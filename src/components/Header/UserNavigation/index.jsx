@@ -12,6 +12,7 @@ import {
   removeItemFromCart,
   updateItemQuantity,
 } from "../../../redux/cartSlice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function UserNavigation() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -43,12 +44,16 @@ export default function UserNavigation() {
         </div>
         {menu && <CartDropDownMenu handleCartClick={handleCartClick} />}
       </div>
-      <div className={styles.navigationContainer}>
+      <Link
+        // component="div"
+        to="/account"
+        className={styles.navigationContainer}
+      >
         <div className={styles.iconContainer}>
           <PersonIcon />
         </div>
         <Typography className={styles.label}>Your Account</Typography>
-      </div>
+      </Link>
     </div>
   );
 }

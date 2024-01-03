@@ -27,6 +27,8 @@
   flex-direction: column;
   align-items: center;
   width: 20%;
+  cursor: pointer;
+  text-decoration: none;
 
   @media (max-width: 1250px) {
     width: 25%;
