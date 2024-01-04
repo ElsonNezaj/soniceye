@@ -17,6 +17,7 @@ export const authSlice = createSlice({
       state.isFetchingAuth = false;
       state.authUser = action.payload;
       state.isAuth = true;
+      window.location.href = "/";
     },
     getAuthFailed: (state) => {
       state.isFetchingAuth = false;
@@ -28,6 +29,7 @@ export const authSlice = createSlice({
       state.isFetchingAuth = false;
       state.authUser = action.payload;
       state.isAuth = true;
+      window.location.href = "/";
     },
     getLoginFailed: (state) => {
       state.isFetchingAuth = false;
