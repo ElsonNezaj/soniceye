@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 import { Route, Switch } from "react-router-dom";
 
 import Landing from "../Landing/MainContainer";
 import AboutPage from "../AboutPage";
 import Products from "../Products/Content";
 import RegistrationForm from "../Account/Forms";
-import { onAuthStateChanged } from "firebase/auth";
+// import { onAuthStateChanged } from "firebase/auth";
 
 export default function Content() {
-  const [authUser, setAuthUser] = useState(null);
   // const activeProductRoute = useAppSelector(
   //   (state) => state.products.activeRoute
   // );
@@ -22,20 +21,18 @@ export default function Content() {
   //     : setRoute(undefined);
   // }, [activeProductRoute]);
 
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => {
-      listen();
-    };
-  }, []);
-
-  console.log(authUser);
+  // useEffect(() => {
+  //   const listen = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setAuthUser(user);
+  //     } else {
+  //       setAuthUser(null);
+  //     }
+  //   });
+  //   return () => {
+  //     listen();
+  //   };
+  // }, []);
 
   return (
     <div className={styles.content}>
