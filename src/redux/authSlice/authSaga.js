@@ -5,10 +5,14 @@ import {
   getAuthSucceded,
   getLoginRequested,
   getLoginSucceded,
+  signOutFailed,
+  signOutRequested,
+  signOutSucceded,
 } from "./authslice";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -22,11 +26,10 @@ export function* getAuth({ payload }) {
       email,
       password
     );
-    yield call(updateProfile, user, { displayName: displayName });
     const data = user.user;
+    yield call(updateProfile, data, { displayName: displayName });
     yield put(getAuthSucceded(data));
   } catch (err) {
-    console.log(err);
     yield put(getAuthFailed());
   }
 }
@@ -39,8 +42,16 @@ export function* getLogin({ payload }) {
     const data = user.user;
     yield put(getLoginSucceded(data));
   } catch (err) {
-    console.log(err);
     yield put(getAuthFailed());
+  }
+}
+
+export function* signOutUser() {
+  try {
+    const data = yield call(signOut, auth);
+    yield put(signOutSucceded());
+  } catch (err) {
+    signOutFailed();
   }
 }
 
@@ -52,6 +63,14 @@ export function* onGetLoginRequested() {
   yield takeLatest(getLoginRequested.type, getLogin);
 }
 
+export function* onSignOutRequested() {
+  yield takeLatest(signOutRequested.type, signOutUser);
+}
+
 export function* authSagas() {
-  yield all([call(onGetAuthRequested), call(onGetLoginRequested)]);
+  yield all([
+    call(onGetAuthRequested),
+    call(onGetLoginRequested),
+    call(onSignOutRequested),
+  ]);
 }

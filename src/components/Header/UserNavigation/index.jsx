@@ -12,14 +12,21 @@ import {
   removeItemFromCart,
   updateItemQuantity,
 } from "../../../redux/cartSlice/cartSlice";
+import { signOutRequested } from "../../../redux/authSlice/authslice";
 import { Link } from "react-router-dom";
 
 export default function UserNavigation() {
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
   const [menu, toggleMenu] = useState(false);
 
   const handleCartClick = () => {
     toggleMenu(!menu);
+  };
+
+  const handleSignOut = () => {
+    dispatch(signOutRequested());
   };
 
   return (
@@ -44,16 +51,24 @@ export default function UserNavigation() {
         </div>
         {menu && <CartDropDownMenu handleCartClick={handleCartClick} />}
       </div>
-      <Link
-        // component="div"
-        to="/account"
-        className={styles.navigationContainer}
-      >
-        <div className={styles.iconContainer}>
-          <PersonIcon />
+      {!isAuth ? (
+        <Link to="/account" className={styles.navigationContainer}>
+          <div className={styles.iconContainer}>
+            <PersonIcon />
+          </div>
+          <Typography className={styles.label}>Your Account</Typography>
+        </Link>
+      ) : (
+        <div
+          onClick={() => handleSignOut()}
+          className={styles.navigationContainer}
+        >
+          <div className={styles.iconContainer}>
+            <PersonIcon />
+          </div>
+          <Typography className={styles.label}>Log Out</Typography>
         </div>
-        <Typography className={styles.label}>Your Account</Typography>
-      </Link>
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isFetchingAuth: false,
+  isFetchingSignOut: false,
   authUser: undefined,
   isAuth: false,
 };
@@ -34,6 +35,17 @@ export const authSlice = createSlice({
     getLoginFailed: (state) => {
       state.isFetchingAuth = false;
     },
+    signOutRequested: (state) => {
+      state.isFetchingSignOut = true;
+    },
+    signOutSucceded: (state) => {
+      state.isFetchingSignOut = false;
+      state.authUser = undefined;
+      state.isAuth = false;
+    },
+    signOutFailed: (state) => {
+      state.isFetchingSignOut = true;
+    },
   },
 });
 
@@ -44,5 +56,8 @@ export const {
   getLoginRequested,
   getLoginSucceded,
   getLoginFailed,
+  signOutRequested,
+  signOutSucceded,
+  signOutFailed,
 } = authSlice.actions;
 export default authSlice.reducer;
