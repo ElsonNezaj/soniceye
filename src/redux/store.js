@@ -4,14 +4,28 @@ import cartReducer from "./cartSlice/cartSlice";
 import authReducer from "./authSlice/authslice";
 import createSagaMiddleware from "redux-saga";
 import { rootSagas } from "./sagas";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import { combineReducers } from "@reduxjs/toolkit";
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+
+const reducer = combineReducers({
+  products: productsReducer,
+  cart: cartReducer,
+  auth: authReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {
-    products: productsReducer,
-    cart: cartReducer,
-    auth: authReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       immutableCheck: {
