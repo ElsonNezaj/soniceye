@@ -6,4 +6,15 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
+
+  @media (max-width: 900px) {
+    width: 90%;
+    gap: 30px;
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }

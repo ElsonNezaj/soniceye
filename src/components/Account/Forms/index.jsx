@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import SignUpForm from "../SignUp";
 import LoginForm from "../LoginForm";
+import ContentTabs from "../ContentTabs";
 
 export default function RegistrationForm() {
+  const [formState, setFormState] = useState("login");
   return (
     <div className={styles.formContainers}>
-      <LoginForm />
-      <SignUpForm />
+      <ContentTabs setFormState={setFormState} formState={formState} />
+      {formState === "login" ? <LoginForm /> : <SignUpForm />}
     </div>
   );
 }

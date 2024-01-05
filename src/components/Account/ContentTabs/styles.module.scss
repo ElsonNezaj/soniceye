@@ -1,0 +1,32 @@
+.tabsContainer {
+  display: none;
+
+  @media (max-width: 700px) {
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    height: 5%;
+    align-items: center;
+    margin: 5% auto;
+    border-bottom: solid 1px grey;
+  }
+}
+
+.tab {
+  border: solid 1px grey;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 2px transparent;
+}
+
+.selected {
+  background-color: #222;
+  border-bottom: solid 2px gold;
+}
+
+.label {
+  color: white;
+}
