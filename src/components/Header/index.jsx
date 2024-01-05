@@ -67,9 +67,9 @@ export default function Header() {
           <Link to="/products" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>Products</Typography>
           </Link>
-          <Typography className={styles.drawerContent}>
-            Account <span>(Not Working)</span>
-          </Typography>
+          <Link to="/account" onClick={() => setIsDrawerOpen(false)}>
+            <Typography className={styles.drawerContent}>Account</Typography>
+          </Link>
           <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>About Us</Typography>
           </Link>
