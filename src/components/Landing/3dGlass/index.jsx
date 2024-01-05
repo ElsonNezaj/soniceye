@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import * as THREE from "three";
 
 export function Glasses(props) {
-  const {isAnimated} = props;
+  const { isAnimated } = props;
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -25,8 +25,7 @@ export function Glasses(props) {
   };
 
   useEffect(() => {
-    isAnimated &&
-    animate();
+    isAnimated && animate();
   });
   return <primitive object={scene} {...props} />;
 }
@@ -40,7 +39,10 @@ export default function ModelView() {
       className={styles.glasses}
     >
       <Stage environment="night">
-        <Glasses isAnimated={true} scale={window.innerWidth > 500 ? 0.5 : 0.09} />
+        <Glasses
+          isAnimated={true}
+          scale={window.innerWidth > 500 ? 0.5 : 0.09}
+        />
       </Stage>
     </Canvas>
   );
