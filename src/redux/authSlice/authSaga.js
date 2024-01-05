@@ -9,21 +9,20 @@ import {
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 
 export function* getAuth({ payload }) {
   try {
-    const { email, password } = payload;
-    console.log("Email:", email);
-    console.log("Password:", password);
+    const { email, password, displayName } = payload;
     const user = yield call(
       createUserWithEmailAndPassword,
       auth,
       email,
       password
     );
-    console.log("User Data:", user);
+    yield call(updateProfile, user, { displayName: displayName });
     const data = user.user;
     yield put(getAuthSucceded(data));
   } catch (err) {
@@ -35,8 +34,6 @@ export function* getAuth({ payload }) {
 export function* getLogin({ payload }) {
   try {
     const { email, password } = payload;
-    console.log("Email:", email);
-    console.log("Password:", password);
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
     console.log("User Data:", user);
     const data = user.user;
