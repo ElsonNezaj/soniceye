@@ -274,7 +274,8 @@
   border: solid 1px white;
 }
 
-.titleContainer {
+.titleContainer,
+.userContainerMobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -283,4 +284,25 @@
 .totalAmount {
   font-size: 14px;
   font-weight: bold;
+}
+
+.userContainerMobile {
+  margin-bottom: 10px;
+}
+
+.logoutButton {
+  height: 25px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px !important;
+  background-color: red;
+  color: white;
+  border-radius: 2px;
+  border: none;
+
+  &:hover {
+    border: none;
+    color: white !important;
+  }
 }

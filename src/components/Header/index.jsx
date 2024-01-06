@@ -8,14 +8,16 @@ import appLogo from "../../assets/images/logo/soniceyeLogo.png";
 import ProductSearch from "./ProductSearch";
 import UserNavigation from "./UserNavigation";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart, Person } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   removeItemFromCart,
   updateItemQuantity,
 } from "../../redux/cartSlice/cartSlice";
+import { signOutRequested } from "../../redux/authSlice/authslice";
 
 export default function Header() {
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <div className={styles.headerContainer}>
@@ -63,13 +65,22 @@ export default function Header() {
         className={styles.drawer}
       >
         <div className={styles.drawerContentContainer}>
-          <CartContainer />
+          <CartContainer setIsDrawerOpen={setIsDrawerOpen} />
           <Link to="/products" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>Products</Typography>
           </Link>
-          <Link to="/account" onClick={() => setIsDrawerOpen(false)}>
-            <Typography className={styles.drawerContent}>Account</Typography>
-          </Link>
+          {!isAuth ? (
+            <Link to="/account" onClick={() => setIsDrawerOpen(false)}>
+              <Typography className={styles.drawerContent}>Account</Typography>
+            </Link>
+          ) : (
+            <Typography
+              onClick={() => setIsDrawerOpen(false)}
+              className={styles.drawerContent}
+            >
+              Account
+            </Typography>
+          )}
           <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>About Us</Typography>
           </Link>
@@ -82,9 +93,10 @@ export default function Header() {
   );
 }
 
-function CartContainer() {
+function CartContainer({ setIsDrawerOpen }) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const authUser = useAppSelector((state) => state.auth.authUser);
   const [total, setTotal] = useState(0);
 
   const findTotal = () => {
@@ -97,12 +109,30 @@ function CartContainer() {
     return total;
   };
 
+  const handleLogout = () => {
+    dispatch(signOutRequested());
+    setIsDrawerOpen(false);
+  };
+
   useEffect(() => {
     setTotal(findTotal());
   }, [cartItems]);
 
   return (
     <div className={styles.cartContainer}>
+      {authUser && (
+        <div className={styles.userContainerMobile}>
+          <Typography className={styles.title}>
+            <Person /> &nbsp; {authUser.displayName}
+          </Typography>
+          <Button
+            onClick={() => handleLogout()}
+            className={styles.logoutButton}
+          >
+            Log Out
+          </Button>
+        </div>
+      )}
       <div className={styles.titleContainer}>
         <Typography className={styles.title}>
           <ShoppingCart /> &nbsp; Your Cart
