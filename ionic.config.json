@@ -1,0 +1,7 @@
+{
+  "name": "soniceye",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

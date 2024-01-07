@@ -1,0 +1,11 @@
+{
+  "appId": "io.ionic.soniceye",
+  "appName": "soniceye",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {},
+  "server": {
+    "androidScheme": "https"
+  }
+}
