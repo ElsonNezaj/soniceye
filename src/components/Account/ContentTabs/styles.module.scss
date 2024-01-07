@@ -16,10 +16,14 @@
     margin: 5% auto;
     border-bottom: solid 1px grey;
   }
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 }
 
 .tab {
-  border: solid 1px grey;
+  // border: solid 1px grey;
   height: 100%;
   width: 50%;
   display: flex;
@@ -32,7 +36,12 @@
 
 .selected {
   border-bottom: solid 2px gold;
-  background: linear-gradient(to right, transparent 0%, #222 100%);
+  background: linear-gradient(
+    to right,
+    #22222283 0%,
+    transparent 50%,
+    #22222283 100%
+  );
   transition: all 0.5s;
 }
 
