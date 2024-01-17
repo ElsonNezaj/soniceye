@@ -88,6 +88,9 @@ export default function Header() {
             Contact <span>(Not Working)</span>
           </Typography>
         </div>
+        <a href="/soniceye.apk" download className={styles.downloadLink}>
+          Download Mobile Version <br></br> (APK)
+        </a>
       </Drawer>
     </div>
   );
