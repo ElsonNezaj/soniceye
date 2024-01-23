@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .input {
@@ -25,4 +26,12 @@
   &:active {
     border-color: rgba(255, 217, 0, 0.627) !important;
   }
+}
+
+.resultsContainer {
+  width: 100%;
+  position: absolute;
+  top: 72%;
+  background-color: #555;
+  min-height: 50px;
 }
