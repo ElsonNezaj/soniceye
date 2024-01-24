@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { Typography } from "antd";
-import { useAppSelector } from "../../redux/hooks";
+import { Typography, Button } from "antd";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DeleteForever from "@mui/icons-material/DeleteForever";
+import {
+  removeItemFromCart,
+  updateItemQuantity,
+} from "../../redux/cartSlice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function CartReview() {
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+
+  const [total, setTotal] = useState(0);
+
+  const findTotal = () => {
+    let total = 0;
+    cartItems.forEach((element) => {
+      const elementTotal = element.item.price * element.quantity;
+      total = total + elementTotal;
+      return total;
+    });
+    return total;
+  };
+
+  useEffect(() => {
+    setTotal(findTotal());
+  }, [cartItems]);
+
   return (
     <div className={styles.cartReviewContainer}>
       <div className={styles.titleContainer}>
@@ -13,24 +39,106 @@ export default function CartReview() {
           Before checking out, make sure you have everything you need.
         </Typography>
       </div>
-      <div className={styles.itemsContainer}>
-        <Typography className={styles.label}>Your items</Typography>
-        <div className={styles.items}>
-          {cartItems.map((item) => (
-            <div className={styles.singleItem}>
-              <div className={styles.modelViewer}></div>
-              <div className={styles.itemLabel}>
-                <Typography className={styles.itemName}>
-                  {item.item.name}
-                </Typography>
-                <Typography className={styles.itemCode}>
-                  #{item.item.productCode}
-                </Typography>
+      {cartItems.length > 0 ? (
+        <div className={styles.itemsContainer}>
+          <Typography className={styles.label}>Your items</Typography>
+          <div className={styles.items}>
+            {cartItems.map((item) => (
+              <div className={styles.singleItem}>
+                <div className={styles.modelViewer}></div>
+                <div className={styles.itemLabel}>
+                  <Typography className={styles.itemName}>
+                    {item.item.name}
+                  </Typography>
+                  <Typography className={styles.itemCode}>
+                    #{item.item.productCode}
+                  </Typography>
+                </div>
+                <div className={styles.colorsContainer}>
+                  <Typography className={styles.label}>
+                    Available Colors :
+                  </Typography>
+                  <div className={styles.colors}>
+                    {item.item.colors.map((color) => (
+                      <div
+                        style={{ background: color }}
+                        className={styles.colorBox}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.quantityContainer}>
+                  <Typography className={styles.label}>Quantity :</Typography>
+                  <div className={styles.actions}>
+                    <div
+                      onClick={() => {
+                        dispatch(
+                          updateItemQuantity({
+                            name: item.item.name,
+                            manual: "decrease",
+                          })
+                        );
+                      }}
+                      className={styles.quantityArrow}
+                    >
+                      <ChevronLeftIcon />
+                    </div>
+                    <Typography className={styles.quantity}>
+                      {item.quantity}
+                    </Typography>
+                    <div
+                      onClick={() => {
+                        dispatch(
+                          updateItemQuantity({
+                            name: item.item.name,
+                            manual: "increase",
+                          })
+                        );
+                      }}
+                      className={styles.quantityArrow}
+                    >
+                      <ChevronRightIcon />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  onClick={() => dispatch(removeItemFromCart(item.item.name))}
+                  className={styles.delete}
+                >
+                  <DeleteForever />
+                  <Typography className={styles.label}>Remove</Typography>
+                </div>
               </div>
+            ))}
+          </div>
+          <div className={styles.totalContainer}>
+            <Link to="/products" className={styles.backButton}>
+              <Typography className={styles.backLabel}>
+                Back to Products
+              </Typography>
+            </Link>
+            <div className={styles.total}>
+              <Typography className={styles.totalLabel}>
+                Total : {total}&euro;
+              </Typography>
+              <Button className={styles.proceedButton}>
+                Proceed to Checkout
+              </Button>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <Typography className={styles.noItems}>
+            You have no items in your cart. Go back to add some!
+          </Typography>
+          <Link to="/products" className={styles.backButton}>
+            <Typography className={styles.backLabel}>
+              Back to Products
+            </Typography>
+          </Link>
+        </>
+      )}
     </div>
   );
 }
