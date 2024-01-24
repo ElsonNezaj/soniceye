@@ -7,6 +7,7 @@ import AboutPage from "../AboutPage";
 import Products from "../Products/Content";
 import RegistrationForm from "../Account/Forms";
 import { useAppSelector } from "../../redux/hooks";
+import CartReview from "../CartReview";
 
 export default function Content() {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
@@ -17,6 +18,7 @@ export default function Content() {
         <Route exact path="/home" component={Landing} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/products" component={Products} />
+        <Route exact path="/cart_review" component={CartReview} />
         {!isAuth && (
           <Route exact path="/account" component={RegistrationForm} />
         )}

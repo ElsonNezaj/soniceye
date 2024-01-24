@@ -1,0 +1,43 @@
+.cartReviewContainer {
+  width: 75%;
+  margin: 50px auto 0px auto;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleLabel {
+  font-size: 32px;
+  color: white;
+  font-weight: bold;
+}
+
+.subTitleLabel {
+  color: grey;
+  font-size: 15px;
+}
+
+.itemsContainer {
+  margin-top: 30px;
+}
+
+.label {
+  font-size: 16px;
+  color: grey;
+}
+
+.singleItem {
+  min-height: 100px;
+  height: 100%;
+  width: 100%;
+  border: solid 1px white;
+  display: flex;
+  align-items: center;
+}
+
+.modelViewer {
+  width: 20%;
+  height: 100%;
+}
