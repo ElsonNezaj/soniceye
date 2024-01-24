@@ -76,6 +76,7 @@ export default function UserNavigation() {
 
 const CartDropDownMenu = (props, ref) => {
   const dispatch = useAppDispatch();
+  const { handleCartClick } = props;
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [total, setTotal] = useState(0);
 
@@ -170,7 +171,10 @@ const CartDropDownMenu = (props, ref) => {
             </div>
             <div className={styles.checkoutContainer}>
               <Link to="/cart_review" className={styles.link}>
-                <Button className={styles.checkoutButton}>
+                <Button
+                  onClick={handleCartClick}
+                  className={styles.checkoutButton}
+                >
                   Checkout &nbsp; <PointOfSaleIcon />
                 </Button>
               </Link>
