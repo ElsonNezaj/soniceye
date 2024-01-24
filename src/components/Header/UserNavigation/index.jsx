@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import styles from "./styles.module.scss";
-import { Typography } from "antd";
+import { Typography, Button } from "antd";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -14,6 +14,7 @@ import {
 } from "../../../redux/cartSlice/cartSlice";
 import { signOutRequested } from "../../../redux/authSlice/authslice";
 import { Link } from "react-router-dom";
+import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 
 export default function UserNavigation() {
   const dispatch = useAppDispatch();
@@ -166,6 +167,13 @@ const CartDropDownMenu = (props, ref) => {
               <div className={styles.amountContainer}>
                 <Typography className={styles.amount}>{total} €</Typography>
               </div>
+            </div>
+            <div className={styles.checkoutContainer}>
+              <Link to="/cart_review" className={styles.link}>
+                <Button className={styles.checkoutButton}>
+                  Checkout &nbsp; <PointOfSaleIcon />
+                </Button>
+              </Link>
             </div>
           </>
         )}

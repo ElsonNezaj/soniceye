@@ -185,3 +185,33 @@
   color: white;
   font-weight: bold;
 }
+
+.checkoutContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.checkoutButton {
+  padding: 3px;
+  font-size: 13px;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+
+  &:hover {
+    color: gold !important;
+    border: solid 1px gold !important;
+  }
+
+  svg {
+    font-size: 15px;
+  }
+}
