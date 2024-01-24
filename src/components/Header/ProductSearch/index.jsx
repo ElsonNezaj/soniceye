@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Input } from "antd";
+import { Input, Typography, Button } from "antd";
 import styles from "./styles.module.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import { PRODUCTS } from "../../../assets/constants/constants";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useAppDispatch } from "../../../redux/hooks";
+import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 
 export default function ProductSearch() {
+  const dispatch = useAppDispatch();
   const [searchResults, setSearchResults] = useState();
   const [searchValue, setSearchValue] = useState();
+
+  const handleClick = (item) => {
+    dispatch(saveItemToCart(item));
+  };
 
   const filterDataOnChange = (value) => {
     setSearchValue(value);
@@ -27,8 +35,45 @@ export default function ProductSearch() {
 
       {searchValue?.length > 0 && (
         <div className={styles.resultsContainer}>
+          {searchResults.length <= 0 && (
+            <Typography className={styles.noResultsText}>
+              No Results Found
+            </Typography>
+          )}
           {searchResults.map((item) => (
-            <div key={item.name} className={styles.singleResult}></div>
+            <div key={item.name} className={styles.singleResult}>
+              <div className={styles.titleContainer}>
+                <Typography className={styles.titleLabel}>
+                  {item.name}
+                </Typography>
+                <Typography className={styles.titleSubLabel}>
+                  #{item.productCode}
+                </Typography>
+              </div>
+              <div className={styles.descriptionContainer}>
+                <Typography className={styles.descriptionLabel}>
+                  {item.description}
+                </Typography>
+                <div className={styles.tagContainer}>
+                  {item.tags.map((tag) => (
+                    <Typography className={styles.descriptionSubLabel}>
+                      {tag}
+                    </Typography>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.priceContainer}>
+                <Typography className={styles.titleLabel}>
+                  {item.price} €
+                </Typography>
+                <Button
+                  onClick={() => handleClick(item)}
+                  className={styles.addToCartButton}
+                >
+                  <AddShoppingCartIcon />
+                </Button>
+              </div>
+            </div>
           ))}
         </div>
       )}

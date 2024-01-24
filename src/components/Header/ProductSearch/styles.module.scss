@@ -3,7 +3,9 @@
   height: 100%;
   display: flex;
   align-items: center;
-  position: relative;
+  @media (min-width: 500px) {
+    position: relative;
+  }
 }
 
 .input {
@@ -34,4 +36,107 @@
   top: 72%;
   background-color: #555;
   min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  @media (max-width: 500px) {
+    left: 0%;
+    top: 12%;
+  }
+}
+
+.noResultsText {
+  color: grey;
+  font-weight: bold;
+  font-size: 16px;
+}
+.singleResult {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px grey;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.titleContainer {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  border-right: solid 1px grey;
+}
+
+.titleLabel {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  @media (max-width: 1250px) {
+    font-size: 13px;
+  }
+}
+
+.titleSubLabel {
+  color: grey;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.descriptionContainer {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 5px;
+}
+
+.descriptionLabel {
+  font-size: 13px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+
+.tagContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.descriptionSubLabel {
+  background-color: grey;
+  color: black;
+  padding: 2px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+.priceContainer {
+  display: flex;
+  width: 15%;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+.addToCartButton {
+  padding: 2px;
+  height: auto;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  background-color: rgb(214, 182, 0);
+  border: none;
+
+  svg {
+    font-size: 20px;
+    color: rgb(228, 228, 228);
+  }
 }

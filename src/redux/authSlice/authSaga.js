@@ -48,7 +48,7 @@ export function* getLogin({ payload }) {
 
 export function* signOutUser() {
   try {
-    const data = yield call(signOut, auth);
+    yield call(signOut, auth);
     yield put(signOutSucceded());
   } catch (err) {
     signOutFailed();
