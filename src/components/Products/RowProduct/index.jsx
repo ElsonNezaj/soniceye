@@ -13,7 +13,12 @@ export default function RowProduct({ product }) {
   };
   return (
     <div className={styles.rowProductContainer}>
-      <div className={styles.modelView}></div>
+      <Link
+        to={`/products/${product.productCode}/${product.name}`}
+        style={{ textDecoration: "none" }}
+      >
+        <div className={styles.modelView}></div>
+      </Link>
       <Link
         to={`/products/${product.productCode}/${product.name}`}
         style={{ textDecoration: "none" }}
