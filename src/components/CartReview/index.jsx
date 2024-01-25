@@ -71,7 +71,7 @@ export default function CartReview() {
           <Typography className={styles.label}>Your items</Typography>
           <div className={styles.items}>
             {cartItems.map((item) => (
-              <div className={styles.singleItem}>
+              <div key={item.productCode} className={styles.singleItem}>
                 <div className={styles.modelViewer}></div>
                 <div className={styles.itemLabel}>
                   <Typography className={styles.itemName}>
@@ -88,6 +88,7 @@ export default function CartReview() {
                   <div className={styles.colors}>
                     {item.colors.map((color) => (
                       <div
+                        key={color}
                         style={{ background: color }}
                         className={styles.colorBox}
                       />
