@@ -83,7 +83,7 @@ const CartDropDownMenu = (props, ref) => {
   const findTotal = () => {
     let total = 0;
     cartItems.forEach((element) => {
-      const elementTotal = element.item.price * element.quantity;
+      const elementTotal = element.price * element.quantity;
       total = total + elementTotal;
       return total;
     });
@@ -106,16 +106,13 @@ const CartDropDownMenu = (props, ref) => {
         ) : (
           <>
             {cartItems.map((element) => (
-              <div
-                key={element.item.productCode}
-                className={styles.singleElement}
-              >
+              <div key={element.productCode} className={styles.singleElement}>
                 <div className={styles.productInfo}>
                   <Typography className={styles.itemLabel}>
-                    {element.item.name}
+                    {element.name}
                   </Typography>
                   <Typography className={styles.codeLabel}>
-                    #{element.item.productCode}
+                    #{element.productCode}
                   </Typography>
                 </div>
                 <div className={styles.quantityContainer}>
@@ -127,7 +124,7 @@ const CartDropDownMenu = (props, ref) => {
                       onClick={() => {
                         dispatch(
                           updateItemQuantity({
-                            name: element.item.name,
+                            name: element.name,
                             manual: "decrease",
                           })
                         );
@@ -140,7 +137,7 @@ const CartDropDownMenu = (props, ref) => {
                       onClick={() => {
                         dispatch(
                           updateItemQuantity({
-                            name: element.item.name,
+                            name: element.name,
                             manual: "increase",
                           })
                         );
@@ -152,9 +149,7 @@ const CartDropDownMenu = (props, ref) => {
                   </div>
                 </div>
                 <div
-                  onClick={() =>
-                    dispatch(removeItemFromCart(element.item.name))
-                  }
+                  onClick={() => dispatch(removeItemFromCart(element.name))}
                   className={styles.removeItemContainer}
                 >
                   <DeleteIcon />

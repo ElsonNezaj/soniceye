@@ -20,7 +20,7 @@ export default function CartReview() {
   const findTotal = () => {
     let total = 0;
     cartItems.forEach((element) => {
-      const elementTotal = element.item.price * element.quantity;
+      const elementTotal = element.price * element.quantity;
       total = total + elementTotal;
       return total;
     });
@@ -48,10 +48,10 @@ export default function CartReview() {
                 <div className={styles.modelViewer}></div>
                 <div className={styles.itemLabel}>
                   <Typography className={styles.itemName}>
-                    {item.item.name}
+                    {item.name}
                   </Typography>
                   <Typography className={styles.itemCode}>
-                    #{item.item.productCode}
+                    #{item.productCode}
                   </Typography>
                 </div>
                 <div className={styles.colorsContainer}>
@@ -59,7 +59,7 @@ export default function CartReview() {
                     Available Colors :
                   </Typography>
                   <div className={styles.colors}>
-                    {item.item.colors.map((color) => (
+                    {item.colors.map((color) => (
                       <div
                         style={{ background: color }}
                         className={styles.colorBox}
@@ -74,7 +74,7 @@ export default function CartReview() {
                       onClick={() => {
                         dispatch(
                           updateItemQuantity({
-                            name: item.item.name,
+                            name: item.name,
                             manual: "decrease",
                           })
                         );
@@ -90,7 +90,7 @@ export default function CartReview() {
                       onClick={() => {
                         dispatch(
                           updateItemQuantity({
-                            name: item.item.name,
+                            name: item.name,
                             manual: "increase",
                           })
                         );
@@ -102,7 +102,7 @@ export default function CartReview() {
                   </div>
                 </div>
                 <div
-                  onClick={() => dispatch(removeItemFromCart(item.item.name))}
+                  onClick={() => dispatch(removeItemFromCart(item.name))}
                   className={styles.delete}
                 >
                   <DeleteForever />

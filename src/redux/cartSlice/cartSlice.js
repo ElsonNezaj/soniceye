@@ -11,25 +11,22 @@ export const cartSlice = createSlice({
     saveItemToCart: (state, action) => {
       const data = action.payload;
       const foundData = state.cartItems.find(
-        (element) => element.item.name === data.name
+        (element) => element?.name === data?.name
       );
       if (foundData) {
         foundData.quantity += 1;
       } else {
-        const newElement = {
-          item: data,
-          quantity: 1,
-        };
+        const newElement = { ...data, quantity: 1 };
         state.cartItems.push(newElement);
       }
     },
     updateItemQuantity: (state, action) => {
       const { name, manual } = action.payload;
       const foundElement = state.cartItems.find(
-        (element) => element.item.name === name
+        (element) => element.name === name
       );
       const foundIndex = state.cartItems.find(
-        (element) => element.item.name === name
+        (element) => element.name === name
       );
       if (manual === "increase") {
         foundElement.quantity += 1;
@@ -46,7 +43,7 @@ export const cartSlice = createSlice({
     },
     removeItemFromCart: (state, action) => {
       const foundElementIndex = state.cartItems.findIndex(
-        (element) => element.item.name === action.payload
+        (element) => element.name === action.payload
       );
       const updatedItems = [...state.cartItems];
       updatedItems.splice(foundElementIndex, 1);
