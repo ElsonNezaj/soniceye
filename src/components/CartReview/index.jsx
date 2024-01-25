@@ -10,6 +10,7 @@ import {
   updateItemQuantity,
 } from "../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function CartReview() {
   const dispatch = useAppDispatch();
@@ -26,6 +27,32 @@ export default function CartReview() {
     });
     return total;
   };
+
+  // const makePayment = async () => {
+  //   const stripe = loadStripe(
+  //     "pk_test_51LsSMqF0mycr7dHA0wYhi5qXQcSUdoaOUNFqR5R0IMmCbMvTBPKIaxS9WO4P0NDe8ngZbDigMBxSVzaHLFPlVWha00ToJzYIvw"
+  //   );
+
+  //   const body = {
+  //     products: cartItems,
+  //   };
+
+  //   const headers = {
+  //     "Content-type": "application/json",
+  //   };
+
+  //   const response = await fetch(`/create-checkout-session`, {
+  //     method: "POST",
+  //     headers: headers,
+  //     body: JSON.stringify(body),
+  //   });
+
+  //   const session = await response.json();
+
+  //   const result = stripe.redirectToCheckout({
+  //     session: session.id,
+  //   });
+  // };
 
   useEffect(() => {
     setTotal(findTotal());
