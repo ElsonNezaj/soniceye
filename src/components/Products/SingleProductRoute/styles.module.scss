@@ -7,7 +7,6 @@
 .contentContainer {
   display: flex;
   height: 100%;
-  gap: 50px;
 }
 
 .modelContainer {
@@ -16,6 +15,23 @@
   display: flex;
   align-items: center;
   border-right: solid 1px white;
+  position: relative;
+}
+
+.quickMessage {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.tooltipMessage {
+  font-size: 12px;
 }
 
 .dataContainer {
@@ -24,11 +40,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+}
+
+.verticalText {
+  left: 0%;
+  position: absolute;
 }
 
 .titleLabel {
   font-size: 38px;
-  color: black;
+  color: white;
   font-family: var(--main-font-family) !important;
-  letter-spacing: 5px;
+  opacity: 0.5;
 }

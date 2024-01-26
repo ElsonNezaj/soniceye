@@ -22,7 +22,9 @@ export default function Content() {
         <Route exact path="/cart_review" component={CartReview} />
         <Route
           path="/products/:productCode/:productName"
-          component={SingleProductRoute}
+          render={({ match }) => {
+            return <SingleProductRoute match={match} />;
+          }}
         />
         {!isAuth && (
           <Route exact path="/account" component={RegistrationForm} />
