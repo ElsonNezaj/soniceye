@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { ReactComponent as List } from "../../../assets/images/filter/list.svg";
 import { ReactComponent as Row } from "../../../assets/images/filter/row.svg";
@@ -6,7 +6,7 @@ import { Typography } from "antd";
 import { PRODUCTS } from "../../../assets/constants/constants";
 import SingleProduct from "../SingleProduct";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { changeView } from "../../../redux/productsSlice/productsSlice";
+import { toggleProductsView } from "../../../redux/productsSlice/productsSlice";
 
 export default function Products() {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ export default function Products() {
 
   useEffect(() => {
     if (windowWidth <= 500) {
-      dispatch(changeView("row"));
+      dispatch(toggleProductsView("row"));
     }
   }, [windowWidth]);
 
@@ -28,7 +28,7 @@ export default function Products() {
         <div className={styles.filterContainer}>
           <Typography className={styles.filterText}>View: </Typography>
           <div
-            onClick={() => dispatch(changeView("row"))}
+            onClick={() => dispatch(toggleProductsView("row"))}
             className={`
             ${styles.filterIcon} 
             ${view === "row" && styles.selectedView}
@@ -37,7 +37,7 @@ export default function Products() {
             <Row />
           </div>
           <div
-            onClick={() => dispatch(changeView("list"))}
+            onClick={() => dispatch(toggleProductsView("list"))}
             className={`
             ${styles.filterIcon} 
             ${view === "list" && styles.selectedView}

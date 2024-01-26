@@ -8,11 +8,11 @@ export const productsSlice = createSlice({
   initialState,
   name: "products",
   reducers: {
-    changeView: (state, action) => {
+    toggleProductsView: (state, action) => {
       state.view = action.payload;
     },
   },
 });
 
-export const { changeView } = productsSlice.actions;
+export const { toggleProductsView } = productsSlice.actions;
 export default productsSlice.reducer;
