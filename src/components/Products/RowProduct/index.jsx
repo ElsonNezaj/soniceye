@@ -19,13 +19,14 @@ export default function RowProduct({ product }) {
       >
         <div className={styles.modelView}></div>
       </Link>
-      <Link
-        to={`/products/${product.productCode}/${product.name}`}
-        style={{ textDecoration: "none" }}
-      >
-        <div className={styles.productInfo}>
-          {!isAdditionalInfo ? (
-            <div className={styles.mainInfo}>
+
+      <div className={styles.productInfo}>
+        {!isAdditionalInfo ? (
+          <div className={styles.mainInfo}>
+            <Link
+              to={`/products/${product.productCode}/${product.name}`}
+              style={{ textDecoration: "none" }}
+            >
               <Typography className={styles.productName}>
                 {product.name}
               </Typography>
@@ -41,35 +42,32 @@ export default function RowProduct({ product }) {
                   {product.description}
                 </Typography>
               </div>
-              <div className={styles.addToCartContainer}>
-                <Button
-                  onClick={handleClick}
-                  className={styles.addToCartButton}
-                >
-                  Add To Cart
-                </Button>
-              </div>
+            </Link>
+            <div className={styles.addToCartContainer}>
+              <Button onClick={handleClick} className={styles.addToCartButton}>
+                Add To Cart
+              </Button>
             </div>
-          ) : (
-            <div className={styles.additionalInfo}>
-              <Typography className={styles.colorsLabel}>
-                Available Colors
-              </Typography>
-              <div className={styles.colorsContainer}>
-                {product.colors.map((color) => (
-                  <div
-                    className={styles.singleColor}
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-              <div className={styles.previewContainer}>
-                <div className={styles.previewButton}>Preview Model</div>
-              </div>
+          </div>
+        ) : (
+          <div className={styles.additionalInfo}>
+            <Typography className={styles.colorsLabel}>
+              Available Colors
+            </Typography>
+            <div className={styles.colorsContainer}>
+              {product.colors.map((color) => (
+                <div
+                  className={styles.singleColor}
+                  style={{ backgroundColor: color }}
+                />
+              ))}
             </div>
-          )}
-        </div>
-      </Link>
+            <div className={styles.previewContainer}>
+              <div className={styles.previewButton}>Preview Model</div>
+            </div>
+          </div>
+        )}
+      </div>
 
       <div
         onClick={() => setIsAdditionalInfo(!isAdditionalInfo)}
