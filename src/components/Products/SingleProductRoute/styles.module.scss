@@ -41,12 +41,61 @@
   position: relative;
 }
 
-.verticalText {
-}
-
 .titleLabel {
-  font-size: 38px;
-  color: white;
+  font-size: 40px;
+  color: rgb(205, 205, 205);
   font-family: var(--main-font-family) !important;
   opacity: 0.5;
+  writing-mode: vertical-rl;
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0%;
+  letter-spacing: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: grey;
+}
+
+.infoContainer {
+  padding: 20px;
+  width: 85%;
+}
+
+.infoName {
+  font-size: 35px;
+  font-family: var(--main-font-family) !important;
+  color: white;
+  letter-spacing: 5px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+}
+
+.singletag {
+  background-color: rgb(119, 119, 119);
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.tagLabel {
+  font-size: 12px;
+}
+
+.description {
+  margin-top: 20px;
+}
+
+.descriptionLabel {
+  font-size: 18px;
+  color: white;
+}
+
+.subDescriptionLabel {
+  color: rgb(167, 167, 167);
+  font-size: 16px;
+  letter-spacing: 2px;
 }

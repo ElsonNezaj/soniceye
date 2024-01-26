@@ -27,8 +27,35 @@ export default function SingleProductRoute(match) {
           <ModelView />
         </div>
         <div className={styles.dataContainer}>
-          <div className={styles.verticalText}>
-            <Typography className={styles.titleLabel}>{data.name}</Typography>
+          <Typography className={styles.titleLabel}>{data.name}</Typography>
+          <div className={styles.infoContainer}>
+            <Typography className={styles.infoName}>{data.name}</Typography>
+            <div className={styles.tags}>
+              {data.tags.map((tag) => (
+                <div className={styles.singletag} key={tag}>
+                  <Typography className={styles.tagLabel}>{tag}</Typography>
+                </div>
+              ))}
+            </div>
+            <div className={styles.description}>
+              <Typography className={styles.descriptionLabel}>
+                {data.description}
+              </Typography>
+            </div>
+            <div className={styles.description}>
+              <Typography className={styles.subDescriptionLabel}>
+                Discover our collection of premium eyewear. From classic frames
+                to modern designs, our range of glasses offers something for
+                every taste and preference. Whether you're looking for sleek,
+                minimalist frames or bold, statement-making styles, we have the
+                perfect pair to complement your individual look. Our glasses are
+                crafted with high-quality materials and precision, ensuring
+                durability and comfort with every wear. With a variety of lens
+                options available, including blue light protection and
+                prescription lenses. Explore our diverse selection and find the
+                ideal pair of glasses to elevate your everyday style.
+              </Typography>
+            </div>
           </div>
         </div>
       </div>
