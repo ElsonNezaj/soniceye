@@ -5,14 +5,17 @@ import { ReactComponent as Row } from "../../../assets/images/filter/row.svg";
 import { Typography } from "antd";
 import { PRODUCTS } from "../../../assets/constants/constants";
 import SingleProduct from "../SingleProduct";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { changeView } from "../../../redux/productsSlice/productsSlice";
 
 export default function Products() {
-  const [view, setView] = useState("row");
+  const dispatch = useAppDispatch();
+  const view = useAppSelector((state) => state.products.view);
   const windowWidth = window.innerWidth;
 
   useEffect(() => {
     if (windowWidth <= 500) {
-      setView("row");
+      dispatch(changeView("row"));
     }
   }, [windowWidth]);
 
@@ -25,7 +28,7 @@ export default function Products() {
         <div className={styles.filterContainer}>
           <Typography className={styles.filterText}>View: </Typography>
           <div
-            onClick={() => setView("row")}
+            onClick={() => dispatch(changeView("row"))}
             className={`
             ${styles.filterIcon} 
             ${view === "row" && styles.selectedView}
@@ -34,7 +37,7 @@ export default function Products() {
             <Row />
           </div>
           <div
-            onClick={() => setView("list")}
+            onClick={() => dispatch(changeView("list"))}
             className={`
             ${styles.filterIcon} 
             ${view === "list" && styles.selectedView}

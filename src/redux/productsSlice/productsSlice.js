@@ -1,27 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  activeRoute: "",
-  activeRouteData: {},
+  view: "row",
 };
 
 export const productsSlice = createSlice({
   initialState,
   name: "products",
   reducers: {
-    saveActiveRoute: (state, action) => {
-      state.activeRoute = action.payload;
-    },
-    saveActionRouteData: (state, action) => {
-      state.activeRouteData = action.payload;
-    },
-    clearActiveRouteData: (state) => {
-      state.activeRouteData = {};
-      state.activeRoute = "";
+    changeView: (state, action) => {
+      state.view = action.payload;
     },
   },
 });
 
-export const { saveActionRouteData, saveActiveRoute, clearActiveRouteData } =
-  productsSlice.actions;
+export const { changeView } = productsSlice.actions;
 export default productsSlice.reducer;
