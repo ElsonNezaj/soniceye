@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { Typography, Tooltip } from "antd";
+import { Typography, Tooltip, Input } from "antd";
 import ModelView from "./3dGlass";
 import { ChevronLeft, ChevronRight, HelpOutline } from "@mui/icons-material";
 import { PRODUCTS } from "../../../assets/constants/constants";
@@ -8,7 +8,9 @@ import { PRODUCTS } from "../../../assets/constants/constants";
 export default function SingleProductRoute(match) {
   const { productCode } = match.match.params;
   const data = PRODUCTS.find((el) => el.productCode === Number(productCode));
-  console.log(data);
+
+  const [quantity, setQuanitity] = useState(1);
+
   return (
     <div className={styles.singleRouteContainer}>
       <div className={styles.contentContainer}>
@@ -70,10 +72,13 @@ export default function SingleProductRoute(match) {
               ))}
             </div>
             <div className={styles.addToCartContainer}>
+              <Typography className={styles.label}>Quant.</Typography>
               <div className={styles.arrow}>
                 <ChevronLeft />
               </div>
-              <div className={styles.inputContainer}>INPUT CONTAINER</div>
+              <div className={styles.inputContainer}>
+                <Input type="number" className={styles.input} />
+              </div>
               <div className={styles.arrow}>
                 <ChevronRight />
               </div>
