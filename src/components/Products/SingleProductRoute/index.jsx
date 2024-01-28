@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { Typography, Tooltip } from "antd";
 import ModelView from "./3dGlass";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { ChevronLeft, ChevronRight, HelpOutline } from "@mui/icons-material";
 import { PRODUCTS } from "../../../assets/constants/constants";
 
 export default function SingleProductRoute(match) {
   const { productCode } = match.match.params;
   const data = PRODUCTS.find((el) => el.productCode === Number(productCode));
+  console.log(data);
   return (
     <div className={styles.singleRouteContainer}>
       <div className={styles.contentContainer}>
@@ -21,7 +22,7 @@ export default function SingleProductRoute(match) {
             placement="right"
           >
             <Typography className={styles.quickMessage}>
-              <HelpOutlineIcon />
+              <HelpOutline />
             </Typography>
           </Tooltip>
           <ModelView />
@@ -29,7 +30,10 @@ export default function SingleProductRoute(match) {
         <div className={styles.dataContainer}>
           <Typography className={styles.titleLabel}>{data.name}</Typography>
           <div className={styles.infoContainer}>
-            <Typography className={styles.infoName}>{data.name}</Typography>
+            <Typography className={styles.infoName}>
+              {data.name}{" "}
+              <span className={styles.productCode}>#{data.productCode}</span>
+            </Typography>
             <div className={styles.tags}>
               {data.tags.map((tag) => (
                 <div className={styles.singletag} key={tag}>
@@ -55,6 +59,24 @@ export default function SingleProductRoute(match) {
                 prescription lenses. Explore our diverse selection and find the
                 ideal pair of glasses to elevate your everyday style.
               </Typography>
+            </div>
+            <div className={styles.colors}>
+              {data.colors.map((color) => (
+                <div
+                  key={color}
+                  style={{ background: color }}
+                  className={styles.sinlgeColor}
+                />
+              ))}
+            </div>
+            <div className={styles.addToCartContainer}>
+              <div className={styles.arrow}>
+                <ChevronLeft />
+              </div>
+              <div className={styles.inputContainer}>INPUT CONTAINER</div>
+              <div className={styles.arrow}>
+                <ChevronRight />
+              </div>
             </div>
           </div>
         </div>
