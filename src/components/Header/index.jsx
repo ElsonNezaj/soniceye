@@ -105,7 +105,7 @@ function CartContainer({ setIsDrawerOpen }) {
   const findTotal = () => {
     let total = 0;
     cartItems.forEach((element) => {
-      const elementTotal = element.item.price * element.quantity;
+      const elementTotal = element.price * element.quantity;
       total = total + elementTotal;
       return total;
     });
@@ -155,19 +155,16 @@ function CartContainer({ setIsDrawerOpen }) {
           </Typography>
         ) : (
           cartItems.map((element) => (
-            <div
-              key={element.item.productCode}
-              className={styles.singleCartItem}
-            >
+            <div key={element.productCode} className={styles.singleCartItem}>
               <Typography className={styles.productName}>
-                {element.item.name}
+                {element.name}
               </Typography>
               <div className={styles.secondRow}>
                 <Typography className={styles.prodCode}>
-                  #{element.item.productCode}
+                  #{element.productCode}
                 </Typography>
                 <Typography className={styles.prodPrice}>
-                  {element.item.price} €
+                  {element.price} €
                 </Typography>
               </div>
               <div className={styles.quantityContainer}>
@@ -175,7 +172,7 @@ function CartContainer({ setIsDrawerOpen }) {
                   onClick={() => {
                     dispatch(
                       updateItemQuantity({
-                        name: element.item.name,
+                        name: element.name,
                         manual: "decrease",
                       })
                     );
@@ -191,7 +188,7 @@ function CartContainer({ setIsDrawerOpen }) {
                   onClick={() => {
                     dispatch(
                       updateItemQuantity({
-                        name: element.item.name,
+                        name: element.name,
                         manual: "increase",
                       })
                     );
@@ -202,7 +199,7 @@ function CartContainer({ setIsDrawerOpen }) {
                 </div>
               </div>
               <Button
-                onClick={() => dispatch(removeItemFromCart(element.item.name))}
+                onClick={() => dispatch(removeItemFromCart(element.name))}
                 className={styles.removeButton}
               >
                 Remove

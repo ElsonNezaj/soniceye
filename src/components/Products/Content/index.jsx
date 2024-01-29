@@ -7,17 +7,19 @@ import { PRODUCTS } from "../../../assets/constants/constants";
 import SingleProduct from "../SingleProduct";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { toggleProductsView } from "../../../redux/productsSlice/productsSlice";
+import { useWindowSize } from "../../../services/utils";
 
 export default function Products() {
+  const width = useWindowSize();
   const dispatch = useAppDispatch();
   const view = useAppSelector((state) => state.products.view);
   const windowWidth = window.innerWidth;
 
   useEffect(() => {
-    if (windowWidth <= 500) {
+    if (windowWidth <= 1000) {
       dispatch(toggleProductsView("row"));
     }
-  }, [windowWidth]);
+  }, [width]);
 
   return (
     <div className={styles.productsContainer}>

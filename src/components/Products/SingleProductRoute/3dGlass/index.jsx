@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
 import styles from "./styles.module.scss";
 import * as THREE from "three";
+import { useWindowSize } from "../../../../services/utils";
 
 export function Glasses(props) {
   const camera = new THREE.PerspectiveCamera(
@@ -15,6 +16,7 @@ export function Glasses(props) {
 }
 
 export default function ModelView() {
+  const [width] = useWindowSize();
   return (
     <Canvas
       dpr={[1, 2]}
@@ -26,7 +28,7 @@ export default function ModelView() {
         <Stage environment="night">
           <Glasses
             isAnimated={true}
-            scale={window.innerWidth > 500 ? 0.1 : 0.09}
+            scale={width <= 700 && width > 500 ? 1 : width > 500 ? 0.1 : 0.09}
           />
         </Stage>
       </PresentationControls>
