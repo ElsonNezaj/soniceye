@@ -49,9 +49,25 @@ export const cartSlice = createSlice({
       updatedItems.splice(foundElementIndex, 1);
       state.cartItems = updatedItems;
     },
+    addItemFromRoute: (state, action) => {
+      const data = action.payload;
+      const foundData = state.cartItems.find(
+        (item) => item.productCode === action.payload.productCode
+      );
+      if (foundData) {
+        foundData.quantity += action.payload.quantity;
+      } else {
+        const newElement = data;
+        state.cartItems.push(newElement);
+      }
+    },
   },
 });
 
-export const { saveItemToCart, updateItemQuantity, removeItemFromCart } =
-  cartSlice.actions;
+export const {
+  saveItemToCart,
+  updateItemQuantity,
+  removeItemFromCart,
+  addItemFromRoute,
+} = cartSlice.actions;
 export default cartSlice.reducer;

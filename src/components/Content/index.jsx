@@ -29,12 +29,6 @@ export default function Content() {
         {!isAuth && (
           <Route exact path="/account" component={RegistrationForm} />
         )}
-        {/* {route && (
-          <Route
-            path={`/products/${activeProductRoute}`}
-            component={SingleProductRoute}
-          />
-        )} */}
       </Switch>
     </div>
   );

@@ -38,7 +38,6 @@ export function* getLogin({ payload }) {
   try {
     const { email, password } = payload;
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
-    console.log("User Data:", user);
     const data = user.user;
     yield put(getLoginSucceded(data));
   } catch (err) {
