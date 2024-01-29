@@ -130,7 +130,9 @@ export default function SingleProductRoute(match) {
             style={{ width: "100%", height: "20px", background: "transprent" }}
           />
         </div>
-        <Typography className={styles.titleLabel}>{data.name}</Typography>
+        <Typography className={styles.titleLabelDesktop}>
+          {data.name}
+        </Typography>
       </div>
     </div>
   );
