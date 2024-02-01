@@ -52,7 +52,9 @@ export default function Header() {
             <a href="/about" className={styles.menuText}>
               About Us
             </a>
-            <Typography className={styles.menuText}>Contact</Typography>
+            <a href="/contact" className={styles.menuText}>
+              Contact
+            </a>
           </div>
         </div>
       </div>
