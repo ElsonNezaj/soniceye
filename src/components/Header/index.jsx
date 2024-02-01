@@ -208,6 +208,11 @@ function CartContainer({ setIsDrawerOpen }) {
           ))
         )}
       </div>
+      {cartItems.length > 0 && (
+        <Link to="/cart_review" className={styles.link}>
+          <Button className={styles.checkoutButton}>Checkout</Button>
+        </Link>
+      )}
     </div>
   );
 }

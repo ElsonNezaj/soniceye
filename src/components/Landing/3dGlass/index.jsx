@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useEffect } from "react";
 import * as THREE from "three";
 
-export function Glasses(props) {
+function Glasses(props) {
   const { isAnimated } = props;
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -26,7 +26,7 @@ export function Glasses(props) {
 
   useEffect(() => {
     isAnimated && animate();
-  });
+  }, []);
   return <primitive object={scene} {...props} />;
 }
 
