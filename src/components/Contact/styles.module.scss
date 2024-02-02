@@ -7,6 +7,9 @@
   width: 80%;
   height: 35%;
   margin: 0 auto;
+  @media (max-width: 950px) {
+    width: 95%;
+  }
 }
 
 .contactInfo {
@@ -16,6 +19,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 950px) {
+    width: 95%;
+  }
 }
 
 .title {
@@ -45,12 +51,26 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
 .singleInfoContainer {
   width: 100%;
   &:last-child {
     border-left: solid 1px grey;
+  }
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:last-child {
+      border-left: none;
+      border-top: solid 1px grey;
+      padding-top: 20px;
+    }
   }
 }
 
@@ -77,6 +97,9 @@
     color: white;
     text-decoration: underline;
   }
+  @media (max-width: 750px) {
+    text-align: center;
+  }
 }
 
 .formContainer {
@@ -95,12 +118,19 @@
 .textMessage {
   color: white;
   font-size: 18px;
+  @media (max-width: 750px) {
+    font-size: 16px;
+    text-align: center;
+  }
 }
 
 .form {
   margin: 0 auto;
   width: 50%;
   margin-bottom: 20px;
+  @media (max-width: 750px) {
+    width: 90%;
+  }
 }
 
 .input {
@@ -121,6 +151,9 @@
   border: none;
   height: 35px;
   font-size: 14px;
+  @media (max-width: 750px) {
+    width: 20%;
+  }
 }
 
 .overlayMessage {
@@ -203,6 +236,9 @@
 .socialIcon {
   svg {
     font-size: 32px;
+    @media (max-width: 750px) {
+      font-size: 22px;
+    }
   }
 }
 
@@ -210,4 +246,7 @@
   color: grey;
   font-size: 18px;
   transition: 0.3s all;
+  @media (max-width: 750px) {
+    font-size: 14px;
+  }
 }
