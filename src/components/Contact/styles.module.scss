@@ -8,3 +8,206 @@
   height: 35%;
   margin: 0 auto;
 }
+
+.contactInfo {
+  width: 80%;
+  height: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  padding-top: 50px;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 5px;
+}
+
+.subTitle {
+  color: grey;
+  font-size: 18px;
+  word-spacing: 5px;
+  letter-spacing: 3px;
+}
+
+.infoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoGrid {
+  padding-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.singleInfoContainer {
+  width: 100%;
+  &:last-child {
+    border-left: solid 1px grey;
+  }
+}
+
+.sectionTitle {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 10px;
+}
+
+.infoLabel {
+  color: grey;
+  font-size: 16px;
+  span {
+    color: white;
+  }
+  .email {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.formContainer {
+  width: 100%;
+}
+
+.formAndMessageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  position: relative;
+}
+
+.textMessage {
+  color: white;
+  font-size: 18px;
+}
+
+.form {
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  border-radius: 2px;
+  margin: 5px 0;
+}
+
+.submitButton {
+  margin: 5px 0;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  width: 15%;
+  border: none;
+  height: 35px;
+  font-size: 14px;
+}
+
+.overlayMessage {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.712);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    color: gold;
+  }
+}
+
+.finishedContainer {
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  gap: 10px;
+}
+
+.checkmarkIcon {
+  width: 60px;
+  border: solid 1px grey;
+  border-radius: 100%;
+}
+
+.success {
+  font-size: 18px;
+  color: green;
+}
+
+.subMessage {
+  color: grey;
+}
+
+.socials {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.socialsTitle {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.socialsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.singleSocialContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  color: grey;
+  cursor: pointer;
+  transition: 0.3s all;
+  border-bottom: solid 1px transparent;
+  &:hover {
+    color: white;
+    border-bottom: solid 1px white;
+    .socialLabel {
+      color: white;
+    }
+  }
+}
+
+.socialIcon {
+  svg {
+    font-size: 32px;
+  }
+}
+
+.socialLabel {
+  color: grey;
+  font-size: 18px;
+  transition: 0.3s all;
+}
