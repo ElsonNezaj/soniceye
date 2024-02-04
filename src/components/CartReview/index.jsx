@@ -10,11 +10,13 @@ import {
   updateItemQuantity,
 } from "../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
-import { loadStripe } from "@stripe/stripe-js";
+import { ref, set } from "firebase/database";
+import { db } from "../../firebase";
 
 export default function CartReview() {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const userId = useAppSelector((state) => state.auth.authUser?.uid);
 
   const [total, setTotal] = useState(0);
 
@@ -53,6 +55,15 @@ export default function CartReview() {
   //     session: session.id,
   //   });
   // };
+
+  const orderToDB = () => {
+    set(ref(db, `orders/${userId}`), {
+      data: {
+        total,
+        cartItems,
+      },
+    });
+  };
 
   useEffect(() => {
     setTotal(findTotal());
@@ -149,9 +160,14 @@ export default function CartReview() {
               <Typography className={styles.totalLabel}>
                 Total : {total}&euro;
               </Typography>
-              <Button className={styles.proceedButton}>
-                Proceed to Checkout
-              </Button>
+              {userId && (
+                <Button
+                  onClick={() => orderToDB()}
+                  className={styles.proceedButton}
+                >
+                  Proceed to Checkout
+                </Button>
+              )}
             </div>
           </div>
         </div>
