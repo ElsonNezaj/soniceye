@@ -6,6 +6,7 @@ import { PRODUCTS } from "../../../assets/constants/constants";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useAppDispatch } from "../../../redux/hooks";
 import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function ProductSearch() {
   const dispatch = useAppDispatch();
@@ -41,39 +42,46 @@ export default function ProductSearch() {
             </Typography>
           )}
           {searchResults.map((item) => (
-            <div key={item.name} className={styles.singleResult}>
-              <div className={styles.titleContainer}>
-                <Typography className={styles.titleLabel}>
-                  {item.name}
-                </Typography>
-                <Typography className={styles.titleSubLabel}>
-                  #{item.productCode}
-                </Typography>
-              </div>
-              <div className={styles.descriptionContainer}>
-                <Typography className={styles.descriptionLabel}>
-                  {item.description}
-                </Typography>
-                <div className={styles.tagContainer}>
-                  {item.tags.map((tag) => (
-                    <Typography className={styles.descriptionSubLabel}>
-                      {tag}
-                    </Typography>
-                  ))}
+            <Link
+              key={item.name}
+              to={`/products/${item.productCode}/${item.name}`}
+              onClick={() => setSearchValue(undefined)}
+              className={styles.singleResult}
+            >
+              <div className={styles.singleResult}>
+                <div className={styles.titleContainer}>
+                  <Typography className={styles.titleLabel}>
+                    {item.name}
+                  </Typography>
+                  <Typography className={styles.titleSubLabel}>
+                    #{item.productCode}
+                  </Typography>
+                </div>
+                <div className={styles.descriptionContainer}>
+                  <Typography className={styles.descriptionLabel}>
+                    {item.description}
+                  </Typography>
+                  <div className={styles.tagContainer}>
+                    {item.tags.map((tag) => (
+                      <Typography className={styles.descriptionSubLabel}>
+                        {tag}
+                      </Typography>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.priceContainer}>
+                  <Typography className={styles.titleLabel}>
+                    {item.price} €
+                  </Typography>
+                  <Button
+                    onClick={() => handleClick(item)}
+                    className={styles.addToCartButton}
+                  >
+                    <AddShoppingCartIcon />
+                  </Button>
                 </div>
               </div>
-              <div className={styles.priceContainer}>
-                <Typography className={styles.titleLabel}>
-                  {item.price} €
-                </Typography>
-                <Button
-                  onClick={() => handleClick(item)}
-                  className={styles.addToCartButton}
-                >
-                  <AddShoppingCartIcon />
-                </Button>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
