@@ -65,6 +65,7 @@ export default function Header() {
         onClose={() => setIsDrawerOpen(false)}
         bodyStyle={{ padding: "0px 10px 0px 10px" }}
         className={styles.drawer}
+        closable={false}
       >
         <div className={styles.drawerContentContainer}>
           <CartContainer setIsDrawerOpen={setIsDrawerOpen} />

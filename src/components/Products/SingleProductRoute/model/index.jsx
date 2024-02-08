@@ -11,7 +11,7 @@ function MyGlasses(props) {
     0.1,
     1000
   );
-  const { scene } = useGLTF("/glasses.glb");
+  const { scene } = useGLTF("/productGlass.glb");
   return <primitive camera={camera} object={scene} {...props} />;
 }
 

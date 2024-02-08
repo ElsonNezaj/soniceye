@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { Typography, Tooltip, Input, Button } from "antd";
-import ModelView from "./3dGlass";
+import ModelView from "./model";
 import { ChevronLeft, ChevronRight, HelpOutline } from "@mui/icons-material";
 import { PRODUCTS } from "../../../assets/constants/constants";
 import { useAppDispatch } from "../../../redux/hooks";

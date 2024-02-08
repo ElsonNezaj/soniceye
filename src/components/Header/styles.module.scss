@@ -139,19 +139,21 @@
   background-color: white !important;
   border: solid 1px grey;
 
-  & > div {
-    & > div {
-      &:first-child {
-        height: 100px;
-        flex: none;
-      }
-    }
-  }
+  // & > div {
+  //   & > div {
+  //     &:first-child {
+  //       & > div {
+  //         height: 100px;
+  //         flex: none;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .drawerContentContainer {
   width: 100%;
-  height: 80%;
+  height: 87%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
