@@ -39,6 +39,15 @@
   }
 }
 
+.row {
+  width: 100%;
+  display: flex;
+}
+
+.genderSelect {
+  width: 45%;
+}
+
 .submitButton {
   width: 20%;
   border-radius: 2px;

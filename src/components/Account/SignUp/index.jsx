@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../../../redux/hooks";
-import { Input, Typography } from "antd";
+import { Input, Typography, Select } from "antd";
 import styles from "./styles.module.scss";
 import { getAuthRequested } from "../../../redux/authSlice/authslice";
 
 export default function SignUpForm() {
   const dispatch = useAppDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [manualGender, setManualGender] = useState("");
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    displayName: "",
+    gender: manualGender,
+  });
+
+  const handleChange = (name, value) => {
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getAuthRequested({ email, password, displayName }));
+    dispatch(getAuthRequested({ ...data }));
   };
+
+  console.log(data);
+
   return (
     <form onSubmit={handleSubmit} className={styles.loginForm}>
       <Typography className={styles.title}>NEW ACCOUNT</Typography>
@@ -21,27 +35,49 @@ export default function SignUpForm() {
       <Input
         className={styles.input}
         required
-        value={displayName}
+        name="displayName"
+        value={data.displayName}
         type="text"
         placeholder="Display Name"
-        onChange={(e) => setDisplayName(e.target.value)}
+        onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
       <Input
         className={styles.input}
         required
-        value={email}
+        value={data.email}
         type="email"
         placeholder="E-mail"
-        onChange={(e) => setEmail(e.target.value)}
+        name="email"
+        onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
       <Input
         className={styles.input}
         required
-        value={password}
+        value={data.password}
         type="password"
         placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
+        name="password"
+        onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
+      <div className={styles.row}>
+        {/* <Select
+          options={[
+            {
+              value: "male",
+              label: <Typography className={styles.option}>Male</Typography>,
+            },
+            {
+              value: "female",
+              label: <Typography className={styles.option}>Female</Typography>,
+            },
+          ]}
+          value={data.gender}
+          placeholder="Gender"
+          onChange={(e) => setManualGender(e.target.value)}
+          className={styles.genderSelect}
+        /> */}
+        <Input type="number" className={styles.input} />
+      </div>
       <Input type="submit" value="Sign Up" className={styles.submitButton} />
     </form>
   );
