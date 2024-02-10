@@ -14,8 +14,7 @@ function App() {
   const authUser = useAppSelector((state) => state.auth.authUser);
 
   useEffect(() => {
-    authUser &&
-      isAuth &&
+    if (authUser && isAuth) {
       onValue(ref(db, "/users"), (snapshot) => {
         const data = snapshot.val();
         if (data) {
@@ -35,7 +34,8 @@ function App() {
           });
         }
       });
-  }, [isAuth, authUser]);
+    }
+  }, []);
 
   return (
     <div className="App">
