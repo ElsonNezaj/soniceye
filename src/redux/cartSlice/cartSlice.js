@@ -61,6 +61,9 @@ export const cartSlice = createSlice({
         state.cartItems.push(newElement);
       }
     },
+    setCartItems: (state, action) => {
+      state.cartItems = action.payload;
+    },
   },
 });
 
@@ -69,5 +72,6 @@ export const {
   updateItemQuantity,
   removeItemFromCart,
   addItemFromRoute,
+  setCartItems,
 } = cartSlice.actions;
 export default cartSlice.reducer;

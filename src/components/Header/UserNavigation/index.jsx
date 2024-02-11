@@ -28,7 +28,9 @@ export default function UserNavigation() {
   };
 
   const handleSignOut = () => {
-    dispatch(signOutRequested({ uid: userUid.uid, items: cartItems }));
+    cartItems.length >= 1
+      ? dispatch(signOutRequested({ uid: userUid.uid, items: cartItems }))
+      : dispatch(signOutRequested({ state: "no-update" }));
   };
 
   return (
@@ -39,10 +41,10 @@ export default function UserNavigation() {
       </div>
       <div className={`${styles.navigationContainer} ${styles.cartButton}`}>
         <div onClick={handleCartClick} className={styles.buttonContent}>
-          {cartItems.length > 0 && (
+          {cartItems?.length > 0 && (
             <div className={styles.badgeContainer}>
               <Typography className={styles.badgeLabel}>
-                {cartItems.length}
+                {cartItems?.length}
               </Typography>
             </div>
           )}
@@ -100,7 +102,7 @@ const CartDropDownMenu = (props, ref) => {
       onClickAway={props.handleCartClick && props.handleCartClick}
     >
       <div className={styles.menuContainer}>
-        {cartItems.length <= 0 ? (
+        {cartItems?.length <= 0 ? (
           <Typography className={styles.noItemLabel}>
             You have no items in the cart
           </Typography>
