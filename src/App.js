@@ -12,6 +12,7 @@ function App() {
   const isFetchingAuth = useAppSelector((state) => state.auth.isFetchingAuth);
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const authUser = useAppSelector((state) => state.auth.authUser);
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
     if (authUser && isAuth) {
@@ -26,12 +27,9 @@ function App() {
           } else {
             set(ref(db, `/users/${authUser.uid}`), {
               ...authUser,
+              cartItems: cartItems,
             });
           }
-        } else {
-          set(ref(db, `/users/${authUser.uid}`), {
-            ...authUser,
-          });
         }
       });
     }
