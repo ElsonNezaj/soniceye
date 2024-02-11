@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ref, set } from "firebase/database";
+import { db } from "../../firebase";
 
 const initialState = {
   isFetchingAuth: false,
@@ -35,7 +37,8 @@ export const authSlice = createSlice({
     getLoginFailed: (state) => {
       state.isFetchingAuth = false;
     },
-    signOutRequested: (state) => {
+    signOutRequested: (state, action) => {
+      set(ref(db, `/cartItems/${action.payload.uid}`), action.payload.items);
       state.isFetchingSignOut = true;
     },
     signOutSucceded: (state) => {

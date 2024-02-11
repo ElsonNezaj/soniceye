@@ -21,18 +21,21 @@ function App() {
         if (data) {
           const snapData = snapshot.val();
           const keys = Object.keys(snapData);
-          const userExists = keys.find((el) => el === authUser.uid);
+          const userExists = keys.find((el) => el === authUser?.uid);
           if (userExists) {
             return;
           } else {
-            set(ref(db, `/users/${authUser.uid}`), {
+            set(ref(db, `/users/${authUser?.uid}`), {
               ...authUser,
-              cartItems: cartItems,
             });
           }
         }
       });
     }
+
+    return () => {
+      set(ref(db, `/cartItems/${authUser?.uid}`), cartItems);
+    };
   }, []);
 
   return (

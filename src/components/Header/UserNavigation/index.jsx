@@ -20,6 +20,7 @@ export default function UserNavigation() {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const userUid = useAppSelector((state) => state.auth.authUser);
   const [menu, toggleMenu] = useState(false);
 
   const handleCartClick = () => {
@@ -27,7 +28,7 @@ export default function UserNavigation() {
   };
 
   const handleSignOut = () => {
-    dispatch(signOutRequested());
+    dispatch(signOutRequested({ uid: userUid.uid, items: cartItems }));
   };
 
   return (
