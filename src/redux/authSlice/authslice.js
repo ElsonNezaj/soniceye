@@ -25,7 +25,7 @@ export const authSlice = createSlice({
     getAuthFailed: (state) => {
       state.isFetchingAuth = false;
     },
-    getLoginRequested: (state, action) => {
+    getLoginRequested: (state) => {
       state.isFetchingAuth = true;
     },
     getLoginSucceded: (state) => {
