@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 70%;
   @media (max-width: 700px) {
     width: 90%;
   }
@@ -58,4 +58,52 @@
   @media (max-width: 900px) {
     width: 40%;
   }
+}
+
+.phoneInput {
+  width: 98%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  margin: 20px 0px;
+  outline: 0px !important;
+  & > div {
+    height: 100%;
+    margin-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  & > input {
+    border: 0px;
+    border-left: solid 1px rgb(197, 197, 197);
+    height: 100%;
+    margin-left: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    &:focus,
+    &:active,
+    &:hover,
+    &:focus-visible {
+      height: 100%;
+      outline: 0px;
+    }
+  }
+}
+
+.inputsContainer {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.leftSide {
+  width: 50%;
+}
+
+.rightSide {
+  width: 50%;
 }

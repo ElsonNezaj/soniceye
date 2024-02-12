@@ -20,7 +20,18 @@ import { addUserToDatabase, getUserCartItems } from "../../firebaseUtils";
 
 export function* getAuth({ payload }) {
   try {
-    const { email, password, displayName } = payload;
+    const {
+      email,
+      password,
+      displayName,
+      age,
+      gender,
+      phoneNumber,
+      country,
+      city,
+      address,
+      zipCode,
+    } = payload;
     const user = yield call(
       createUserWithEmailAndPassword,
       auth,
@@ -36,6 +47,13 @@ export function* getAuth({ payload }) {
       metadata: data.metadata,
       accessToken: data.accessToken,
       uid: data.uid,
+      age,
+      gender,
+      phoneNumber,
+      country,
+      city,
+      address,
+      zipCode,
     };
     yield put(getAuthSucceded(authData));
     yield call(addUserToDatabase, authData?.uid, authData);
