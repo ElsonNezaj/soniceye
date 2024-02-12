@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { Typography, Button } from "antd";
@@ -29,32 +30,6 @@ export default function CartReview() {
     });
     return total;
   };
-
-  // const makePayment = async () => {
-  //   const stripe = loadStripe(
-  //     "pk_test_51LsSMqF0mycr7dHA0wYhi5qXQcSUdoaOUNFqR5R0IMmCbMvTBPKIaxS9WO4P0NDe8ngZbDigMBxSVzaHLFPlVWha00ToJzYIvw"
-  //   );
-
-  //   const body = {
-  //     products: cartItems,
-  //   };
-
-  //   const headers = {
-  //     "Content-type": "application/json",
-  //   };
-
-  //   const response = await fetch(`/create-checkout-session`, {
-  //     method: "POST",
-  //     headers: headers,
-  //     body: JSON.stringify(body),
-  //   });
-
-  //   const session = await response.json();
-
-  //   const result = stripe.redirectToCheckout({
-  //     session: session.id,
-  //   });
-  // };
 
   const orderToDB = () => {
     set(ref(db, `orders/${userId}`), {

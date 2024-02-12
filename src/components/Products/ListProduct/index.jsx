@@ -2,17 +2,9 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { Typography, Button } from "antd";
 
-import { Canvas } from "react-three-fiber";
-import { Stage, useGLTF } from "@react-three/drei";
 import { useAppDispatch } from "../../../redux/hooks";
 import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
-
-function Glasses(props) {
-  const { scene } = useGLTF("/glasses.glb");
-
-  return <primitive object={scene} {...props} />;
-}
 
 export default function ListProduct({ product }) {
   const dispatch = useAppDispatch();
@@ -25,18 +17,7 @@ export default function ListProduct({ product }) {
         <Link
           to={`/products/${product.productCode}/${product.name}`}
           style={{ textDecoration: "none" }}
-        >
-          {/* <Canvas
-          dpr={[1, 2]}
-          shadows
-          camera={{ fov: 45 }}
-          className={styles.glasses}
-        >
-          <Stage environment="night">
-            <Glasses scale={window.innerWidth > 500 ? 0.9 : 0.09} />
-          </Stage>
-        </Canvas> */}
-        </Link>
+        ></Link>
       </div>
       <div className={styles.productDescription}>
         <Link

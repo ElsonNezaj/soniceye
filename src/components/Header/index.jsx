@@ -122,6 +122,7 @@ function CartContainer({ setIsDrawerOpen }) {
 
   useEffect(() => {
     setTotal(findTotal());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems]);
 
   return (
