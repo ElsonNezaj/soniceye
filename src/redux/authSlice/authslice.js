@@ -28,11 +28,13 @@ export const authSlice = createSlice({
     getLoginRequested: (state, action) => {
       state.isFetchingAuth = true;
     },
-    getLoginSucceded: (state, action) => {
+    getLoginSucceded: (state) => {
       state.isFetchingAuth = false;
-      state.authUser = action.payload;
       state.isAuth = true;
       window.location.href = "/";
+    },
+    setLoginDataFromDatabase: (state, action) => {
+      state.authUser = action.payload;
     },
     getLoginFailed: (state) => {
       state.isFetchingAuth = false;
@@ -63,5 +65,6 @@ export const {
   signOutRequested,
   signOutSucceded,
   signOutFailed,
+  setLoginDataFromDatabase,
 } = authSlice.actions;
 export default authSlice.reducer;

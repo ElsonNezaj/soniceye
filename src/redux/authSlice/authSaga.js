@@ -16,7 +16,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { addUserToDatabase, getUserCartItems } from "../../firebaseUtils";
+import {
+  addUserToDatabase,
+  getUserCartItems,
+  getUserFromDatabase,
+} from "../../firebaseUtils";
 
 export function* getAuth({ payload }) {
   try {
@@ -68,7 +72,9 @@ export function* getLogin({ payload }) {
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
     const data = user.user;
     yield call(getUserCartItems, data?.uid);
-    yield put(getLoginSucceded(data));
+    const userData = yield call(getUserFromDatabase, data.uid);
+    yield console.log("new data", userData);
+    yield put(getLoginSucceded(userData));
   } catch (err) {
     yield put(getAuthFailed());
   }
