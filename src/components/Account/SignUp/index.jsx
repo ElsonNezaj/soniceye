@@ -6,12 +6,12 @@ import { getAuthRequested } from "../../../redux/authSlice/authslice";
 
 export default function SignUpForm() {
   const dispatch = useAppDispatch();
-  const [manualGender, setManualGender] = useState("");
   const [data, setData] = useState({
     email: "",
     password: "",
     displayName: "",
-    gender: manualGender,
+    gender: undefined,
+    age: undefined,
   });
 
   const handleChange = (name, value) => {
@@ -58,7 +58,7 @@ export default function SignUpForm() {
         onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
       <div className={styles.row}>
-        {/* <Select
+        <Select
           options={[
             {
               value: "male",
@@ -68,13 +68,30 @@ export default function SignUpForm() {
               value: "female",
               label: <Typography className={styles.option}>Female</Typography>,
             },
+            {
+              value: "empty",
+              label: (
+                <Typography className={styles.option}>
+                  Rather Not Say
+                </Typography>
+              ),
+            },
           ]}
           value={data.gender}
           placeholder="Gender"
-          onChange={(e) => setManualGender(e.target.value)}
-          className={styles.genderSelect}
-        /> */}
-        <Input type="number" className={styles.input} />
+          onChange={(e) => setData({ ...data, gender: e })}
+          className={styles.input}
+          style={{ width: "50%" }}
+        />
+        <Input
+          type="number"
+          value={data.age}
+          placeholder="Age"
+          name="age"
+          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          className={styles.input}
+          style={{ width: "50%" }}
+        />
       </div>
       <Input type="submit" value="Sign Up" className={styles.submitButton} />
     </form>

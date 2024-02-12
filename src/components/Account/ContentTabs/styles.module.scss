@@ -2,6 +2,7 @@
   display: flex;
   width: 50%;
   justify-content: space-evenly;
+  min-height: 35px;
   height: 5%;
   align-items: center;
   margin: 1% auto;
@@ -23,7 +24,6 @@
 }
 
 .tab {
-  // border: solid 1px grey;
   height: 100%;
   width: 50%;
   display: flex;
