@@ -26,8 +26,6 @@ export default function SignUpForm() {
     dispatch(getAuthRequested({ ...data }));
   };
 
-  console.log(data);
-
   return (
     <form onSubmit={handleSubmit} className={styles.loginForm}>
       <Typography className={styles.title}>NEW ACCOUNT</Typography>

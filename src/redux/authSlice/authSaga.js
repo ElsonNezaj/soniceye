@@ -16,7 +16,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { getUserCartItems } from "../../firebaseUtils";
+import { addUserToDatabase, getUserCartItems } from "../../firebaseUtils";
 
 export function* getAuth({ payload }) {
   try {
@@ -29,7 +29,16 @@ export function* getAuth({ payload }) {
     );
     const data = user.user;
     yield call(updateProfile, data, { displayName: displayName });
-    yield put(getAuthSucceded(data));
+    const authData = {
+      displayName: displayName,
+      email: data.email,
+      isEmailVerified: data.emailVerified,
+      metadata: data.metadata,
+      accessToken: data.accessToken,
+      uid: data.uid,
+    };
+    yield put(getAuthSucceded(authData));
+    yield call(addUserToDatabase, authData?.uid, authData);
   } catch (err) {
     yield put(getAuthFailed());
   }
@@ -40,7 +49,7 @@ export function* getLogin({ payload }) {
     const { email, password } = payload;
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
     const data = user.user;
-    yield call(getUserCartItems(data?.uid));
+    yield call(getUserCartItems, data?.uid);
     yield put(getLoginSucceded(data));
   } catch (err) {
     yield put(getAuthFailed());

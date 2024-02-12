@@ -1,11 +1,11 @@
-import { onValue, ref } from "firebase/database";
+import { onValue, ref, set } from "firebase/database";
 import { db } from "./firebase";
 import { store } from "./redux/store";
 import { setCartItems } from "./redux/cartSlice/cartSlice";
 
-export const getUserCartItems = async (uid) => {
+export function* getUserCartItems(uid) {
   if (uid) {
-    onValue(ref(db, `/cartItems/${uid}`), async (snapshot) => {
+    yield onValue(ref(db, `/cartItems/${uid}`), async (snapshot) => {
       const data = await snapshot.val();
       if (data) {
         store.dispatch(setCartItems(data));
@@ -14,4 +14,12 @@ export const getUserCartItems = async (uid) => {
       }
     });
   }
-};
+}
+
+export function* addUserToDatabase(uid, authUser) {
+  try {
+    yield set(ref(db, `/users/${uid}`), authUser);
+  } catch (err) {
+    console.log(err);
+  }
+}

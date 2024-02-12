@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./App.scss";
 import Content from "./components/Content";
 import Header from "./components/Header";
@@ -5,34 +6,15 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Typography } from "antd";
 import { useAppSelector } from "./redux/hooks";
 import { useEffect } from "react";
-import { onValue, ref, set } from "firebase/database";
+import { ref, set } from "firebase/database";
 import { db } from "./firebase";
 
 function App() {
   const isFetchingAuth = useAppSelector((state) => state.auth.isFetchingAuth);
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
   const authUser = useAppSelector((state) => state.auth.authUser);
   const cartItems = useAppSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
-    if (authUser && isAuth) {
-      onValue(ref(db, "/users"), (snapshot) => {
-        const data = snapshot.val();
-        if (data) {
-          const snapData = snapshot.val();
-          const keys = Object.keys(snapData);
-          const userExists = keys.find((el) => el === authUser?.uid);
-          if (userExists) {
-            return;
-          } else {
-            set(ref(db, `/users/${authUser?.uid}`), {
-              ...authUser,
-            });
-          }
-        }
-      });
-    }
-
     return () => {
       set(ref(db, `/cartItems/${authUser?.uid}`), cartItems);
     };
