@@ -77,19 +77,21 @@ export default function Header() {
               <Typography className={styles.drawerContent}>Account</Typography>
             </Link>
           ) : (
-            <Typography
-              onClick={() => setIsDrawerOpen(false)}
-              className={styles.drawerContent}
-            >
-              Account
-            </Typography>
+            <Link to="/profile" onClick={() => setIsDrawerOpen(false)}>
+              <Typography
+                onClick={() => setIsDrawerOpen(false)}
+                className={styles.drawerContent}
+              >
+                Account
+              </Typography>
+            </Link>
           )}
           <Link to="/about" onClick={() => setIsDrawerOpen(false)}>
             <Typography className={styles.drawerContent}>About Us</Typography>
           </Link>
-          <Typography className={styles.drawerContent}>
-            Contact <span>(Not Working)</span>
-          </Typography>
+          <Link to="/contact" onClick={() => setIsDrawerOpen(false)}>
+            <Typography className={styles.drawerContent}>Contact</Typography>
+          </Link>
         </div>
         <a href="/soniceye.apk" download className={styles.downloadLink}>
           Download Mobile Version <br></br> (APK)
