@@ -21,7 +21,7 @@ export default function ProfileContainer() {
         <ProfileSide />
       </div>
       <div className={styles.rightSide}>
-        <InputSide handleSignOut={handleSignOut} />
+        <InputSide handleSignOut={handleSignOut()} />
       </div>
     </div>
   );
