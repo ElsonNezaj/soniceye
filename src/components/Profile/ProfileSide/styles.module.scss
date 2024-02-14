@@ -1,0 +1,81 @@
+.profileContainer {
+  height: 100%;
+}
+
+.iconContainer {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  svg {
+    font-size: 160px;
+    color: rgb(201, 201, 201);
+  }
+}
+
+.userName {
+  font-size: 20px;
+  color: rgb(201, 201, 201);
+}
+
+.detailsContainer {
+  border-top: solid 1px grey;
+  padding-top: 20px;
+}
+
+.titleLabel {
+  font-size: 22px;
+  color: rgb(201, 201, 201);
+  margin-bottom: 20px;
+}
+
+.label,
+.mainLabel {
+  font-size: 16px;
+  span {
+    color: rgb(201, 201, 201);
+  }
+  margin-top: 10px;
+  color: white;
+}
+
+.mainLabel {
+  width: 33%;
+}
+
+.genderLabel {
+  margin-top: 10px;
+  color: rgb(201, 201, 201);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+
+  span {
+    display: flex;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: white;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.mainInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previewOrders {
+  margin-top: 30px;
+}
