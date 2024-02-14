@@ -40,14 +40,18 @@ export const authSlice = createSlice({
       state.isFetchingAuth = false;
     },
     signOutRequested: (state, action) => {
-      action.payload.state !== "no-update" &&
-        set(ref(db, `/cartItems/${action.payload.uid}`), action.payload.items);
+      action.payload?.state !== "no-update" &&
+        set(
+          ref(db, `/cartItems/${action.payload?.uid}`),
+          action.payload?.items
+        );
       state.isFetchingSignOut = true;
     },
     signOutSucceded: (state) => {
       state.isFetchingSignOut = false;
       state.authUser = undefined;
       state.isAuth = false;
+      window.location.href = "/";
     },
     signOutFailed: (state) => {
       state.isFetchingSignOut = true;

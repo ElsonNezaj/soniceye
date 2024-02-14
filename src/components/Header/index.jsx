@@ -118,7 +118,9 @@ function CartContainer({ setIsDrawerOpen }) {
   };
 
   const handleLogout = () => {
-    dispatch(signOutRequested());
+    cartItems.length >= 1
+      ? dispatch(signOutRequested({ uid: authUser.uid, items: cartItems }))
+      : dispatch(signOutRequested({ state: "no-update" }));
     setIsDrawerOpen(false);
   };
 
