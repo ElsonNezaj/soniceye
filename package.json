@@ -37,6 +37,7 @@
     "stripe": "^14.13.0",
     "three": "^0.158.0",
     "use-places-autocomplete": "^4.0.1",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { ref, set } from "firebase/database";
 import { db } from "../../firebase";
+import { v4 } from "uuid";
 
 export default function CartReview() {
   const dispatch = useAppDispatch();
@@ -32,8 +33,9 @@ export default function CartReview() {
   };
 
   const orderToDB = () => {
+    const uuid = v4();
     set(ref(db, `orders/${userId}`), {
-      data: {
+      [uuid]: {
         total,
         cartItems,
       },
