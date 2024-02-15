@@ -31,7 +31,6 @@ export const authSlice = createSlice({
     getLoginSucceded: (state) => {
       state.isFetchingAuth = false;
       state.isAuth = true;
-      window.location.href = "/";
     },
     setLoginDataFromDatabase: (state, action) => {
       state.authUser = action.payload;

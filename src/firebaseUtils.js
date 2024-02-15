@@ -27,12 +27,14 @@ export function* addUserToDatabase(uid, authUser) {
 
 export function* getUserFromDatabase(uid) {
   try {
-    if (uid) {
-      yield onValue(ref(db, `/users/${uid}`), async (snapshot) => {
-        const data = await snapshot.val();
-        (await data) && store.dispatch(setLoginDataFromDatabase(data));
-      });
-    }
+    yield onValue(ref(db, `/users/${uid}`), async (snapshot) => {
+      const data = await snapshot.val();
+      if (data) {
+        console.log(data);
+        store.dispatch(setLoginDataFromDatabase(data));
+        window.location.href = "/";
+      }
+    });
   } catch (err) {
     console.log(err);
   }
