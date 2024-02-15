@@ -71,10 +71,11 @@ export function* getLogin({ payload }) {
     const { email, password } = payload;
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
     const data = user.user;
-    yield call(getUserCartItems, data?.uid);
-    const userData = yield call(getUserFromDatabase, data.uid);
-    yield console.log("new data", userData);
-    yield put(getLoginSucceded(userData));
+    if (data) {
+      yield call(getUserCartItems, data?.uid);
+      yield call(getUserFromDatabase, data?.uid);
+      yield put(getLoginSucceded());
+    }
   } catch (err) {
     yield put(getAuthFailed());
   }

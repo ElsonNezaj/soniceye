@@ -17,7 +17,7 @@ export default function ProfileSide() {
 
   const handleSignOut = () => {
     cartItems.length >= 1
-      ? dispatch(signOutRequested({ uid: authUser.uid, items: cartItems }))
+      ? dispatch(signOutRequested({ uid: authUser?.uid, items: cartItems }))
       : dispatch(signOutRequested({ state: "no-update" }));
   };
 
