@@ -30,7 +30,7 @@ export function* getUserFromDatabase(uid) {
     if (uid) {
       yield onValue(ref(db, `/users/${uid}`), async (snapshot) => {
         const data = await snapshot.val();
-        await store.dispatch(setLoginDataFromDatabase(await data));
+        (await data) && store.dispatch(setLoginDataFromDatabase(data));
       });
     }
   } catch (err) {

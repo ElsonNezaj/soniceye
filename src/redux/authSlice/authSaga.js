@@ -70,7 +70,7 @@ export function* getLogin({ payload }) {
   try {
     const { email, password } = payload;
     const user = yield call(signInWithEmailAndPassword, auth, email, password);
-    const data = user.user;
+    const data = yield user.user;
     if (data) {
       yield call(getUserCartItems, data?.uid);
       yield call(getUserFromDatabase, data?.uid);

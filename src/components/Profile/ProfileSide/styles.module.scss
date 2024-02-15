@@ -40,7 +40,7 @@
 
 .label,
 .mainLabel {
-  font-size: 14px;
+  font-size: 16px;
   span {
     color: rgb(201, 201, 201);
   }
@@ -51,15 +51,15 @@
 .genderLabel {
   margin-top: 10px;
   color: rgb(201, 201, 201);
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   align-items: center;
 
   span {
     display: flex;
-    font-size: 10px;
-    width: 20px;
-    height: 20px;
+    font-size: 12px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     background-color: white;
     color: black;
