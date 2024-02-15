@@ -1,11 +1,12 @@
 import styles from "./styles.module.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import { Typography, Button } from "antd";
+import { Typography, Button, Image } from "antd";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import OrdersReview from "../OrdersReview";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOutRequested } from "../../../redux/authSlice/authslice";
+import ProfileIcon from "../../../assets/images/profile.png";
 
 export default function ProfileSide() {
   const dispatch = useAppDispatch();
@@ -27,12 +28,19 @@ export default function ProfileSide() {
         <>
           {/* MAIN DETAILS FOR USER */}
           <div className={styles.iconContainer}>
-            <div className={styles.icon}>
-              <AccountCircleIcon />
+            <div className={styles.userContainer}>
+              <div className={styles.icon}>
+                <Image
+                  src={ProfileIcon}
+                  preview={false}
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <Typography className={styles.userName}>
+                {authUser.displayName}
+              </Typography>
             </div>
-            <Typography className={styles.userName}>
-              {authUser.displayName}
-            </Typography>
             <div className={styles.mainInfo}>
               <Typography className={styles.mainLabel}>
                 <span>E-mail : </span>
@@ -71,9 +79,6 @@ export default function ProfileSide() {
               <span>Last Logged In : </span>
               {lastLogin}
             </Typography>
-          </div>
-          <div className={styles.previewOrders}>
-            <OrdersReview />
           </div>
         </>
       )}
