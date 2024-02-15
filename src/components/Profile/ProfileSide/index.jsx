@@ -1,9 +1,7 @@
 import styles from "./styles.module.scss";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { Typography, Button, Image } from "antd";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import OrdersReview from "../OrdersReview";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOutRequested } from "../../../redux/authSlice/authslice";
 import ProfileIcon from "../../../assets/images/profile.png";
