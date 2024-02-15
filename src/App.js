@@ -11,6 +11,9 @@ import { db } from "./firebase";
 
 function App() {
   const isFetchingAuth = useAppSelector((state) => state.auth.isFetchingAuth);
+  const isFetchingLogOut = useAppSelector(
+    (state) => state.auth.isFetchingSignOut
+  );
   const authUser = useAppSelector((state) => state.auth.authUser);
   const cartItems = useAppSelector((state) => state.cart.cartItems);
 
@@ -22,10 +25,16 @@ function App() {
 
   return (
     <div className="App">
-      {isFetchingAuth && (
+      {(isFetchingAuth || isFetchingLogOut) && (
         <div className="backdrop">
           <CircularProgress />
-          <Typography className="loadingLabel">Signing You In...</Typography>
+          <Typography className="loadingLabel">
+            {isFetchingAuth
+              ? "Signing You In..."
+              : isFetchingLogOut
+              ? "Signig Out..."
+              : ""}
+          </Typography>
         </div>
       )}
       <Header />

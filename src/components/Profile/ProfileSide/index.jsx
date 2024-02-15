@@ -78,26 +78,26 @@ export default function ProfileSide() {
               {lastLogin}
             </Typography>
           </div>
+          <div className={styles.actionsContainer}>
+            <Button
+              className={styles.editButton}
+              type="primary"
+              icon={<BorderColorIcon />}
+            >
+              Edit your profile
+            </Button>
+            <Button
+              className={styles.editButton}
+              danger
+              type="primary"
+              icon={<LogoutIcon />}
+              onClick={() => handleSignOut()}
+            >
+              Sign Out
+            </Button>
+          </div>
         </>
       )}
-      <div className={styles.actionsContainer}>
-        <Button
-          className={styles.editButton}
-          type="primary"
-          icon={<BorderColorIcon />}
-        >
-          Edit your profile
-        </Button>
-        <Button
-          className={styles.editButton}
-          danger
-          type="primary"
-          icon={<LogoutIcon />}
-          onClick={() => handleSignOut()}
-        >
-          Sign Out
-        </Button>
-      </div>
     </div>
   );
 }
