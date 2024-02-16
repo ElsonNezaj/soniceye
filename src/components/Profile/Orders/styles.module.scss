@@ -1,0 +1,89 @@
+.ordersContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.ordersTitle {
+  font-size: 26px;
+  color: white;
+  font-family: var(--main-font-family);
+  letter-spacing: 3px;
+  word-spacing: 5px;
+  border-bottom: solid 1px grey;
+}
+
+.itemsContainer {
+  background-color: #333;
+  height: 80%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.singleOrderContainer {
+  width: 100%;
+}
+
+.orderCode {
+  border-top: solid 1px grey;
+  font-size: 16px;
+  color: white;
+  padding-left: 5px;
+  span {
+    font-weight: bold;
+  }
+}
+
+.orderInfo {
+  display: flex;
+  width: 99%;
+  margin: 0 auto;
+  gap: 10px;
+  border-top: solid 1px rgb(82, 82, 82);
+}
+
+.orderItems {
+  width: 90%;
+  padding-left: 5px;
+}
+
+.cartItemContainer {
+  width: 100%;
+  display: flex;
+  min-height: 40px;
+}
+
+.nameLabel {
+  width: 30%;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.codeLabel {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.label {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.orderPrice {
+  width: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orderTotalLabel {
+  font-size: 14px;
+  color: white;
+}

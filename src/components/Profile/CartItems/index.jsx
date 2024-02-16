@@ -16,7 +16,7 @@ export default function CartItems() {
         {cartItems.length > 0 ? (
           cartItems.map((item) => {
             return (
-              <div className={styles.singleItem}>
+              <div key={item.productCode} className={styles.singleItem}>
                 <Typography className={styles.itemName}>
                   {item.name} <span>#{item.productCode}</span>
                 </Typography>

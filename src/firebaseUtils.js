@@ -39,3 +39,10 @@ export function* getUserFromDatabase(uid) {
     console.log(err);
   }
 }
+
+export function getUserOrders(uid, setOrders) {
+  onValue(ref(db, `/orders/${uid}`), async (snapshot) => {
+    const data = await snapshot.val();
+    setOrders(data);
+  });
+}

@@ -1,4 +1,5 @@
 import CartItems from "../CartItems";
+import Orders from "../Orders";
 import styles from "./styles.module.scss";
 
 export default function InputSide() {
@@ -7,7 +8,9 @@ export default function InputSide() {
       <div className={styles.cartContainer}>
         <CartItems />
       </div>
-      <div className={styles.cartContainer}>ACCOUNT ORDERS</div>
+      <div className={styles.cartContainer}>
+        <Orders />
+      </div>
     </div>
   );
 }

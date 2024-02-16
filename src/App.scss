@@ -4,6 +4,14 @@
   --main-font-family: "Oswald", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 217, 0, 0.759);
+}
+
 .App {
   background-color: #343434;
 }
