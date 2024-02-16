@@ -15,8 +15,10 @@ import {
 } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
+import { signOutRequested } from "../../../redux/authSlice/authslice";
 
 export default function UserNavigation() {
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const userAuth = useAppSelector((state) => state.auth.authUser);
@@ -24,6 +26,12 @@ export default function UserNavigation() {
 
   const handleCartClick = () => {
     toggleMenu(!menu);
+  };
+
+  const handleLogout = () => {
+    cartItems.length >= 1
+      ? dispatch(signOutRequested({ uid: userAuth.uid, items: cartItems }))
+      : dispatch(signOutRequested({ state: "no-update" }));
   };
 
   return (
@@ -56,14 +64,21 @@ export default function UserNavigation() {
           <Typography className={styles.label}>Your Account</Typography>
         </Link>
       ) : (
-        <Link to="/profile" className={styles.navigationContainer}>
-          <div className={styles.iconContainer}>
-            <PersonIcon />
-          </div>
-          <Typography className={styles.label}>
-            {userAuth?.displayName ? userAuth.displayName : userAuth?.email}
-          </Typography>
-        </Link>
+        <>
+          <Link to="/profile" className={styles.navigationContainer}>
+            <div className={styles.iconContainer}>
+              <PersonIcon />
+            </div>
+            <Typography className={styles.label}>
+              {userAuth?.displayName ? userAuth.displayName : userAuth?.email}
+            </Typography>
+          </Link>
+          {!userAuth && (
+            <Button danger onClick={() => handleLogout()}>
+              Emergency Logout
+            </Button>
+          )}
+        </>
       )}
     </div>
   );
