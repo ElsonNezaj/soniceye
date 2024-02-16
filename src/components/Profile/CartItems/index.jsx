@@ -13,7 +13,7 @@ export default function CartItems() {
     <div className={styles.cartItemsContainer}>
       <Typography className={styles.title}>Your Cart</Typography>
       <div className={styles.itemsContainer}>
-        {cartItems.length > 0 &&
+        {cartItems.length > 0 ? (
           cartItems.map((item) => {
             return (
               <div className={styles.singleItem}>
@@ -59,15 +59,24 @@ export default function CartItems() {
                 </Typography>
               </div>
             );
-          })}
+          })
+        ) : (
+          <div className={styles.noItemsContainer}>
+            <Typography className={styles.emptyCartLabel}>
+              There are no items in your cart
+            </Typography>
+          </div>
+        )}
       </div>
-      <div className={styles.checkoutContainer}>
-        <Link to="/cart_review">
-          <Button type="primary" className={styles.proceedButton}>
-            Proceed To Checkout
-          </Button>
-        </Link>
-      </div>
+      {cartItems.length > 0 && (
+        <div className={styles.checkoutContainer}>
+          <Link to="/cart_review">
+            <Button type="primary" className={styles.proceedButton}>
+              Proceed To Checkout
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
