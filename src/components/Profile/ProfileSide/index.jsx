@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOutRequested } from "../../../redux/authSlice/authslice";
 import ProfileIcon from "../../../assets/images/profile.png";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useState } from "react";
 
 export default function ProfileSide() {
   const dispatch = useAppDispatch();
@@ -13,6 +15,8 @@ export default function ProfileSide() {
   const lastLogin = new Date(
     Number(authUser?.metadata.lastLoginAt)
   ).toLocaleString();
+
+  const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
   const handleSignOut = () => {
     cartItems.length >= 1
@@ -55,9 +59,24 @@ export default function ProfileSide() {
               </Typography>
             </div>
           </div>
-          {/* EXTRA INFO ABOUT USER */}
 
-          <div className={styles.detailsContainer}>
+          {/* EXTRA INFO ABOUT USER */}
+          <div
+            className={`${styles.detailsContainer} ${
+              !isDetailsVisible && styles.hiddenText
+            }`}
+          >
+            {/*  */}
+            {!isDetailsVisible && (
+              <div
+                onClick={() => setIsDetailsVisible(true)}
+                className={styles.hidingBackdrop}
+              >
+                <VisibilityOffIcon />
+                <span>Click to view your Personal Details</span>
+              </div>
+            )}
+
             <Typography className={styles.titleLabel}>
               Personal Details
             </Typography>
