@@ -40,11 +40,17 @@
   margin: 0 auto;
   gap: 10px;
   border-top: solid 1px rgb(82, 82, 82);
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .orderItems {
   width: 90%;
   padding-left: 5px;
+  @media (max-width: 500px) {
+    width: 99%;
+  }
 }
 
 .cartItemContainer {
@@ -58,6 +64,15 @@
   color: white;
   display: flex;
   align-items: center;
+  @media (max-width: 1440px) {
+    font-size: 12px;
+  }
+  @media (max-width: 1300px) {
+    width: 27%;
+  }
+  @media (max-width: 500px) {
+    width: 30%;
+  }
 }
 
 .codeLabel {
@@ -66,6 +81,12 @@
   align-items: center;
   justify-content: center;
   color: white;
+  @media (max-width: 1440px) {
+    font-size: 12px;
+  }
+  @media (max-width: 500px) {
+    width: 30%;
+  }
 }
 
 .label {
@@ -74,6 +95,12 @@
   justify-content: center;
   align-items: center;
   color: white;
+  @media (max-width: 1440px) {
+    font-size: 12px;
+  }
+  @media (max-width: 500px) {
+    width: 20%;
+  }
 }
 
 .orderPrice {
@@ -81,9 +108,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1300px) {
+    width: 15%;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    justify-content: flex-end;
+    border-top: solid 1px rgb(82, 82, 82);
+  }
 }
 
 .orderTotalLabel {
   font-size: 14px;
   color: white;
+  @media (max-width: 1440px) {
+    font-size: 12px;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+    font-weight: bold;
+  }
 }

@@ -10,6 +10,10 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  @media (max-width: 1000px) {
+    height: max-content;
+    padding-bottom: 10px;
+  }
 }
 
 .userContainer {
@@ -19,6 +23,11 @@
   gap: 20px;
   border: solid 1px grey;
   padding: 5px;
+
+  @media (max-width: 1000px) {
+    border: none;
+    border-bottom: solid 1px grey;
+  }
 }
 
 .userName {
@@ -120,6 +129,9 @@
   margin-top: 30px;
   display: flex;
   gap: 20px;
+  @media (max-width: 1000px) {
+    justify-content: space-between;
+  }
 }
 
 .editButton {
