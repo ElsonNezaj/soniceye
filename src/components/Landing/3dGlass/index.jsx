@@ -42,7 +42,7 @@ export default function ModelView() {
       <Stage environment="night">
         <Glasses
           isAnimated={true}
-          scale={window.innerWidth > 500 ? 0.5 : 0.09}
+          scale={window.innerWidth > 500 ? 0.5 : 0.1}
         />
       </Stage>
     </Canvas>
