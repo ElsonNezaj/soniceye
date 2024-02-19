@@ -6,9 +6,11 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.164);
+  @media (min-width: 1000px) {
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.164);
+    }
   }
 
   @media (max-width: 900px) {
