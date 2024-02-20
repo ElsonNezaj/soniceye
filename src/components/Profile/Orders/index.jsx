@@ -19,7 +19,6 @@ export default function Orders() {
       <div className={styles.itemsContainer}>
         {ordersToMap &&
           ordersToMap.map((key) => {
-            console.log(key);
             const singleOrder = orders[key];
             return (
               <div key={key} className={styles.singleOrderContainer}>
