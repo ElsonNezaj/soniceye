@@ -8,7 +8,7 @@ import ProfileIcon from "../../../assets/images/profile.png";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 
-export default function ProfileSide() {
+export default function ProfileSide({ setRightSideState }) {
   const dispatch = useAppDispatch();
   const authUser = useAppSelector((state) => state.auth.authUser);
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -102,6 +102,7 @@ export default function ProfileSide() {
               className={styles.editButton}
               type="primary"
               icon={<BorderColorIcon />}
+              onClick={() => setRightSideState("edit")}
             >
               Edit your profile
             </Button>
