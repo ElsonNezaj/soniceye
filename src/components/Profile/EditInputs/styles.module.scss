@@ -81,7 +81,12 @@
   }
 }
 
+.actionsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .submitButton {
-  margin: 0 auto;
   width: 30%;
 }

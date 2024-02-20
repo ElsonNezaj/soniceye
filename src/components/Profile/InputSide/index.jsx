@@ -3,7 +3,7 @@ import EditInputs from "../EditInputs";
 import Orders from "../Orders";
 import styles from "./styles.module.scss";
 
-export default function InputSide({ rightSideState }) {
+export default function InputSide({ rightSideState, setRightSideState }) {
   return (
     <div className={styles.inputsContainer}>
       {rightSideState === "cart" ? (
@@ -16,7 +16,7 @@ export default function InputSide({ rightSideState }) {
           </div>
         </>
       ) : (
-        <EditInputs />
+        <EditInputs setRightSideState={setRightSideState} />
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState } from "react";
 
-export default function EditInputs() {
+export default function EditInputs({ setRightSideState }) {
   const userAuth = useAppSelector((state) => state.auth.authUser);
   const [formData, setFormData] = useState({
     displayName: userAuth.displayName,
@@ -98,14 +98,23 @@ export default function EditInputs() {
           placeholder="Zip Code"
           className={styles.input}
         />
-
-        <Button
-          type="primary"
-          htmlType="submit"
-          className={styles.submitButton}
-        >
-          Save your changes
-        </Button>
+        <div className={styles.actionsContainer}>
+          <Button
+            className={styles.cancelContainer}
+            onClick={() => setRightSideState("cart")}
+            type="primary"
+            danger
+          >
+            Cancel
+          </Button>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className={styles.submitButton}
+          >
+            Save your changes
+          </Button>
+        </div>
       </Form>
     </div>
   );

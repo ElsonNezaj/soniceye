@@ -11,7 +11,10 @@ export default function ProfileContainer() {
         <ProfileSide setRightSideState={setRightSideState} />
       </div>
       <div className={styles.rightSide}>
-        <InputSide rightSideState={rightSideState} />
+        <InputSide
+          rightSideState={rightSideState}
+          setRightSideState={setRightSideState}
+        />
       </div>
     </div>
   );
