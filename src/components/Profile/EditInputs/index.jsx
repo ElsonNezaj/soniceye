@@ -1,6 +1,8 @@
 import styles from "./styles.module.scss";
 import { useAppSelector } from "../../../redux/hooks";
 import { Typography, Button, Form, Input } from "antd";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 export default function EditInputs() {
   const userAuth = useAppSelector((state) => state.auth.authUser);
@@ -17,6 +19,12 @@ export default function EditInputs() {
           className={styles.input}
         />
         <Input type="text" placeholder="E-mail" className={styles.input} />
+        <PhoneInput
+          placeholder="Phone Number*"
+          name="phoneNumber"
+          onChange={(e) => e}
+          className={styles.phoneInput}
+        />
         <Input type="text" placeholder="Address" className={styles.input} />
         <Input type="text" placeholder="City" className={styles.input} />
         <Input type="text" placeholder="Country" className={styles.input} />
