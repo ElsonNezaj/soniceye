@@ -42,7 +42,6 @@
 
   &::placeholder {
     font-size: 16px;
-    font-weight: bold;
   }
 
   &:active,
@@ -54,13 +53,18 @@
 }
 
 .phoneInput {
-  width: 97%;
+  width: 98%;
   margin: 0 auto;
   background-color: white;
   padding: 5px;
   border-radius: 5px;
   height: 45px;
   outline: 0px !important;
+
+  @media (max-width: 700px) {
+    width: 97%;
+  }
+
   & > div {
     margin-right: 0px;
     display: flex;
