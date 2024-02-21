@@ -3,6 +3,7 @@ import { ref, set } from "firebase/database";
 import { db } from "../../firebase";
 
 const initialState = {
+  isFetching: false,
   isFetchingAuth: false,
   isFetchingSignOut: false,
   authUser: undefined,
@@ -55,6 +56,9 @@ export const authSlice = createSlice({
     signOutFailed: (state) => {
       state.isFetchingSignOut = true;
     },
+    setUpdatedUserDataFromDatabase: (state, action) => {
+      state.authUser = action.payload;
+    },
   },
 });
 
@@ -69,5 +73,6 @@ export const {
   signOutSucceded,
   signOutFailed,
   setLoginDataFromDatabase,
+  setUpdatedUserDataFromDatabase,
 } = authSlice.actions;
 export default authSlice.reducer;

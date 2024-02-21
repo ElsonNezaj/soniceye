@@ -4,10 +4,12 @@ import { Typography, Button, Form, Input } from "antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState } from "react";
+import { changeAuthEmail, updateUserDB } from "../../../firebaseUtils";
 
 export default function EditInputs({ setRightSideState }) {
   const userAuth = useAppSelector((state) => state.auth.authUser);
   const [formData, setFormData] = useState({
+    ...userAuth,
     displayName: userAuth.displayName,
     email: userAuth.email,
     phoneNumber: userAuth.phoneNumber,
@@ -16,10 +18,16 @@ export default function EditInputs({ setRightSideState }) {
     country: userAuth.country,
     zipCode: userAuth.zipCode,
   });
-  const [selectedInput, setSelectedInput] = useState("");
 
   const handleChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    // if (formData.email !== userAuth.email) {
+    //   changeAuthEmail(formData.email);
+    // }
+    formData && updateUserDB({ id: userAuth?.uid, data: formData });
   };
 
   return (
@@ -28,14 +36,12 @@ export default function EditInputs({ setRightSideState }) {
       <Typography className={styles.subTitle}>
         Modify your personal data
       </Typography>
-      <Form onSubmitCapture={(e) => console.log(e)} className={styles.editForm}>
+      <Form onSubmitCapture={() => handleSubmit()} className={styles.editForm}>
         <Input
           type="text"
           placeholder="Display Name"
           name="displayName"
-          value={selectedInput === "displayName" ? "" : formData.displayName}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.displayName}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           className={styles.input}
         />
@@ -43,27 +49,21 @@ export default function EditInputs({ setRightSideState }) {
           type="text"
           name="email"
           placeholder="E-mail"
-          value={selectedInput === "email" ? "" : formData.email}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.email}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           className={styles.input}
         />
         <PhoneInput
           placeholder="Phone Number*"
           name="phoneNumber"
-          value={selectedInput === "phoneNumber" ? "" : formData.phoneNumber}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.phoneNumber}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           className={styles.phoneInput}
         />
         <Input
           name="address"
           type="text"
-          value={selectedInput === "address" ? "" : formData.address}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.address}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           placeholder="Address"
           className={styles.input}
@@ -71,9 +71,7 @@ export default function EditInputs({ setRightSideState }) {
         <Input
           name="city"
           type="text"
-          value={selectedInput === "city" ? "" : formData.city}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.city}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           placeholder="City"
           className={styles.input}
@@ -81,9 +79,7 @@ export default function EditInputs({ setRightSideState }) {
         <Input
           name="country"
           type="text"
-          value={selectedInput === "country" ? "" : formData.country}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.country}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           placeholder="Country"
           className={styles.input}
@@ -91,9 +87,7 @@ export default function EditInputs({ setRightSideState }) {
         <Input
           name="zipCode"
           type="text"
-          value={selectedInput === "zipCode" ? "" : formData.zipCode}
-          onFocus={(e) => setSelectedInput(e.target.name)}
-          onBlur={(e) => setSelectedInput("")}
+          value={formData.zipCode}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
           placeholder="Zip Code"
           className={styles.input}

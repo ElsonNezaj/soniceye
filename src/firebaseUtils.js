@@ -1,8 +1,12 @@
 import { onValue, ref, set } from "firebase/database";
-import { db } from "./firebase";
+import { auth, db } from "./firebase";
 import { store } from "./redux/store";
 import { setCartItems } from "./redux/cartSlice/cartSlice";
-import { setLoginDataFromDatabase } from "./redux/authSlice/authslice";
+import {
+  setLoginDataFromDatabase,
+  setUpdatedUserDataFromDatabase,
+} from "./redux/authSlice/authslice";
+import { updateEmail } from "firebase/auth";
 
 export function* getUserCartItems(uid) {
   if (uid) {
@@ -40,9 +44,25 @@ export function* getUserFromDatabase(uid) {
   }
 }
 
+export async function updateUserDB(payload) {
+  const { id, data } = payload;
+  await set(ref(db, `/users/${id}`), data);
+  onValue(ref(db, `users/${id}`), async (snapshot) => {
+    const data = await snapshot.val();
+    if (data) {
+      store.dispatch(setUpdatedUserDataFromDatabase(data));
+    }
+  });
+}
+
 export function getUserOrders(uid, setOrders) {
   onValue(ref(db, `/orders/${uid}`), async (snapshot) => {
     const data = await snapshot.val();
     setOrders(data);
   });
+}
+
+export async function changeAuthEmail(email) {
+  const newEmail = await updateEmail(auth.currentUser, email);
+  console.log(newEmail);
 }
