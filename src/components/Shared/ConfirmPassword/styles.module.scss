@@ -14,26 +14,39 @@
   justify-content: center;
   gap: 10px;
   cursor: default;
+  @media (max-width: 500px) {
+    width: max-content;
+  }
 }
 
 .message {
   color: white;
   font-size: 16px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 }
 
 .submessage {
   font-size: 14px;
   color: grey;
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 }
 
 .passwordForm {
   margin-top: 10px;
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 }
 
 .passwordInput {
