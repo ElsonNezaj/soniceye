@@ -54,7 +54,7 @@ export const authSlice = createSlice({
       window.location.href = "/";
     },
     signOutFailed: (state) => {
-      state.isFetchingSignOut = true;
+      state.isFetchingSignOut = false;
     },
     setUpdatedUserDataFromDatabase: (state, action) => {
       state.authUser = action.payload;

@@ -4,12 +4,14 @@ import Content from "./components/Content";
 import Header from "./components/Header";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Typography } from "antd";
-import { useAppSelector } from "./redux/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { db } from "./firebase";
+import { signOutFailed } from "./redux/authSlice/authslice";
 
 function App() {
+  const dispatch = useAppDispatch();
   const isFetchingAuth = useAppSelector((state) => state.auth.isFetchingAuth);
   const isFetchingLogOut = useAppSelector(
     (state) => state.auth.isFetchingSignOut
@@ -18,6 +20,7 @@ function App() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
+    dispatch(signOutFailed());
     return () => {
       set(ref(db, `/cartItems/${authUser?.uid}`), cartItems);
     };
