@@ -1,0 +1,31 @@
+.messageContainer {
+  width: 500px;
+  background-color: #444;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  color: green;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.message {
+  font-size: 16px;
+  color: white;
+}
+
+.submessage {
+  color: grey;
+  font-size: 14px;
+}
+
+.okButton {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10px;
+}

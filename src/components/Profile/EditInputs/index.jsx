@@ -1,12 +1,14 @@
 import styles from "./styles.module.scss";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { Typography, Button, Form, Input } from "antd";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState } from "react";
-import { changeAuthEmail, updateUserDB } from "../../../firebaseUtils";
+import { updateUserDB } from "../../../firebaseUtils";
+import { toggleConfirmPassword } from "../../../redux/authSlice/authslice";
 
 export default function EditInputs({ setRightSideState }) {
+  const dispatch = useAppDispatch();
   const userAuth = useAppSelector((state) => state.auth.authUser);
   const [formData, setFormData] = useState({
     ...userAuth,
@@ -24,10 +26,12 @@ export default function EditInputs({ setRightSideState }) {
   };
 
   const handleSubmit = () => {
-    // if (formData.email !== userAuth.email) {
-    //   changeAuthEmail(formData.email);
-    // }
-    formData && updateUserDB({ id: userAuth?.uid, data: formData });
+    if (formData.email !== userAuth.email) {
+      dispatch(toggleConfirmPassword({ status: true, data: formData }));
+    }
+    formData &&
+      formData.email === userAuth.email &&
+      updateUserDB({ id: userAuth?.uid, data: formData });
   };
 
   return (

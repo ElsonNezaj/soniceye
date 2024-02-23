@@ -5,8 +5,14 @@ import { setCartItems } from "./redux/cartSlice/cartSlice";
 import {
   setLoginDataFromDatabase,
   setUpdatedUserDataFromDatabase,
+  toggleConfirmPassword,
+  toggleConfirmSignOut,
 } from "./redux/authSlice/authslice";
-import { updateEmail } from "firebase/auth";
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updateEmail,
+} from "firebase/auth";
 
 export function* getUserCartItems(uid) {
   if (uid) {
@@ -62,7 +68,18 @@ export function getUserOrders(uid, setOrders) {
   });
 }
 
-export async function changeAuthEmail(email) {
-  const newEmail = await updateEmail(auth.currentUser, email);
-  console.log(newEmail);
+export async function changeAuthEmail(password) {
+  const credential = EmailAuthProvider.credential(
+    auth.currentUser.email,
+    password
+  );
+  await reauthenticateWithCredential(auth.currentUser, credential).then(() => {
+    const formData = store.getState().auth.updateData;
+    const newEmail = store.getState().auth.updateData.email;
+    updateEmail(auth.currentUser, newEmail).then(() => {
+      updateUserDB({ id: auth.currentUser.uid, data: formData });
+      store.dispatch(toggleConfirmSignOut(true));
+      store.dispatch(toggleConfirmPassword(false));
+    });
+  });
 }

@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { db } from "./firebase";
 import { signOutFailed } from "./redux/authSlice/authslice";
+import ConfirmPassword from "./components/Shared/ConfirmPassword";
+import LogOutModal from "./components/Shared/LogOutModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -42,6 +44,8 @@ function App() {
       )}
       <Header />
       <Content />
+      <ConfirmPassword />
+      <LogOutModal />
     </div>
   );
 }

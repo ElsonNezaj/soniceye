@@ -8,6 +8,9 @@ const initialState = {
   isFetchingSignOut: false,
   authUser: undefined,
   isAuth: false,
+  isSignOutConfirm: false,
+  isConfirmPassword: false,
+  updateData: undefined,
 };
 
 export const authSlice = createSlice({
@@ -59,6 +62,13 @@ export const authSlice = createSlice({
     setUpdatedUserDataFromDatabase: (state, action) => {
       state.authUser = action.payload;
     },
+    toggleConfirmSignOut: (state, action) => {
+      state.isSignOutConfirm = action.payload;
+    },
+    toggleConfirmPassword: (state, action) => {
+      state.isConfirmPassword = action.payload.status;
+      state.updateData = action.payload.data;
+    },
   },
 });
 
@@ -74,5 +84,7 @@ export const {
   signOutFailed,
   setLoginDataFromDatabase,
   setUpdatedUserDataFromDatabase,
+  toggleConfirmSignOut,
+  toggleConfirmPassword,
 } = authSlice.actions;
 export default authSlice.reducer;
