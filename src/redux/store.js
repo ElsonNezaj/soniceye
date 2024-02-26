@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import productsReducer from "./productsSlice/productsSlice";
 import cartReducer from "./cartSlice/cartSlice";
 import authReducer from "./authSlice/authslice";
+import appReducer from "./appSlice/appSlice";
 import createSagaMiddleware from "redux-saga";
 import { rootSagas } from "./sagas";
 import storage from "redux-persist/lib/storage";
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   auth: authReducer,
+  app: appReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

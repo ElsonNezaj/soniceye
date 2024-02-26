@@ -7,3 +7,10 @@
     height: calc(100vh - 101px);
   }
 }
+
+.noHeaderContainer {
+  height: 100vh;
+  @media (max-width: 1000px) {
+    height: 100vh;
+  }
+}

@@ -11,14 +11,15 @@ import {
   updateItemQuantity,
 } from "../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
-import { onValue, ref, set } from "firebase/database";
-import { db } from "../../firebase";
+// import { onValue, ref, set } from "firebase/database";
+// import { db } from "../../firebase";
 import { v4 } from "uuid";
 
 export default function CartReview() {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const userId = useAppSelector((state) => state.auth.authUser?.uid);
+  const uuid = v4();
 
   const [total, setTotal] = useState(0);
 
@@ -32,19 +33,19 @@ export default function CartReview() {
     return total;
   };
 
-  const orderToDB = () => {
-    const uuid = v4();
-    onValue(ref(db, `/orders/${userId}`), (snapshot) => {
-      const data = snapshot.val();
-      set(ref(db, `orders/${userId}`), {
-        ...data,
-        [uuid]: {
-          total,
-          cartItems,
-        },
-      });
-    });
-  };
+  // const orderToDB = () => {
+  //   // dispatch(toggleAppHeader(true));
+  //   // onValue(ref(db, `/orders/${userId}`), (snapshot) => {
+  //   //   const data = snapshot.val();
+  //   //   set(ref(db, `orders/${userId}`), {
+  //   //     ...data,
+  //   //     [uuid]: {
+  //   //       total,
+  //   //       cartItems,
+  //   //     },
+  //   //   });
+  //   // });
+  // };
 
   useEffect(() => {
     setTotal(findTotal());
@@ -142,12 +143,11 @@ export default function CartReview() {
                 Total : {total}&euro;
               </Typography>
               {userId && (
-                <Button
-                  onClick={() => orderToDB()}
-                  className={styles.proceedButton}
-                >
-                  Proceed to Checkout
-                </Button>
+                <Link to={`/checkout/${uuid}`}>
+                  <Button className={styles.proceedButton}>
+                    Proceed to Checkout
+                  </Button>
+                </Link>
               )}
             </div>
           </div>

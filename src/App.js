@@ -20,6 +20,7 @@ function App() {
   );
   const authUser = useAppSelector((state) => state.auth.authUser);
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const isHeaderDisabled = useAppSelector((state) => state.app.disableHeader);
 
   useEffect(() => {
     dispatch(signOutFailed());
@@ -42,7 +43,7 @@ function App() {
           </Typography>
         </div>
       )}
-      <Header />
+      {!isHeaderDisabled && <Header />}
       <Content />
       <ConfirmPassword />
       <LogOutModal />

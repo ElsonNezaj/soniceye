@@ -11,11 +11,17 @@ import CartReview from "../CartReview";
 import SingleProductRoute from "../Products/SingleProductRoute";
 import Contact from "../Contact";
 import ProfileContainer from "../Profile/Container";
+import Checkout from "../Checkout/Container";
 
 export default function Content() {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const isHeaderDisabled = useAppSelector((state) => state.app.disableHeader);
   return (
-    <div className={styles.content}>
+    <div
+      className={`${styles.content} ${
+        isHeaderDisabled && styles.noHeaderContainer
+      }`}
+    >
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Landing} />
@@ -28,6 +34,12 @@ export default function Content() {
           path="/products/:productCode/:productName"
           render={({ match }) => {
             return <SingleProductRoute match={match} />;
+          }}
+        />
+        <Route
+          path="/checkout/:orderID"
+          render={({ match }) => {
+            return <Checkout match={match} />;
           }}
         />
         {!isAuth && (

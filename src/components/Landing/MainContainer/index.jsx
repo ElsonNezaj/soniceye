@@ -5,11 +5,13 @@ import LandingCarousel from "../LandingCarousel";
 import { useAppDispatch } from "../../../redux/hooks";
 import { useEffect } from "react";
 import { getLoginFailed } from "../../../redux/authSlice/authslice";
+import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 
 export default function Landing() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(toggleAppHeader(false));
     dispatch(getLoginFailed());
   }, []);
 
