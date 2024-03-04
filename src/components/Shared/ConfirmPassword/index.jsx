@@ -5,10 +5,15 @@ import { Dialog } from "@mui/material";
 import { toggleConfirmPassword } from "../../../redux/authSlice/authslice";
 import { useState } from "react";
 import { changeAuthEmail } from "../../../firebaseUtils";
+import { auth } from "../../../firebase";
 
 export default function ConfirmPassword() {
   const dispatch = useAppDispatch();
   const open = useAppSelector((state) => state.auth.isConfirmPassword);
+  const authEmail = useAppSelector((state) => state.auth.authUser?.email);
+  const currentUser = auth.currentUser;
+  const newEmail = useAppSelector((state) => state.auth.updateData?.email);
+  const newData = useAppSelector((state) => state.auth.updateData);
   const [password, setPassword] = useState("");
 
   const handleChange = (value) => {
@@ -16,7 +21,11 @@ export default function ConfirmPassword() {
   };
 
   const handleSubmit = () => {
-    changeAuthEmail(password);
+    authEmail &&
+      newData &&
+      newEmail &&
+      currentUser &&
+      changeAuthEmail(authEmail, password, currentUser, newEmail, newData);
   };
 
   return (

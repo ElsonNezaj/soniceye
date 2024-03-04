@@ -68,16 +68,17 @@ export function getUserOrders(uid, setOrders) {
   });
 }
 
-export async function changeAuthEmail(password) {
-  const credential = EmailAuthProvider.credential(
-    auth.currentUser.email,
-    password
-  );
-  await reauthenticateWithCredential(auth.currentUser, credential).then(() => {
-    const formData = store.getState().auth.updateData;
-    const newEmail = store.getState().auth.updateData.email;
-    updateEmail(auth.currentUser, newEmail).then(() => {
-      updateUserDB({ id: auth.currentUser.uid, data: formData });
+export async function changeAuthEmail(
+  email,
+  password,
+  currentUser,
+  newEmail,
+  newData
+) {
+  const credential = EmailAuthProvider.credential(email, password);
+  await reauthenticateWithCredential(currentUser, credential).then(() => {
+    updateEmail(currentUser, newEmail).then(() => {
+      updateUserDB({ id: currentUser.uid, data: newData });
       store.dispatch(toggleConfirmSignOut(true));
       store.dispatch(toggleConfirmPassword(false));
     });
