@@ -1,5 +1,5 @@
 import { onValue, ref, set } from "firebase/database";
-import { auth, db } from "./firebase";
+import { db } from "./firebase";
 import { store } from "./redux/store";
 import { setCartItems } from "./redux/cartSlice/cartSlice";
 import {
