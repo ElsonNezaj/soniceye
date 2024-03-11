@@ -215,6 +215,7 @@
 }
 
 .button {
+  width: 20%;
   border-radius: 2px;
   background-color: rgb(92, 92, 92);
   color: white;
@@ -229,6 +230,10 @@
 }
 
 .price {
-  font-size: 18px;
+  font-size: 16px;
   color: white;
+  span {
+    font-size: 22px;
+    font-weight: bold;
+  }
 }

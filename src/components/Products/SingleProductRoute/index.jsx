@@ -118,13 +118,13 @@ export default function SingleProductRoute(match) {
               >
                 <ChevronRight />
               </div>
-              <Button onClick={() => addToCart(data)} className={styles.button}>
-                Add To Cart
-              </Button>
             </div>
             <Typography className={styles.price}>
-              Price: {data.price * quantity}&euro;
+              Price: <span>{data.price * quantity}&euro;</span>
             </Typography>
+            <Button onClick={() => addToCart(data)} className={styles.button}>
+              Add To Cart
+            </Button>
           </div>
           <div
             style={{ width: "100%", height: "20px", background: "transprent" }}
