@@ -5,8 +5,10 @@
 
 .mapContainer {
   width: 80%;
-  height: 35%;
+  height: 40%;
   margin: 0 auto;
+  padding-top: 25px;
+
   @media (max-width: 950px) {
     width: 95%;
   }
@@ -83,7 +85,9 @@
 .sectionTitle {
   color: white;
   font-size: 18px;
-  text-align: center;
+  text-align: start;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 .info {

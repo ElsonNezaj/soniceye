@@ -29,6 +29,10 @@ code {
 :where(.css-dev-only-do-not-override-pr0fja).ant-steps.ant-steps-navigation
   .ant-steps-item::before {
   background-color: white !important;
+  height: 3px;
+  border-bottom: solid 3.5px transparent !important;
+  position: absolute !important;
+  bottom: 0% !important;
 }
 
 .ant-steps-item.ant-steps-item-process.ant-steps-item-custom.ant-steps-item-active
@@ -50,7 +54,7 @@ code {
 }
 .ant-steps-item.ant-steps-item-finish.ant-steps-item-custom {
   background-color: #444;
-  border-bottom: solid 3px rgba(255, 217, 0, 0.616);
+  border-bottom: solid 3.5px rgba(255, 217, 0, 0.616);
 }
 
 .ant-steps-item-container {
@@ -72,7 +76,7 @@ code {
 }
 
 .ant-steps-item.ant-steps-item-wait.ant-steps-item-custom {
-  border-bottom: solid 3px grey;
+  border-bottom: solid 3.5px grey;
 }
 
 .ant-steps-item.ant-steps-item-wait.ant-steps-item-custom span {

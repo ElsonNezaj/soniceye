@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../../redux/hooks";
 import { useEffect, useState } from "react";
 import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 import { Button, Steps, Typography } from "antd";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -71,9 +72,16 @@ export default function Checkout(match) {
       />
       <div style={{ height: "80%" }}></div>
       <div className={styles.buttonContainer}>
-        {current < items.length - 1 && <Button onClick={next}>Next</Button>}
-        {current >= items.length - 1 && <Button>Done</Button>}
-        {current > 0 && <Button onClick={prev}>Previous</Button>}
+        <div className={styles.leftSide}>
+          <Link to="/cart_review">
+            <Button className={styles.backToReview}>Back to Cart Review</Button>
+          </Link>
+        </div>
+        <div className={styles.rightSide}>
+          {current > 0 && <Button onClick={prev}>Previous</Button>}
+          {current >= items.length - 1 && <Button>Done</Button>}
+          {current < items.length - 1 && <Button onClick={next}>Next</Button>}
+        </div>
       </div>
     </div>
   );
