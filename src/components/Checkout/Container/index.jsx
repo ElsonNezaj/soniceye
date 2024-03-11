@@ -9,7 +9,7 @@ const steps = [
     title: <Typography className={styles.title}>Personal Details</Typography>,
     icon: (
       <div className={styles.icon}>
-        <span className={styles.label}>1</span>
+        <Typography className={styles.label}>1</Typography>
       </div>
     ),
     content: "Personal Info Form",
@@ -18,7 +18,7 @@ const steps = [
     title: <Typography className={styles.title}>Address Info</Typography>,
     icon: (
       <div className={styles.icon}>
-        <span className={styles.label}>2</span>
+        <Typography className={styles.label}>2</Typography>
       </div>
     ),
     address: "Address Info Form",
@@ -27,7 +27,7 @@ const steps = [
     title: <Typography className={styles.title}>Payment Info</Typography>,
     icon: (
       <div className={styles.icon}>
-        <span className={styles.label}>3</span>
+        <Typography className={styles.label}>3</Typography>
       </div>
     ),
     content: "Payment Info Form",
