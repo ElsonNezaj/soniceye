@@ -1,13 +1,56 @@
 import styles from "./styles.module.scss";
 import { useAppDispatch } from "../../../redux/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
+import { Button, Steps, Typography } from "antd";
+
+const steps = [
+  {
+    title: <Typography className={styles.title}>Personal Details</Typography>,
+    icon: (
+      <div className={styles.icon}>
+        <span className={styles.label}>1</span>
+      </div>
+    ),
+    content: "Personal Info Form",
+  },
+  {
+    title: <Typography className={styles.title}>Address Info</Typography>,
+    icon: (
+      <div className={styles.icon}>
+        <span className={styles.label}>2</span>
+      </div>
+    ),
+    address: "Address Info Form",
+  },
+  {
+    title: <Typography className={styles.title}>Payment Info</Typography>,
+    icon: (
+      <div className={styles.icon}>
+        <span className={styles.label}>3</span>
+      </div>
+    ),
+    content: "Payment Info Form",
+  },
+];
 
 export default function Checkout(match) {
   const dispatch = useAppDispatch();
-  const orderId = match.match.params.orderID;
+  const [current, setCurrent] = useState(0);
 
-  console.log(orderId);
+  const items = steps.map((item) => ({
+    key: item.title,
+    title: item.title,
+    icon: item.icon,
+  }));
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
 
   useEffect(() => {
     dispatch(toggleAppHeader(true));
@@ -18,6 +61,20 @@ export default function Checkout(match) {
   }, []);
 
   return (
-    <div className={styles.checkoutContainer}> CHECKOUT CONTAINER !!!</div>
+    <div className={styles.checkoutContainer}>
+      <Steps
+        current={current}
+        items={items}
+        size="default"
+        type="navigation"
+        className={styles.steps}
+      />
+      <div style={{ height: "80%" }}></div>
+      <div className={styles.buttonContainer}>
+        {current < items.length - 1 && <Button onClick={next}>Next</Button>}
+        {current >= items.length - 1 && <Button>Done</Button>}
+        {current > 0 && <Button onClick={prev}>Previous</Button>}
+      </div>
+    </div>
   );
 }

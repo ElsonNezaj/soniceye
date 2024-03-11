@@ -25,3 +25,60 @@ code {
 
 .ant-modal-footer {
 } */
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-steps.ant-steps-navigation
+  .ant-steps-item::before {
+  background-color: white !important;
+}
+
+.ant-steps-item.ant-steps-item-process.ant-steps-item-custom.ant-steps-item-active
+  span {
+  color: white !important;
+}
+
+.ant-steps-item.ant-steps-item-finish.ant-steps-item-custom span {
+  color: rgba(255, 217, 0, 0.616) !important;
+}
+
+.ant-steps-item.ant-steps-item-process.ant-steps-item-custom.ant-steps-item-active
+  article {
+  color: white !important;
+}
+
+.ant-steps-item.ant-steps-item-finish.ant-steps-item-custom article {
+  color: rgba(255, 217, 0, 0.616) !important;
+}
+.ant-steps-item.ant-steps-item-finish.ant-steps-item-custom {
+  background-color: #444;
+  border-bottom: solid 2px rgba(255, 217, 0, 0.616);
+}
+
+.ant-steps-item-container {
+  padding: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-steps.ant-steps-navigation
+  .ant-steps-item::after {
+  top: 50% !important;
+  left: -13px !important;
+  display: none !important;
+}
+
+.ant-steps.ant-steps-horizontal.styles_steps__\+Z32r.css-dev-only-do-not-override-pr0fja.ant-steps-default.ant-steps-label-horizontal.ant-steps-navigation {
+  gap: 0px !important;
+}
+
+.ant-steps-item.ant-steps-item-wait.ant-steps-item-custom {
+  border-bottom: solid 3px grey;
+}
+
+.ant-steps-item.ant-steps-item-wait.ant-steps-item-custom span {
+  color: grey;
+}
+
+.ant-steps-item.ant-steps-item-wait.ant-steps-item-custom article {
+  color: grey;
+}
