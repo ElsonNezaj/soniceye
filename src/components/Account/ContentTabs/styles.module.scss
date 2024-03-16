@@ -35,12 +35,12 @@
 }
 
 .selected {
-  border-bottom: solid 2px gold;
+  border-bottom: solid 2px #ffd369;
   background: linear-gradient(
     to right,
-    #22222283 0%,
+    #222831 0%,
     transparent 50%,
-    #22222283 100%
+    #222831 100%
   );
   transition: all 0.5s;
 }
