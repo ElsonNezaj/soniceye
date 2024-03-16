@@ -45,14 +45,16 @@
 .submitButton {
   width: 20%;
   border-radius: 2px;
-  background-color: #555;
+  cursor: pointer;
+  background-color: #222831;
   color: white;
-  border: solid 1px grey;
-  margin-bottom: 20px;
+  border: solid 1px #222831;
 
   &:hover,
   &:active {
-    border: solid 1px gold;
+    background-color: #ffd369;
+    color: #222831;
+    border: solid 1px #ffd369;
   }
 
   @media (max-width: 900px) {
