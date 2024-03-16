@@ -119,7 +119,7 @@
 }
 
 .singletag {
-  background-color: rgb(119, 119, 119);
+  background-color: #222831;
   padding: 5px;
   border-radius: 2px;
   @media (max-width: 850px) {
@@ -129,6 +129,7 @@
 
 .tagLabel {
   font-size: 12px;
+  color: #eee;
   @media (max-width: 850px) {
     font-size: 10px;
   }
@@ -184,13 +185,21 @@
 
 .input {
   border-radius: 2px;
-  background-color: #555;
+  background-color: #222831;
   width: 100%;
+  &:hover,
+  &:active,
+  &:focus-within,
+  &:focus {
+    outline: solid 1px #222831;
+    background-color: #ffd369;
+    color: #222831;
+  }
 }
 
 .arrow {
-  color: white;
-  background-color: #333;
+  color: #eee;
+  background-color: #222831;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,7 +210,9 @@
   outline: solid 1px transparent;
   transition: all 0.3s;
   &:hover {
-    outline: solid 1px white;
+    outline: solid 1px #222831;
+    background-color: #ffd369;
+    color: #222831;
   }
 }
 
@@ -217,17 +228,19 @@
 }
 
 .button {
-  width: 20%;
+  width: max-content;
   border-radius: 2px;
-  background-color: rgb(92, 92, 92);
-  color: white;
+  background-color: #ffd369;
+  color: #222831;
   border: solid 1px transparent;
   transition: all 0.3s;
 
   &:hover {
-    background-color: #333;
-    border: solid 1px grey !important;
-    color: white !important;
+    transform: translateY(2px);
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.4);
+    outline: solid 1px #222831 !important;
+    color: inherit !important;
+    border-color: transparent !important;
   }
 }
 

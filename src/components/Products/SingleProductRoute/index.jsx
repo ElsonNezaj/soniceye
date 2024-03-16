@@ -104,7 +104,7 @@ export default function SingleProductRoute(match) {
                   type="number"
                   onChange={(e) => {
                     if (Number(e.target.value) === 0) {
-                      setQuanitity(1);
+                      setQuanitity(null);
                     } else {
                       setQuanitity(Number(e.target.value));
                     }
@@ -120,7 +120,10 @@ export default function SingleProductRoute(match) {
               </div>
             </div>
             <Typography className={styles.price}>
-              Price: <span>{data.price * quantity}&euro;</span>
+              Price:{" "}
+              <span>
+                {quantity === null ? data.price : data.price * quantity}&euro;
+              </span>
             </Typography>
             <Button onClick={() => addToCart(data)} className={styles.button}>
               Add To Cart
