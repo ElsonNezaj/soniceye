@@ -51,11 +51,11 @@ code {
 }
 
 .ant-steps-item.ant-steps-item-finish.ant-steps-item-custom article {
-  color: rgba(255, 217, 0, 0.616) !important;
+  color: #ffd369 !important;
 }
 .ant-steps-item.ant-steps-item-finish.ant-steps-item-custom {
-  background-color: #444;
-  border-bottom: solid 3.5px rgba(255, 217, 0, 0.616);
+  background-color: #222831;
+  border-bottom: solid 3.5px #ffd369;
 }
 
 .ant-steps-item-container {
