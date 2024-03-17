@@ -1,0 +1,74 @@
+.personalInfoContainer {
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.infoForm {
+  display: flex;
+  width: 100%;
+  gap: 50px;
+}
+
+.leftSideInputs {
+  width: 50%;
+  display: grid;
+  grid-template-rows: repeat(1fr, auto);
+}
+
+.rightSideInput {
+  width: 50%;
+  display: grid;
+  grid-template-rows: repeat(1fr, auto);
+  gap: 20px;
+}
+
+.sectionTitle {
+  justify-self: center;
+  font-size: 32px;
+  color: #eee;
+  font-family: var(--main-font-family);
+}
+
+.input {
+  height: 50px;
+}
+
+.phoneInput {
+  width: 98%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  outline: 0px !important;
+
+  @media (max-width: 700px) {
+    width: 97%;
+  }
+
+  & > div {
+    margin-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  & > input {
+    border: 0px;
+    border-left: solid 1px rgb(197, 197, 197);
+    margin-left: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    &:focus,
+    &:active,
+    &:hover,
+    &:focus-visible {
+      height: 100%;
+      outline: 0px;
+    }
+  }
+}
