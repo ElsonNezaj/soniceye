@@ -5,7 +5,7 @@ import "react-phone-number-input/style.css";
 import { useState } from "react";
 import { Typography, Form, Input } from "antd";
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ updateData }) {
   const userAuth = useAppSelector((state) => state.auth.authUser);
   const [formData, setFormData] = useState({
     ...userAuth,
@@ -20,6 +20,7 @@ export default function PersonalInfo() {
 
   const handleChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
+    updateData("personalDetails", formData);
   };
 
   return (

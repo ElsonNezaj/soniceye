@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { useEffect, useState } from "react";
 import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 import { Button, Steps, Typography } from "antd";
@@ -15,7 +15,6 @@ const steps = [
         <Typography className={styles.label}>1</Typography>
       </div>
     ),
-    // content: <PersonalInfo />,
   },
 
   {
@@ -25,16 +24,25 @@ const steps = [
         <Typography className={styles.label}>3</Typography>
       </div>
     ),
-    // content: "Payment Info Form",
   },
 ];
 
 export default function Checkout(match) {
   const dispatch = useAppDispatch();
+  const userAuth = useAppSelector((state) => state.auth.authUser);
   const [current, setCurrent] = useState(0);
   const [data, setData] = useState({
     any: undefined,
-    personalDetails: undefined,
+    personalDetails: {
+      ...userAuth,
+      displayName: userAuth.displayName,
+      email: userAuth.email,
+      phoneNumber: userAuth.phoneNumber,
+      address: userAuth.address,
+      city: userAuth.city,
+      country: userAuth.country,
+      zipCode: userAuth.zipCode,
+    },
     paymentDetails: undefined,
   });
 
