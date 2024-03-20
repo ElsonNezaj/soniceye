@@ -55,4 +55,19 @@
 
 .secondRow {
   height: 30%;
+  width: 100%;
+  display: flex;
+}
+
+.colorsContainer {
+  width: 50%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.singleColor {
+  height: 30px;
+  width: 30px;
 }

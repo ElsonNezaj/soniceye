@@ -27,12 +27,12 @@ export default function Items() {
                     className={styles.singleColor}
                   />
                 ))}
-                <div className={styles.quantityContainer}>
-                  <Typography>Qnt. {item.quantity}</Typography>
-                </div>
-                <div className={styles.priceContainer}>
-                  <Typography>{item.price}&euro;</Typography>
-                </div>
+              </div>
+              <div className={styles.quantityContainer}>
+                <Typography>Qnt. {item.quantity}</Typography>
+              </div>
+              <div className={styles.priceContainer}>
+                <Typography>{item.price}&euro;</Typography>
               </div>
             </div>
           </div>
