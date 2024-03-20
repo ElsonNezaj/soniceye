@@ -1,73 +1,18 @@
 .checkoutContainer {
   width: 80%;
-  height: 90%;
-  margin: 20px auto 0px auto;
-}
-
-.steps {
-  width: 100%;
-  height: 10%;
-  gap: 10px !important;
-}
-.icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-
-.label {
-  font-size: 18px;
-}
-
-.title {
-  font-size: 18px;
-}
-
-.contentContainer {
-  height: 80%;
-}
-
-.buttonContainer {
-  width: 100%;
-  height: 10%;
+  height: 95%;
+  margin: 20px auto 20px auto;
   display: flex;
 }
 
-.leftSide {
-  width: 20%;
+.formContainer {
+  width: 70%;
+  outline: solid 1px white;
 }
 
-.backToReview {
-  min-width: 70px;
-  border-radius: 2px;
-  background-color: #666;
-  color: white;
-
-  &:hover {
-    color: gold !important;
-    border-color: gold !important;
-  }
-}
-
-.rightSide {
-  width: 80%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 5px;
-  button {
-    min-width: 70px;
-    border-radius: 2px;
-    background-color: #666;
-    color: white;
-
-    &:hover {
-      color: gold !important;
-      border-color: gold !important;
-    }
-  }
+.itemsContainer {
+  width: 30%;
+  outline: solid 1px red;
+  padding: 5px;
+  background-color: #222831;
 }
