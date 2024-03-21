@@ -6,33 +6,35 @@ export default function Items() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   return (
     <div className={styles.itemsContainer}>
-      <Typography className={styles.title}>Your Items</Typography>
+      <Typography className={styles.title}>Order Summary</Typography>
       <div className={styles.items}>
         {cartItems.map((item) => (
           <div className={styles.singleItem}>
-            <div className={styles.firstRow}>
-              <div className={styles.imageContainer} />
-              <div className={styles.nameContainer}>
-                <Typography className={styles.name}>{item.name}</Typography>
-                <Typography className={styles.code}>
-                  #{item.productCode}
+            <div className={styles.imageContainer} />
+            <div className={styles.item}>
+              <div className={styles.firstRow}>
+                <Typography className={styles.itemName}>
+                  {item.name}{" "}
+                  <span className={styles.quantity}>x{item.quantity}</span>
+                </Typography>
+                <Typography className={styles.price}>
+                  {item.price}&euro;
                 </Typography>
               </div>
-            </div>
-            <div className={styles.secondRow}>
-              <div className={styles.colorsContainer}>
-                {item.colors.map((color) => (
-                  <div
-                    style={{ background: color }}
-                    className={styles.singleColor}
-                  />
-                ))}
+              <div className={styles.firstRow}>
+                <Typography className={styles.label}>Pick a color :</Typography>
+                <div className={styles.colors}>
+                  {item.colors.map((color) => (
+                    <div
+                      style={{ background: color }}
+                      className={styles.singleColor}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className={styles.quantityContainer}>
-                <Typography>Qnt. {item.quantity}</Typography>
-              </div>
-              <div className={styles.priceContainer}>
-                <Typography>{item.price}&euro;</Typography>
+              <div className={styles.firstRow}>
+                <div />
+                <Typography className={styles.removeButton}>Remove</Typography>
               </div>
             </div>
           </div>
