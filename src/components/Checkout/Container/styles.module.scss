@@ -5,16 +5,27 @@
   display: flex;
   gap: 10px;
   overflow-y: hidden;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    width: 95%;
+    height: 100%;
+  }
 }
 
 .formContainer {
   width: 60%;
   border: solid 1px white;
   overflow-y: auto;
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 }
 
 .itemsContainer {
   width: 40%;
   border: solid 1px #ccc;
   border-radius: 2px;
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 }
