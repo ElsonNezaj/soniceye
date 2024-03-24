@@ -109,9 +109,11 @@ export default function Items() {
           <Typography className={styles.total}>{total}.00 &euro;</Typography>
         </div>
 
-        <div className={styles.firstRow}>
+        <div className={`${styles.firstRow} ${styles.lastRow}`}>
           <div />
-          <Button className={styles.completeButton}>Complete Order</Button>
+          <Button type="primary" className={styles.completeButton}>
+            Complete Order
+          </Button>
         </div>
       </div>
     </div>
