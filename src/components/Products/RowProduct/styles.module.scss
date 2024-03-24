@@ -86,15 +86,19 @@
 
 .previewButton {
   background-color: #ffd269a6;
-  width: 60%;
+  border: none;
+  border-radius: 2px;
+  color: white;
   display: flex;
   justify-content: center;
-  padding: 5px;
-  color: white;
-  transition: all 0.3s;
+  align-items: center;
+
   &:hover {
-    background-color: #ffd369 !important;
-    color: black !important;
+    background-color: #ffd369;
+    color: #222831 !important;
+  }
+  @media (max-width: 700px) {
+    font-size: 13px;
   }
 }
 

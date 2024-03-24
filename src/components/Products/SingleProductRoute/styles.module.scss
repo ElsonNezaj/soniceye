@@ -230,17 +230,25 @@
 .button {
   width: max-content;
   border-radius: 2px;
-  background-color: #ffd369;
-  color: #222831;
   border: solid 1px transparent;
   transition: all 0.3s;
+  background-color: #ffd269a6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
+    background-color: #ffd369;
+    color: #222831 !important;
     transform: translateY(2px);
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.4);
     outline: solid 1px #222831 !important;
     color: inherit !important;
     border-color: transparent !important;
+  }
+  @media (max-width: 700px) {
+    font-size: 13px;
   }
 }
 
