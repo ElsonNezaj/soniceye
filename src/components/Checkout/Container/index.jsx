@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../../redux/hooks";
 import { useEffect } from "react";
 import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 import Items from "../Items";
+import SubmitForm from "../SubmitForm";
 
 export default function Checkout(match) {
   const dispatch = useAppDispatch();
@@ -16,7 +17,9 @@ export default function Checkout(match) {
 
   return (
     <div className={styles.checkoutContainer}>
-      <div className={styles.formContainer}>CHECKOUT CONTAINER</div>
+      <div className={styles.formContainer}>
+        <SubmitForm />
+      </div>
       <div className={styles.itemsContainer}>
         <Items />
       </div>

@@ -1,0 +1,55 @@
+.formContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.title {
+  font-size: 32px;
+  font-family: var(--main-font-family);
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-family: var(--main-font-family);
+  font-weight: lighter;
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
+
+.form {
+  width: 80%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &:not(&:first-child) {
+    border-top: solid 1px #eee;
+    padding-top: 5px;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  width: max-content;
+  background: #ddd;
+  font-size: 12px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 10px;
+}
