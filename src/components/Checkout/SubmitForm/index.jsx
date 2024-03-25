@@ -9,15 +9,23 @@ export default function SubmitForm() {
       <Typography className={styles.subTitle}>
         Complete checkout by confirming your details below
       </Typography>
+      <Typography className={styles.info}>
+        <InfoIcon /> For security reasons, we require you to re-enter your
+        personal and account details
+      </Typography>
       <Form className={styles.form}>
         <div className={styles.section}>
-          <Typography>Personal Details</Typography>
+          <Typography className={styles.sectionTitle}>
+            Personal Details
+          </Typography>
           <Input placeholder="Full Name" className={styles.input} />
           <Input placeholder="E-mail" className={styles.input} />
           <Input placeholder="Phone Number" className={styles.input} />
         </div>
         <div className={styles.section}>
-          <Typography>Address Information</Typography>
+          <Typography className={styles.sectionTitle}>
+            Address Information
+          </Typography>
           <Input placeholder="Address" className={styles.input} />
           <Input placeholder="City" className={styles.input} />
           <div className={styles.row}>
@@ -26,8 +34,12 @@ export default function SubmitForm() {
           </div>
         </div>
         <div className={styles.section}>
-          <Typography>Payment Details</Typography>
-          <Typography>(Currently we only support payments by card)</Typography>
+          <Typography className={styles.sectionTitle}>
+            Payment Details
+          </Typography>
+          <Typography className={styles.message}>
+            (Currently we only support payments by card)
+          </Typography>
           <Input placeholder="Name on the card" className={styles.input} />
           <Input placeholder="Card Number" className={styles.input} />
           <div className={styles.row}>
@@ -36,10 +48,6 @@ export default function SubmitForm() {
           </div>
         </div>
       </Form>
-      <Typography className={styles.info}>
-        <InfoIcon /> For security reasons, we require you to re-enter your
-        personal and account details, even if your details match account details
-      </Typography>
     </div>
   );
 }

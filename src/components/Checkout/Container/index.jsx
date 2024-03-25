@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./styles.module.scss";
 import { useAppDispatch } from "../../../redux/hooks";
 import { useEffect } from "react";

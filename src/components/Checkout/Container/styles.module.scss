@@ -1,14 +1,18 @@
 .checkoutContainer {
   width: 80%;
-  height: 91%;
-  margin: 30px auto 0px auto;
+  height: 96%;
+  margin: 20px auto 0px auto;
   display: flex;
   gap: 10px;
   overflow-y: hidden;
   @media (max-width: 1200px) {
     flex-direction: column;
     width: 95%;
-    height: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 700px) {
+    width: 98%;
   }
 }
 
@@ -17,7 +21,9 @@
   border: solid 1px white;
   overflow-y: auto;
   @media (max-width: 1200px) {
-    width: 100%;
+    width: 99%;
+    height: auto;
+    margin: 0 auto;
   }
 }
 
@@ -26,6 +32,9 @@
   border: solid 1px #ccc;
   border-radius: 2px;
   @media (max-width: 1200px) {
-    width: 100%;
+    width: 99%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
 }
