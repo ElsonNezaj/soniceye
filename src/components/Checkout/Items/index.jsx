@@ -59,6 +59,7 @@ export default function Items({ personalData }) {
           [uuid]: {
             total,
             cartItems,
+            personalData,
           },
         });
       });
@@ -142,7 +143,11 @@ export default function Items({ personalData }) {
 
         <div className={`${styles.firstRow} ${styles.lastRow}`}>
           <div />
-          <Button type="primary" className={styles.completeButton}>
+          <Button
+            type="primary"
+            onClick={orderToDB}
+            className={styles.completeButton}
+          >
             Complete Order
           </Button>
         </div>
