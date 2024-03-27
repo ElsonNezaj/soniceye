@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { Form, Input, Typography } from "antd";
 import InfoIcon from "@mui/icons-material/Info";
 
-export default function SubmitForm() {
+export default function SubmitForm({ handleChange }) {
   return (
     <div className={styles.formContainer}>
       <Typography className={styles.title}>Checkout</Typography>
@@ -18,19 +18,54 @@ export default function SubmitForm() {
           <Typography className={styles.sectionTitle}>
             Personal Details
           </Typography>
-          <Input placeholder="Full Name" className={styles.input} />
-          <Input placeholder="E-mail" className={styles.input} />
-          <Input placeholder="Phone Number" className={styles.input} />
+          <Input
+            placeholder="Full Name"
+            name="fullName"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
+          <Input
+            placeholder="E-mail"
+            name="email"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
+          <Input
+            placeholder="Phone Number"
+            name="phoneNumber"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
         </div>
         <div className={styles.section}>
           <Typography className={styles.sectionTitle}>
             Address Information
           </Typography>
-          <Input placeholder="Address" className={styles.input} />
-          <Input placeholder="City" className={styles.input} />
+          <Input
+            placeholder="Address"
+            name="address"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
+          <Input
+            placeholder="City"
+            name="city"
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
           <div className={styles.row}>
-            <Input placeholder="Country" className={styles.input} />
-            <Input placeholder="Zip Code" className={styles.input} />
+            <Input
+              placeholder="Country"
+              name="country "
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              className={styles.input}
+            />
+            <Input
+              placeholder="Zip Code"
+              name="zipCode"
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              className={styles.input}
+            />
           </div>
         </div>
         <div className={styles.section}>

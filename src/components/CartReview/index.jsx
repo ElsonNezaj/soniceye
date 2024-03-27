@@ -11,8 +11,6 @@ import {
   updateItemQuantity,
 } from "../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
-// import { onValue, ref, set } from "firebase/database";
-// import { db } from "../../firebase";
 import { v4 } from "uuid";
 
 export default function CartReview() {
@@ -32,20 +30,6 @@ export default function CartReview() {
     });
     return total;
   };
-
-  // const orderToDB = () => {
-  //   // dispatch(toggleAppHeader(true));
-  //   // onValue(ref(db, `/orders/${userId}`), (snapshot) => {
-  //   //   const data = snapshot.val();
-  //   //   set(ref(db, `orders/${userId}`), {
-  //   //     ...data,
-  //   //     [uuid]: {
-  //   //       total,
-  //   //       cartItems,
-  //   //     },
-  //   //   });
-  //   // });
-  // };
 
   useEffect(() => {
     setTotal(findTotal());

@@ -8,13 +8,20 @@ import {
   updateItemQuantity,
 } from "../../../redux/cartSlice/cartSlice";
 
+import { onValue, ref, set } from "firebase/database";
+import { db } from "../../../firebase";
+
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { v4 } from "uuid";
 
-export default function Items() {
+export default function Items({ personalData }) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const userId = useAppSelector((state) => state.auth.authUser?.uid);
   const [total, setTotal] = useState(0);
+
+  const uuid = v4();
 
   const findTotal = () => {
     let total = 0;
@@ -32,6 +39,30 @@ export default function Items() {
 
   const handleItemRemove = (name) => {
     dispatch(removeItemFromCart(name));
+  };
+
+  const isPersonalDataEmpty = () => {
+    const keys = Object.keys(personalData);
+    const objectHasEmpty = keys.find((el) => personalData[el].length === 0);
+    return Boolean(objectHasEmpty);
+  };
+
+  const orderToDB = () => {
+    // dispatch(toggleAppHeader(true));
+    if (isPersonalDataEmpty()) {
+      return;
+    } else {
+      onValue(ref(db, `/orders/${userId}`), (snapshot) => {
+        const data = snapshot.val();
+        set(ref(db, `orders/${userId}`), {
+          ...data,
+          [uuid]: {
+            total,
+            cartItems,
+          },
+        });
+      });
+    }
   };
 
   useEffect(() => {
