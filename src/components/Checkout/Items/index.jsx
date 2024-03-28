@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import styles from "./styles.module.scss";
-import { Typography, Button } from "antd";
+import { Typography, Button, message } from "antd";
 import {
   removeItemFromCart,
   updateItemQuantity,
@@ -14,12 +14,14 @@ import { db } from "../../../firebase";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { v4 } from "uuid";
+import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 
-export default function Items({ personalData }) {
+export default function Items({ personalData, paymentData }) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const userId = useAppSelector((state) => state.auth.authUser?.uid);
   const [total, setTotal] = useState(0);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const uuid = v4();
 
@@ -41,17 +43,29 @@ export default function Items({ personalData }) {
     dispatch(removeItemFromCart(name));
   };
 
-  const isPersonalDataEmpty = () => {
+  const handleError = () => {
+    messageApi.error("Please fill the checkout form!");
+  };
+
+  const areDataEmpty = () => {
     const keys = Object.keys(personalData);
     const objectHasEmpty = keys.find((el) => personalData[el].length === 0);
-    return Boolean(objectHasEmpty);
+
+    const paymentKeys = Object.keys(paymentData);
+    const paymentsHasEmpty = paymentKeys.find(
+      (el) => paymentData[el].length === 0
+    );
+
+    if (!paymentsHasEmpty && !objectHasEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const orderToDB = () => {
     // dispatch(toggleAppHeader(true));
-    if (isPersonalDataEmpty()) {
-      return;
-    } else {
+    if (areDataEmpty()) {
       onValue(ref(db, `/orders/${userId}`), (snapshot) => {
         const data = snapshot.val();
         set(ref(db, `orders/${userId}`), {
@@ -63,6 +77,8 @@ export default function Items({ personalData }) {
           },
         });
       });
+    } else {
+      handleError();
     }
   };
 
@@ -72,6 +88,7 @@ export default function Items({ personalData }) {
 
   return (
     <div className={styles.itemsContainer}>
+      {contextHolder}
       <Typography className={styles.title}>Order Summary</Typography>
       <div className={styles.items}>
         {cartItems.map((item) => (
@@ -145,7 +162,7 @@ export default function Items({ personalData }) {
           <div />
           <Button
             type="primary"
-            onClick={orderToDB}
+            onClick={() => orderToDB()}
             className={styles.completeButton}
           >
             Complete Order

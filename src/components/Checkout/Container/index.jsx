@@ -20,8 +20,19 @@ export default function Checkout(match) {
     zipCode: "",
   });
 
+  const [paymentData, setPaymentData] = useState({
+    nameOnCard: "",
+    number: "",
+    date: "",
+    security: "",
+  });
+
   const handleChange = (name, value) => {
     setData({ ...data, [name]: value });
+  };
+
+  const handlePaymentChange = (name, value) => {
+    setPaymentData({ ...paymentData, [name]: value });
   };
 
   useEffect(() => {
@@ -41,10 +52,15 @@ export default function Checkout(match) {
   return (
     <div className={styles.checkoutContainer}>
       <div className={styles.formContainer}>
-        <SubmitForm handleChange={handleChange} />
+        <SubmitForm
+          handleChange={handleChange}
+          handlePaymentChange={handlePaymentChange}
+          data={data}
+          paymentData={paymentData}
+        />
       </div>
       <div className={styles.itemsContainer}>
-        <Items personalData={data} />
+        <Items personalData={data} paymentData={paymentData} />
       </div>
     </div>
   );

@@ -2,7 +2,12 @@ import styles from "./styles.module.scss";
 import { Form, Input, Typography } from "antd";
 import InfoIcon from "@mui/icons-material/Info";
 
-export default function SubmitForm({ handleChange }) {
+export default function SubmitForm({
+  handleChange,
+  handlePaymentChange,
+  data,
+  paymentData,
+}) {
   return (
     <div className={styles.formContainer}>
       <Typography className={styles.title}>Checkout</Typography>
@@ -21,18 +26,21 @@ export default function SubmitForm({ handleChange }) {
           <Input
             placeholder="Full Name"
             name="fullName"
+            value={data.fullName}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
             className={styles.input}
           />
           <Input
             placeholder="E-mail"
             name="email"
+            value={data.email}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
             className={styles.input}
           />
           <Input
             placeholder="Phone Number"
             name="phoneNumber"
+            value={data.phoneNumber}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
             className={styles.input}
           />
@@ -44,25 +52,29 @@ export default function SubmitForm({ handleChange }) {
           <Input
             placeholder="Address"
             name="address"
+            value={data.address}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
             className={styles.input}
           />
           <Input
             placeholder="City"
             name="city"
+            value={data.city}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
             className={styles.input}
           />
           <div className={styles.row}>
             <Input
               placeholder="Country"
-              name="country "
+              name="country"
+              value={data.country}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
               className={styles.input}
             />
             <Input
               placeholder="Zip Code"
               name="zipCode"
+              value={data.zipCode}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
               className={styles.input}
             />
@@ -75,11 +87,39 @@ export default function SubmitForm({ handleChange }) {
           <Typography className={styles.message}>
             (Currently we only support payments by card)
           </Typography>
-          <Input placeholder="Name on the card" className={styles.input} />
-          <Input placeholder="Card Number" className={styles.input} />
+          <Input
+            placeholder="Name on the card"
+            name="nameOnCard"
+            value={paymentData.nameOnCard}
+            onChange={(e) => handlePaymentChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
+          <Input
+            placeholder="Card Number"
+            name="number"
+            value={paymentData.number}
+            onChange={(e) => handlePaymentChange(e.target.name, e.target.value)}
+            className={styles.input}
+          />
           <div className={styles.row}>
-            <Input placeholder="Exp. Date" className={styles.input} />
-            <Input placeholder="CVV" className={styles.input} />
+            <Input
+              placeholder="Exp. Date"
+              name="date"
+              value={paymentData.date}
+              onChange={(e) =>
+                handlePaymentChange(e.target.name, e.target.value)
+              }
+              className={styles.input}
+            />
+            <Input
+              placeholder="CVV"
+              name="security"
+              value={paymentData.security}
+              onChange={(e) =>
+                handlePaymentChange(e.target.name, e.target.value)
+              }
+              className={styles.input}
+            />
           </div>
         </div>
       </Form>
