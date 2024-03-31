@@ -13,17 +13,13 @@ import { db } from "../../../firebase";
 
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { v4 } from "uuid";
-import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 
-export default function Items({ personalData, paymentData }) {
+export default function Items({ personalData, paymentData, uuid }) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const userId = useAppSelector((state) => state.auth.authUser?.uid);
   const [total, setTotal] = useState(0);
   const [messageApi, contextHolder] = message.useMessage();
-
-  const uuid = v4();
 
   const findTotal = () => {
     let total = 0;

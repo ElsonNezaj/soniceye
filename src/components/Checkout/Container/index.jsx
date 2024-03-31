@@ -9,6 +9,7 @@ import SubmitForm from "../SubmitForm";
 export default function Checkout(match) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const uuid = match.match.params.orderID;
 
   const [data, setData] = useState({
     fullName: "",
@@ -60,7 +61,7 @@ export default function Checkout(match) {
         />
       </div>
       <div className={styles.itemsContainer}>
-        <Items personalData={data} paymentData={paymentData} />
+        <Items personalData={data} paymentData={paymentData} uuid={uuid} />
       </div>
     </div>
   );
