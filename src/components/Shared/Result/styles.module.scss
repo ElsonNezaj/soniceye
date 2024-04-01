@@ -4,6 +4,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1250px) {
+    position: fixed;
+    top: 10%;
+    left: 0%;
+    z-index: 2;
+    height: 500px;
+  }
+
+  @media (max-width: 500px) {
+    & > div {
+      padding: 0px !important;
+    }
+  }
 }
 
 .title {
