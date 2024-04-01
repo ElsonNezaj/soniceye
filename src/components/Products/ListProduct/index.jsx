@@ -5,11 +5,15 @@ import { Typography, Button } from "antd";
 import { useAppDispatch } from "../../../redux/hooks";
 import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
+import { toggleModelViewer } from "../../../redux/appSlice/appSlice";
 
 export default function ListProduct({ product }) {
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(saveItemToCart(product));
+  };
+  const handlePreview = () => {
+    dispatch(toggleModelViewer(true));
   };
   return (
     <div className={styles.listProductContainer}>
@@ -47,7 +51,12 @@ export default function ListProduct({ product }) {
         </Link>
         <div className={styles.footerContainer}>
           <div className={styles.previewContainer}>
-            <Button className={styles.previewButton}>3D Preview</Button>
+            <Button
+              onClick={() => handlePreview()}
+              className={styles.previewButton}
+            >
+              3D Preview
+            </Button>
           </div>
           <div className={styles.addToCartContainer}>
             <Button onClick={handleClick} className={styles.previewButton}>

@@ -11,6 +11,7 @@ import { db } from "./firebase";
 import { signOutFailed } from "./redux/authSlice/authslice";
 import ConfirmPassword from "./components/Shared/ConfirmPassword";
 import LogOutModal from "./components/Shared/LogOutModal";
+import ModelViewer from "./components/Shared/ModelViewer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -47,6 +48,7 @@ function App() {
       <Content />
       <ConfirmPassword />
       <LogOutModal />
+      <ModelViewer />
     </div>
   );
 }

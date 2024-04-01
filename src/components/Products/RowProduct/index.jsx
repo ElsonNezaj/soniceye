@@ -4,12 +4,16 @@ import { Typography, Button } from "antd";
 import { useAppDispatch } from "../../../redux/hooks";
 import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
+import { toggleModelViewer } from "../../../redux/appSlice/appSlice";
 
 export default function RowProduct({ product }) {
   const dispatch = useAppDispatch();
   const [isAdditionalInfo, setIsAdditionalInfo] = useState(false);
   const handleClick = () => {
     dispatch(saveItemToCart(product));
+  };
+  const handlePreview = () => {
+    dispatch(toggleModelViewer(true));
   };
   return (
     <div className={styles.rowProductContainer}>
@@ -63,7 +67,12 @@ export default function RowProduct({ product }) {
               ))}
             </div>
             <div className={styles.previewContainer}>
-              <div className={styles.previewButton}>Preview Model</div>
+              <div
+                onClick={() => handlePreview()}
+                className={styles.previewButton}
+              >
+                Preview Model
+              </div>
             </div>
           </div>
         )}

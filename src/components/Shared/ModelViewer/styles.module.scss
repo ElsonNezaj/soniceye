@@ -1,0 +1,39 @@
+.modelPaper {
+  width: 70%;
+  height: 80%;
+  background-color: #222831 !important;
+
+  @media (max-width: 500px) {
+    width: 100% !important;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px grey;
+}
+
+.close {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  svg {
+    color: white !important;
+  }
+}
+
+.toolTip {
+  width: 100px;
+  z-index: 2 !important;
+}
+
+.quickMessage {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  font-size: 16px;
+  color: grey !important;
+}
