@@ -5,10 +5,19 @@ import { useEffect, useState } from "react";
 import { toggleAppHeader } from "../../../redux/appSlice/appSlice";
 import Items from "../Items";
 import SubmitForm from "../SubmitForm";
+import ResultContainer from "../../Shared/Result";
+
+import InfoIcon from "@mui/icons-material/Info";
+import Typography from "antd/lib/typography";
+import Button from "antd/lib/button";
+import { Link } from "react-router-dom";
 
 export default function Checkout(match) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const isResultContainer = useAppSelector(
+    (state) => state.app.isResultContainer
+  );
   const uuid = match.match.params.orderID;
 
   const [data, setData] = useState({
@@ -44,25 +53,46 @@ export default function Checkout(match) {
     };
   }, []);
 
-  useEffect(() => {
-    if (cartItems.length === 0) {
-      window.location.href = "/home";
-    }
-  }, [cartItems]);
-
   return (
     <div className={styles.checkoutContainer}>
-      <div className={styles.formContainer}>
-        <SubmitForm
-          handleChange={handleChange}
-          handlePaymentChange={handlePaymentChange}
-          data={data}
-          paymentData={paymentData}
-        />
-      </div>
-      <div className={styles.itemsContainer}>
-        <Items personalData={data} paymentData={paymentData} uuid={uuid} />
-      </div>
+      {isResultContainer ? (
+        <ResultContainer uuid={uuid} />
+      ) : (
+        <>
+          {cartItems.length < 1 && (
+            <div className={styles.noItemsWatermark}>
+              <InfoIcon />
+              <Typography className={styles.message}>
+                You need to have at least 1 cart item to continue to checkout.
+              </Typography>
+              <Link to="/products">
+                <Button type="primary" className={styles.backButton}>
+                  Back to Products
+                </Button>
+              </Link>
+            </div>
+          )}
+          <div
+            className={`${styles.formContainer} ${
+              cartItems.length < 1 && styles.blur
+            }`}
+          >
+            <SubmitForm
+              handleChange={handleChange}
+              handlePaymentChange={handlePaymentChange}
+              data={data}
+              paymentData={paymentData}
+            />
+          </div>
+          <div
+            className={`${styles.itemsContainer} ${
+              cartItems.length < 1 && styles.blur
+            }`}
+          >
+            <Items personalData={data} paymentData={paymentData} uuid={uuid} />
+          </div>
+        </>
+      )}
     </div>
   );
 }

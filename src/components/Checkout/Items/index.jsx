@@ -13,6 +13,7 @@ import { db } from "../../../firebase";
 
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { toggleResultContainer } from "../../../redux/appSlice/appSlice";
 
 export default function Items({ personalData, paymentData, uuid }) {
   const dispatch = useAppDispatch();
@@ -73,6 +74,7 @@ export default function Items({ personalData, paymentData, uuid }) {
           },
         });
       });
+      dispatch(toggleResultContainer(true));
     } else {
       handleError();
     }

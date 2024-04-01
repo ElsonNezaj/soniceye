@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   disableHeader: false,
+  isResultContainer: false,
 };
 export const appSlice = createSlice({
   initialState,
@@ -10,7 +11,10 @@ export const appSlice = createSlice({
     toggleAppHeader: (state, action) => {
       state.disableHeader = action.payload;
     },
+    toggleResultContainer: (state, action) => {
+      state.isResultContainer = action.payload;
+    },
   },
 });
-export const { toggleAppHeader } = appSlice.actions;
+export const { toggleAppHeader, toggleResultContainer } = appSlice.actions;
 export default appSlice.reducer;
