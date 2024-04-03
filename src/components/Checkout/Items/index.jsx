@@ -15,6 +15,8 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { toggleResultContainer } from "../../../redux/appSlice/appSlice";
 
+import Image from "../../../assets/images/glasses_image.png";
+
 export default function Items({ personalData, paymentData, uuid }) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -91,7 +93,9 @@ export default function Items({ personalData, paymentData, uuid }) {
       <div className={styles.items}>
         {cartItems.map((item) => (
           <div className={styles.singleItem}>
-            <div className={styles.imageContainer} />
+            <div className={styles.imageContainer}>
+              <img src={Image} alt="glasses" className={styles.image} />
+            </div>
             <div className={styles.item}>
               <div className={styles.firstRow}>
                 <Typography className={styles.itemName}>
