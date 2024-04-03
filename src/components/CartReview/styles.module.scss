@@ -49,6 +49,9 @@
 .modelViewer {
   width: 20%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 500px) {
     display: none;
   }
@@ -248,4 +251,8 @@
   &:hover {
     color: white !important;
   }
+}
+
+.image {
+  width: 70%;
 }

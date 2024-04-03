@@ -13,6 +13,8 @@ import {
 import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 
+import Image from "../../assets/images/glasses_image.png";
+
 export default function CartReview() {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -49,7 +51,9 @@ export default function CartReview() {
           <div className={styles.items}>
             {cartItems.map((item) => (
               <div key={item.productCode} className={styles.singleItem}>
-                <div className={styles.modelViewer}></div>
+                <div className={styles.modelViewer}>
+                  <img src={Image} alt="glasses" className={styles.image} />
+                </div>
                 <div className={styles.itemLabel}>
                   <Typography className={styles.itemName}>
                     {item.name}
