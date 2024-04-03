@@ -4,6 +4,7 @@ import { Typography, Button } from "antd";
 import { useAppDispatch } from "../../../redux/hooks";
 import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
+import Image from "../../../assets/images/glasses_image.png";
 import { toggleModelViewer } from "../../../redux/appSlice/appSlice";
 
 export default function RowProduct({ product }) {
@@ -21,7 +22,9 @@ export default function RowProduct({ product }) {
         to={`/products/${product.productCode}/${product.name}`}
         style={{ textDecoration: "none" }}
       >
-        <div className={styles.modelView}></div>
+        <div className={styles.modelView}>
+          <img src={Image} alt="glassesImage" className={styles.glassesImage} />
+        </div>
       </Link>
 
       <div className={styles.productInfo}>

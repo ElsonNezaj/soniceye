@@ -10,6 +10,11 @@
 .modelView {
   background-color: rgba(255, 255, 255, 0.1);
   height: 43%;
+  @media (max-width: 650px) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
 }
 
 .productInfo {
@@ -135,5 +140,17 @@
   &:hover {
     background-color: #ffd369 !important;
     color: black !important;
+  }
+}
+
+.glassesImage {
+  width: 100%;
+  transform: translateY(-15%);
+  @media (max-width: 800px) {
+    transform: translateY(-5%);
+  }
+  @media (max-width: 650px) {
+    width: 60%;
+    height: 120%;
   }
 }
