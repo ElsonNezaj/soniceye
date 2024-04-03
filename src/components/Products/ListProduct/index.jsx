@@ -7,6 +7,8 @@ import { saveItemToCart } from "../../../redux/cartSlice/cartSlice";
 import { Link } from "react-router-dom";
 import { toggleModelViewer } from "../../../redux/appSlice/appSlice";
 
+import Image from "../../../assets/images/glasses_image.png";
+
 export default function ListProduct({ product }) {
   const dispatch = useAppDispatch();
   const handleClick = () => {
@@ -21,7 +23,9 @@ export default function ListProduct({ product }) {
         <Link
           to={`/products/${product.productCode}/${product.name}`}
           style={{ textDecoration: "none" }}
-        ></Link>
+        >
+          <img src={Image} alt="glasses" className={styles.image} />
+        </Link>
       </div>
       <div className={styles.productDescription}>
         <Link
