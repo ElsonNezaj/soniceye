@@ -10,11 +10,12 @@
   letter-spacing: 3px;
   word-spacing: 5px;
   border-bottom: solid 1px grey;
+  height: 15%;
 }
 
 .itemsContainer {
   background-color: #222831;
-  height: 80%;
+  height: 85%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

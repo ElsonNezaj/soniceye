@@ -11,7 +11,18 @@ export default function CartItems() {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   return (
     <div className={styles.cartItemsContainer}>
-      <Typography className={styles.title}>Your Cart</Typography>
+      <div className={styles.cartItemsHeader}>
+        <Typography className={styles.title}>Your Cart</Typography>
+        {cartItems.length > 0 && (
+          <div className={styles.checkoutContainer}>
+            <Link to="/cart_review">
+              <Button type="primary" className={styles.proceedButton}>
+                Proceed To Checkout
+              </Button>
+            </Link>
+          </div>
+        )}
+      </div>
       <div className={styles.itemsContainer}>
         {cartItems.length > 0 ? (
           cartItems.map((item) => {
@@ -68,15 +79,6 @@ export default function CartItems() {
           </div>
         )}
       </div>
-      {cartItems.length > 0 && (
-        <div className={styles.checkoutContainer}>
-          <Link to="/cart_review">
-            <Button type="primary" className={styles.proceedButton}>
-              Proceed To Checkout
-            </Button>
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
