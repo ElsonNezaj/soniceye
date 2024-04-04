@@ -4,6 +4,9 @@ const initialState = {
   disableHeader: false,
   isResultContainer: false,
   isModelViewOpen: false,
+  isOrderDialogOpen: false,
+  selectedOrder: undefined,
+  selectedOrderKey: undefined,
 };
 export const appSlice = createSlice({
   initialState,
@@ -18,8 +21,23 @@ export const appSlice = createSlice({
     toggleModelViewer: (state, action) => {
       state.isModelViewOpen = action.payload;
     },
+    setSelectedOrder: (state, action) => {
+      state.selectedOrder = action.payload;
+    },
+    setSelectedOrderKey: (state, action) => {
+      state.selectedOrderKey = action.payload;
+    },
+    toggleOrderDialog: (state, action) => {
+      state.isOrderDialogOpen = action.payload;
+    },
   },
 });
-export const { toggleAppHeader, toggleResultContainer, toggleModelViewer } =
-  appSlice.actions;
+export const {
+  toggleAppHeader,
+  toggleResultContainer,
+  toggleModelViewer,
+  setSelectedOrder,
+  setSelectedOrderKey,
+  toggleOrderDialog,
+} = appSlice.actions;
 export default appSlice.reducer;

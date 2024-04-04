@@ -9,7 +9,6 @@
   font-family: var(--main-font-family);
   letter-spacing: 3px;
   word-spacing: 5px;
-  border-bottom: solid 1px grey;
   height: 15%;
 }
 
@@ -22,7 +21,14 @@
 }
 
 .singleOrderContainer {
-  width: 100%;
+  width: calc(100% - 2px);
+  border: solid 1px transparent;
+
+  &:hover {
+    background-color: #393e46;
+    border: solid 1px #ffd369;
+    cursor: pointer;
+  }
 }
 
 .orderCode {

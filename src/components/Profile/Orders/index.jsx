@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { Typography } from "antd";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { getUserOrders } from "../../../firebaseUtils";
+import {
+  setSelectedOrder,
+  setSelectedOrderKey,
+  toggleOrderDialog,
+} from "../../../redux/appSlice/appSlice";
 
 export default function Orders() {
+  const dispatch = useAppDispatch();
   const uuid = useAppSelector((state) => state.auth.authUser.uid);
   const [orders, setOrders] = useState();
   const ordersToMap = orders && Object.keys(orders);
+
+  const handleOrderClick = (orderId) => {
+    const order = orders[orderId];
+    dispatch(setSelectedOrderKey(orderId));
+    dispatch(setSelectedOrder(order));
+    dispatch(toggleOrderDialog(true));
+  };
 
   useEffect(() => {
     uuid && getUserOrders(uuid, setOrders);
@@ -21,7 +34,11 @@ export default function Orders() {
           ordersToMap.map((key) => {
             const singleOrder = orders[key];
             return (
-              <div key={key} className={styles.singleOrderContainer}>
+              <div
+                key={key}
+                onClick={() => handleOrderClick(key)}
+                className={styles.singleOrderContainer}
+              >
                 <Typography className={styles.orderCode}>
                   Order Number: <span>#{key.slice(0, 8)}</span>
                 </Typography>
