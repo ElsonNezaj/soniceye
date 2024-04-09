@@ -1,0 +1,21 @@
+.detailsContainer {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.detailsInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 16px;
+  color: #ccc;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  span {
+    color: white;
+    font-weight: bold;
+  }
+}

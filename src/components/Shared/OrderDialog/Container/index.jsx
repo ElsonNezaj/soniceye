@@ -37,6 +37,7 @@ export default function OrderDialog() {
       </DialogTitle>
       <DialogContent className={styles.contentContainer}>
         <div className={styles.details}>
+          <Typography className={styles.sectionTitle}>Order Details</Typography>
           <OrderDetails details={order.personalData} />
         </div>
         <div className={styles.items}>
