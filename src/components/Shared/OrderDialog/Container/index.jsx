@@ -38,7 +38,10 @@ export default function OrderDialog() {
       <DialogContent className={styles.contentContainer}>
         <div className={styles.details}>
           <Typography className={styles.sectionTitle}>Order Details</Typography>
-          <OrderDetails details={order.personalData} />
+          <OrderDetails
+            details={order?.personalData}
+            timestamp={order.timestamp}
+          />
         </div>
         <div className={styles.items}>
           <Typography className={styles.sectionTitle}>Order Items</Typography>

@@ -1,7 +1,12 @@
 import styles from "./styles.module.scss";
 import { Typography } from "antd";
 
-export default function OrderDetails({ details }) {
+export default function OrderDetails({ details, timestamp }) {
+  const date = new Date(timestamp).toLocaleDateString();
+
+  const time =
+    new Date(timestamp).getHours() + ":" + new Date(timestamp).getMinutes();
+
   return (
     <div className={styles.detailsContainer}>
       {details ? (
@@ -26,6 +31,12 @@ export default function OrderDetails({ details }) {
           </Typography>
           <Typography className={styles.label}>
             Zip Code : <span>{details.zipCode}</span>
+          </Typography>
+          <Typography className={styles.label}>
+            Created At :{" "}
+            <span>
+              {date} - {time}
+            </span>
           </Typography>
         </div>
       ) : (
