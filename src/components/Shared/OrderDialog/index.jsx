@@ -28,12 +28,20 @@ export default function OrderDialog() {
     >
       <DialogTitle className={styles.dialogHeader}>
         <Typography className={styles.title}>
-          Order Number: <span>{orderId.split("-")[0]}</span>
+          Order Number: <span>#{orderId?.split("-")[0]}</span>
         </Typography>
-        <div className={styles.closeIcon}>
+        <div onClick={handleClose} className={styles.closeIcon}>
           <CloseIcon />
         </div>
       </DialogTitle>
+      <DialogContent className={styles.contentContainer}>
+        <div className={styles.detailsContainer}>
+          <Typography className={styles.sectionTitle}>Order Details</Typography>
+        </div>
+        <div className={styles.itemsContainer}>
+          <Typography className={styles.sectionTitle}>Order Items</Typography>
+        </div>
+      </DialogContent>
     </Dialog>
   );
 }

@@ -1,9 +1,56 @@
 .dialogPaper {
-  background-color: #393e46;
+  background-color: #393e46 !important;
 }
 
 .dialogHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: solid 1px grey;
+}
+
+.title {
+  font-size: 18px;
+  font-family: var(--main-font-family);
+  color: #ccc;
+  font-weight: lighter;
+  letter-spacing: 3px;
+
+  span {
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.closeIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+}
+
+.contentContainer {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.detailsContainer {
+  width: 60%;
+  border-right: solid 1px grey;
+}
+
+.itemsContainer {
+  width: 40%;
+}
+
+.sectionTitle {
+  font-family: var(--main-font-family);
+  font-weight: lighter;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: white;
+  border-bottom: solid 1px grey;
+  width: max-content;
 }
