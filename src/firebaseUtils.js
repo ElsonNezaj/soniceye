@@ -64,6 +64,7 @@ export async function updateUserDB(payload) {
 export function getUserOrders(uid, setOrders) {
   onValue(ref(db, `/orders/${uid}`), async (snapshot) => {
     const data = await snapshot.val();
+    // const data = await orders.sort((a, b) => a > b);
     setOrders(data);
   });
 }

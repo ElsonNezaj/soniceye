@@ -63,7 +63,6 @@ export default function Items({ personalData, paymentData, uuid }) {
   };
 
   const orderToDB = () => {
-    // dispatch(toggleAppHeader(true));
     if (areDataEmpty()) {
       onValue(ref(db, `/orders/${userId}`), (snapshot) => {
         const data = snapshot.val();
@@ -73,6 +72,7 @@ export default function Items({ personalData, paymentData, uuid }) {
             total,
             cartItems,
             personalData,
+            timestamp: new Date().getTime(),
           },
         });
       });

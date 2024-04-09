@@ -13,7 +13,11 @@ export default function Orders() {
   const dispatch = useAppDispatch();
   const uuid = useAppSelector((state) => state.auth.authUser.uid);
   const [orders, setOrders] = useState();
-  const ordersToMap = orders && Object.keys(orders);
+  const ordersToMap =
+    orders &&
+    Object.keys(orders).sort(
+      (a, b) => orders[b].timestamp - orders[a].timestamp
+    );
 
   const handleOrderClick = (orderId) => {
     const order = orders[orderId];
