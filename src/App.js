@@ -12,7 +12,7 @@ import { signOutFailed } from "./redux/authSlice/authslice";
 import ConfirmPassword from "./components/Shared/ConfirmPassword";
 import LogOutModal from "./components/Shared/LogOutModal";
 import ModelViewer from "./components/Shared/ModelViewer";
-import OrderDialog from "./components/Shared/OrderDialog";
+import OrderDialog from "./components/Shared/OrderDialog/Container";
 
 function App() {
   const dispatch = useAppDispatch();
