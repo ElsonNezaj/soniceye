@@ -74,3 +74,22 @@
   border-bottom: solid 1px grey;
   width: max-content;
 }
+
+.totalContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 20px;
+  border-top: solid 1px #888;
+}
+
+.total {
+  font-size: 20px;
+  font-family: var(--main-font-family);
+  color: #ccc;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  span {
+    color: white;
+    font-weight: normal;
+  }
+}

@@ -49,6 +49,11 @@ export default function OrderDialog() {
           <OrderItems items={order?.cartItems} />
         </div>
       </DialogContent>
+      <div className={styles.totalContainer}>
+        <Typography className={styles.total}>
+          Total Paid : <span>{order.total}&euro;</span>
+        </Typography>
+      </div>
     </Dialog>
   );
 }
