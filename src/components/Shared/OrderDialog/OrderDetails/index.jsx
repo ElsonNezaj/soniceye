@@ -5,7 +5,7 @@ export default function OrderDetails({ details, timestamp }) {
   const date = new Date(timestamp).toLocaleDateString();
 
   const time =
-    new Date(timestamp).getHours() + ":" + new Date(timestamp).getMinutes();
+  timestamp && new Date(timestamp).getHours() + ":" + new Date(timestamp).getMinutes();
 
   return (
     <div className={styles.detailsContainer}>

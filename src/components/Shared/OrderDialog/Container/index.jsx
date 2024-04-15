@@ -40,7 +40,7 @@ export default function OrderDialog() {
           <Typography className={styles.sectionTitle}>Order Details</Typography>
           <OrderDetails
             details={order?.personalData}
-            timestamp={order.timestamp}
+            timestamp={order?.timestamp}
           />
         </div>
         <div className={styles.items}>
