@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import CloseIcon from "@mui/icons-material/Close";
 import { toggleOrderDialog } from "../../../../redux/appSlice/appSlice";
 import OrderDetails from "../OrderDetails";
+import OrderItems from "../OrderItems";
 
 export default function OrderDialog() {
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ export default function OrderDialog() {
         </div>
         <div className={styles.items}>
           <Typography className={styles.sectionTitle}>Order Items</Typography>
+          <OrderItems items={order?.cartItems} />
         </div>
       </DialogContent>
     </Dialog>

@@ -19,4 +19,12 @@
     font-weight: bold;
     font-size: 14px;
   }
+
+  @media (max-width: 900px) {
+    font-size: 14px;
+
+    span {
+      font-size: 12px;
+    }
+  }
 }
