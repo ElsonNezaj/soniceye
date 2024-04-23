@@ -171,7 +171,9 @@ const CartDropDownMenu = (props, ref) => {
                 <Typography className={styles.totalLabel}>Total : </Typography>
               </div>
               <div className={styles.amountContainer}>
-                <Typography className={styles.amount}>{total} €</Typography>
+                <Typography className={styles.amount}>
+                  {total && total} €
+                </Typography>
               </div>
             </div>
             <div className={styles.checkoutContainer}>

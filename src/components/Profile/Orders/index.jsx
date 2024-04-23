@@ -70,7 +70,7 @@ export default function Orders() {
                   </div>
                   <div className={styles.orderPrice}>
                     <Typography className={styles.orderTotalLabel}>
-                      Total : {singleOrder.total} &euro;
+                      Total : {singleOrder?.total} &euro;
                     </Typography>
                   </div>
                 </div>

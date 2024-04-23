@@ -149,7 +149,7 @@ function CartContainer({ setIsDrawerOpen }) {
           <ShoppingCart /> &nbsp; Your Cart
         </Typography>
         <Typography className={styles.totalAmount}>
-          Total : {total} €
+          Total : {total && total} €
         </Typography>
       </div>
       <div
