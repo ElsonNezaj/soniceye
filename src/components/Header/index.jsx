@@ -93,9 +93,9 @@ export default function Header() {
             <Typography className={styles.drawerContent}>Contact</Typography>
           </Link>
         </div>
-        <a href="/soniceye.apk" download className={styles.downloadLink}>
+        {/* <a href="/soniceye.apk" download className={styles.downloadLink}>
           Download Mobile Version <br></br> (APK)
-        </a>
+        </a> */}
       </Drawer>
     </div>
   );
