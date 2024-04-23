@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">soniceye</string>
+    <string name="title_activity_main">soniceye</string>
+    <string name="package_name">io.ionic.soniceye</string>
+    <string name="custom_url_scheme">io.ionic.soniceye</string>
+</resources>
